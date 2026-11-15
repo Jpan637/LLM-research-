@@ -1,0 +1,3179 @@
+model,set,category,question,correct,graded_by,correct_old_grader,format_ok,tokens,output
+fine-tuned,held-out,substitution first,"Evaluate the integral $\int e^{3 x} e^{e^{x}}\,dx$ using integration by parts (a substitution may be needed first).",False,wrong,False,True,573,"Step 1: Let $I = \int e^{3 x} e^{e^{x}}\,dx$. First simplify with a substitution: let $w = e^{x}$, so $dw = e^{x}\,dx$.
+
+Step 2: Split off the factor $e^{x}\,dx$: $$e^{3 x} e^{e^{x}}\,dx = e^{3 x} e^{x} \cdot e^{x}\,dx$$
+
+Step 3: Substitute $e^{3 x} e^{x} = e^{x} \cdot e^{3 x} = w \cdot 3 w = 3 w^{2}$ and $e^{x}\,dx = dw$: $$e^{3 x} e^{x} e^{x}\,dx = 3 w^{2}\,dw$$
+
+Step 4: Pull the constant out of the integral: $$I = 3 \int w^{2}\,dw$$
+
+Step 5: Now integrate $\int w^{2}\,dw$ with the power rule $\int w^{r}\,dw = \frac{w^{r+1}}{r+1}$ (where $r \neq -1$): $$\int w^{2}\,dw = \frac{w^{3}}{3}$$
+
+Step 6: Apply the constant: $$\int w^{2}\,dw = \frac{1}{3} w^{3}$$
+
+Step 7: Substitute back $w = e^{x}$: $$\frac{1}{3} w^{3} = \frac{1}{3} e^{3 x}$$
+
+Step 8: Therefore: $$I = \frac{1}{3} \int e^{3 x}\,dx$$
+
+Step 9: Now integrate $\int e^{3 x}\,dx$ with the standard integral $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ (where $k \neq 0$): $$\int e^{3 x}\,dx = \frac{1}{3} e^{3 x}$$
+
+Step 10: Multiply by $\frac{1}{3}$: $$\frac{1}{3} \int e^{3 x}\,dx = \frac{1}{9} e^{3 x}$$
+
+Step 11: Add the constant of integration: $$I = \frac{1}{9} e^{3 x} + C$$
+
+Final Answer: $$\int e^{3 x} e^{e^{x}}\,dx = \frac{1}{9} e^{3 x} + C$$"
+fine-tuned,held-out,inverse trig,"Evaluate the integral $\int \arcsin x\,dx$ using integration by parts.",True,symbolic,True,True,792,"Step 1: Let $I = \int \arcsin x\,dx$. By the LIATE rule the inverse trigonometric function is chosen as $u$ (its derivative is algebraic) and the remaining $1$ goes into $dv$. Choose $u = \arcsin x$ and $dv = dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{\sqrt{1 - x^{2}}}\,dx$ (since $\frac{d}{dx}\arcsin(kx) = \frac{k}{\sqrt{1 - k^{2}x^{2}}}$ with $k = 1$).
+
+Step 3: Integrate $dv$: $v = \int 1\,dx = x$.
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \arcsin x\,dx = \left(\arcsin x\right) \left(x\right) - \int \left(x\right) \left(\frac{1}{\sqrt{1 - x^{2}}}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\arcsin x\right) \left(x\right) = x \arcsin x$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(x\right) \left(\frac{1}{\sqrt{1 - x^{2}}}\right) = \frac{x}{\sqrt{1 - x^{2}}}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \arcsin x\,dx = x \arcsin x - \int \frac{x}{\sqrt{1 - x^{2}}}\,dx$$
+
+Step 8: To evaluate $\int \frac{x}{\sqrt{1 - x^{2}}}\,dx$, substitute $t = 1 - x^{2}$, so $dt = -2 x\,dx$ and $x\,dx = -\frac{dt}{2}$.
+
+Step 9: Rewrite the integral in terms of $t$: $$\int \frac{x}{\sqrt{1 - x^{2}}}\,dx = -\frac{1}{2}\int t^{-\frac{1}{2}}\,dt$$
+
+Step 10: Integrate with respect to $t$: $$\int \frac{x}{\sqrt{1 - x^{2}}}\,dx = -\frac{1}{2}\cdot 2t^{\frac{1}{2}}$$
+
+Step 11: Simplify the coefficient: $$\int \frac{x}{\sqrt{1 - x^{2}}}\,dx = -t^{\frac{1}{2}}$$
+
+Step 12: Substitute back $t = 1 - x^{2}$: $$\int \frac{x}{\sqrt{1 - x^{2}}}\,dx = -\sqrt{1 - x^{2}}$$
+
+Step 13: Substitute back into the expression for $I$: $$I = x \arcsin x - \left(-\sqrt{1 - x^{2}}\right)$$
+
+Step 14: Simplify: $$I = x \arcsin x + \sqrt{1 - x^{2}}$$
+
+Step 15: Add the constant of integration: $$I = x \arcsin x + \sqrt{1 - x^{2}} + C$$
+
+Final Answer: $$\int \arcsin x\,dx = x \arcsin x + \sqrt{1 - x^{2}} + C$$"
+fine-tuned,held-out,poly x trig,"Evaluate the integral $\int x^{2} \sin(3 x)\,dx$ using integration by parts.",False,wrong,False,True,1608,"Step 1: Let $I = \int x^{2} \sin(3 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = \sin(3 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \sin(3 x)\,dx = -\frac{\cos(3 x)}{3}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 3$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \sin(3 x)\,dx = \left(x^{2}\right) \left(-\frac{\cos(3 x)}{3}\right) - \int \left(-\frac{\cos(3 x)}{3}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(-\frac{\cos(3 x)}{3}\right) = -\frac{x^{2} \cos(3 x)}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(3 x)}{3}\right) \left(2 x\right) = -\frac{2 x \cos(3 x)}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \sin(3 x)\,dx = -\frac{x^{2} \cos(3 x)}{3} - \int -\frac{2 x \cos(3 x)}{3}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x^{2} \sin(3 x)\,dx = -\frac{x^{2} \cos(3 x)}{3} + \frac{2}{3} \int x \cos(3 x)\,dx$$
+
+Step 9: Integrate $\int x \cos(3 x)\,dx$ by parts again. Choose $u = x$ and $dv = \cos(3 x)\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int \cos(3 x)\,dx = \frac{\sin(3 x)}{3}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 3$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos(3 x)\,dx = \left(x\right) \left(\frac{\sin(3 x)}{3}\right) - \int \left(\frac{\sin(3 x)}{3}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{\sin(3 x)}{3}\right) = \frac{x \sin(3 x)}{3}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\frac{\sin(3 x)}{3}\right) \left(1\right) = \frac{\sin(3 x)}{3}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x \cos(3 x)\,dx = \frac{x \sin(3 x)}{3} - \int \frac{\sin(3 x)}{3}\,dx$$
+
+Step 16: Pull the constant out of the integral: $$\int x \cos(3 x)\,dx = \frac{x \sin(3 x)}{3} - \frac{1}{3} \int \sin(3 x)\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = -\frac{x^{2} \cos(3 x)}{3} + \frac{2}{3} \left[\frac{x \sin(3 x)}{3} - \frac{1}{3} \int \sin(3 x)\,dx\right]$$
+
+Step 18: Distribute: $$I = -\frac{x^{2} \cos(3 x)}{3} + \frac{2 x \sin(3 x)}{9} - \frac{2}{9} \int \sin(3 x)\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 3$): $\int \sin(3 x)\,dx = -\frac{\cos(3 x)}{3}$.
+
+Step 20: Substitute this result back: $$I = -\frac{x^{2} \cos(3 x)}{3} + \frac{2 x \sin(3 x)}{9} - \frac{2}{9} \left(-\frac{\cos(3 x)}{3}\right)$$
+
+Step 21: Simplify: $$I = -\frac{x^{2} \cos(3 x)}{3} + \frac{2 x \sin(3 x)}{9} + \frac{2 \cos(3 x)}{27}$$
+
+Step 22: Rewrite the sine term with denominator $27$ (multiply top and bottom by $3$): $$I = -\frac{x^{2} \cos(3 x)}{3} + \frac{6 x \sin(3 x)}{27} + \frac{2 \cos(3 x)}{27}$$
+
+Step 23: Combine the cosine terms: $$I = \frac{-27 x^{2} \cos(3 x) + 6 \cos(3 x)}{27} + \frac{6 x \sin(3 x)}{27}$$
+
+Step 24: Factor $-\cos(3 x)$ out of the first two terms (both are negative, so each sign inside the parentheses becomes $+$): $$I = -\frac{\left(27 x^{2} - 6\right) \cos(3 x)}{27} + \frac{6 x \sin(3 x)}{27}$$
+
+Step 25: Add the constant of integration: $$I = -\frac{\left(27 x^{2} - 6\right) \cos(3 x)}{27} + \frac{6 x \sin(3 x)}{27} + C$$
+
+Final Answer: $$\int x^{2} \sin(3 x)\,dx = -\frac{\left(27 x^{2} - 6\right) \cos(3 x)}{27} + \frac{6 x \sin(3 x)}{27} + C$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \cos x\,dx$ using integration by parts.",True,numeric,True,True,822,"Step 1: Let $I = \int x \cos x\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = \cos x\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int \cos x\,dx = \sin x$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos x\,dx = \left(x\right) \left(\sin x\right) - \int \left(\sin x\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(\sin x\right) = x \sin x$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\sin x\right) \left(1\right) = \sin x$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \cos x\,dx = x \sin x - \int \sin x\,dx$$
+
+Step 8: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 1$): $\int \sin x\,dx = -\cos x$.
+
+Step 9: Substitute this result back: $$I = x \sin x - \left(-\cos x\right)$$
+
+Step 10: Simplify: $$I = x \sin x + \cos x$$
+
+Step 11: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{\pi} x \cos x\,dx = \left[x \sin x + \cos x\right]_{0}^{\pi} = F(\pi) - F(0)$$ where $F(x) = x \sin x + \cos x$.
+
+Step 12: Substitute $x = \pi$ into $F(x)$: $$F(\pi) = \pi \sin(\pi) + \cos(\pi)$$
+
+Step 13: Evaluate using $\sin(\pi) = 0, \cos(\pi) = -1$: $$F(\pi) = \pi \cdot 0 + (-1)$$
+
+Step 14: Simplify each term: $$F(\pi) = 0 + (-1)$$
+
+Step 15: Simplify: $$F(\pi) = -1$$
+
+Step 16: Substitute $x = 0$ into $F(x)$: $$F(0) = 0 \cdot \sin 0 + \cos 0$$
+
+Step 17: Evaluate using $\sin 0 = 0, \cos 0 = 1$: $$F(0) = 0 + 1$$
+
+Step 18: Simplify: $$F(0) = 1$$
+
+Step 19: Subtract: $$\int_{0}^{\pi} x \cos x\,dx = -1 - 1$$
+
+Step 20: Simplify: $$\int_{0}^{\pi} x \cos x\,dx = -2$$
+
+Final Answer: $$\int_{0}^{\pi} x \cos x\,dx = -2$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx$ using integration by parts.",False,wrong,False,True,1278,"Step 1: Let $I = \int \frac{\ln x}{x^{2}}\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln x$ and $dv = \frac{1}{x^{2}}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \frac{1}{x^{2}}\,dx = -\frac{1}{x}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \frac{\ln x}{x^{2}}\,dx = \left(\ln x\right) \left(-\frac{1}{x}\right) - \int \left(-\frac{1}{x}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln x\right) \left(-\frac{1}{x}\right) = -\frac{\ln x}{x}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{1}{x}\right) \left(\frac{1}{x}\right) = -\frac{1}{x^{2}}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \frac{\ln x}{x^{2}}\,dx = -\frac{\ln x}{x} - \int -\frac{1}{x^{2}}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int \frac{\ln x}{x^{2}}\,dx = -\frac{\ln x}{x} + \int \frac{1}{x^{2}}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = -2$: $\int \frac{1}{x^{2}}\,dx = -\frac{1}{x}$.
+
+Step 10: Substitute this result back: $$I = -\frac{\ln x}{x} + \left(-\frac{1}{x}\right)$$
+
+Step 11: Simplify: $$I = -\frac{\ln x}{x} - \frac{1}{x}$$
+
+Step 12: Rewrite the first term with denominator $x$ (multiply top and bottom by $x$): $$I = -\frac{\ln x \cdot x}{x \cdot x} - \frac{1}{x}$$
+
+Step 13: Simplify the new numerator: $$I = -\frac{\ln x^{2}}{x^{2}} - \frac{1}{x}$$
+
+Step 14: Rewrite the first term with denominator $x^{2}$ (multiply top and bottom by $x^{2}$): $$I = -\frac{\ln x^{2} \cdot x^{2}}{x^{2} \cdot x^{2}} - \frac{1}{x}$$
+
+Step 15: Simplify the new numerator: $$I = -\frac{\ln x^{4}}{x^{4}} - \frac{1}{x}$$
+
+Step 16: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = \left[-\frac{\ln x^{4}}{x^{4}} - \frac{1}{x}\right]_{1}^{e} = F(e) - F(1)$$ where $F(x) = -\frac{\ln x^{4}}{x^{4}} - \frac{1}{x}$.
+
+Step 17: Substitute $x = e$ into $F(x)$: $$F(e) = -\frac{\ln e^{4}}{e^{4}} - \frac{1}{e}$$
+
+Step 18: Evaluate using $\ln e = 1$: $$F(e) = -\frac{4 \ln e}{e^{4}} - \frac{1}{e}$$
+
+Step 19: Simplify each term: $$F(e) = -\frac{4}{e^{4}} - \frac{1}{e}$$
+
+Step 20: Substitute $x = 1$ into $F(x)$: $$F(1) = -\frac{\ln 1^{4}}{1^{4}} - \frac{1}{1}$$
+
+Step 21: Evaluate using $\ln 1 = 0$: $$F(1) = 0 - 1$$
+
+Step 22: Simplify: $$F(1) = -1$$
+
+Step 23: Subtract: $$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = \left(-\frac{4}{e^{4}} - \frac{1}{e}\right) - \left(-1\right)$$
+
+Step 24: Simplify (subtracting a negative gives a positive): $$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = -\frac{4}{e^{4}} - \frac{1}{e} + 1 \approx 0.106$$
+
+Final Answer: $$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = -\frac{4}{e^{4}} - \frac{1}{e} + 1$$"
+fine-tuned,held-out,logarithm,"Evaluate the integral $\int x^{3} \ln x\,dx$ using integration by parts.",True,symbolic,True,True,785,"Step 1: Let $I = \int x^{3} \ln x\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln x$ and $dv = x^{3}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x^{3}\,dx = \frac{x^{4}}{4}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{3} \ln x\,dx = \left(\ln x\right) \left(\frac{x^{4}}{4}\right) - \int \left(\frac{x^{4}}{4}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln x\right) \left(\frac{x^{4}}{4}\right) = \frac{x^{4} \ln x}{4}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{4}}{4}\right) \left(\frac{1}{x}\right) = \frac{x^{3}}{4}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{3} \ln x\,dx = \frac{x^{4} \ln x}{4} - \int \frac{x^{3}}{4}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{3} \ln x\,dx = \frac{x^{4} \ln x}{4} - \frac{1}{4} \int x^{3}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 3$: $\int x^{3}\,dx = \frac{x^{4}}{4}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{4} \ln x}{4} - \frac{1}{4} \left(\frac{x^{4}}{4}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{4} \ln x}{4} - \frac{x^{4}}{16}$$
+
+Step 12: Rewrite the first term with denominator $16$ (multiply top and bottom by $4$): $$I = \frac{4 x^{4} \ln x}{16} - \frac{x^{4}}{16}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{4 x^{4} \ln x - x^{4}}{16}$$
+
+Step 14: Factor $x^{4}$ out of the numerator: $$I = \frac{x^{4} \left(4 \ln x - 1\right)}{16}$$
+
+Step 15: Add the constant of integration: $$I = \frac{x^{4} \left(4 \ln x - 1\right)}{16} + C$$
+
+Final Answer: $$\int x^{3} \ln x\,dx = \frac{x^{4} \left(4 \ln x - 1\right)}{16} + C$$"
+fine-tuned,held-out,logarithm,"Evaluate the integral $\int \frac{\ln x}{\sqrt{x}}\,dx$ using integration by parts.",False,wrong,False,True,810,"Step 1: Let $I = \int \frac{\ln x}{\sqrt{x}}\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ in the denominator goes into $dv$. Choose $u = \ln x$ and $dv = \frac{1}{\sqrt{x}}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \frac{1}{\sqrt{x}}\,dx = 2 \sqrt{x}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \frac{\ln x}{\sqrt{x}}\,dx = \left(\ln x\right) \left(2 \sqrt{x}\right) - \int \left(2 \sqrt{x}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln x\right) \left(2 \sqrt{x}\right) = 2 \sqrt{x} \ln x$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(2 \sqrt{x}\right) \left(\frac{1}{x}\right) = 2 \sqrt{x} \cdot x^{-\frac{1}{2}} = 2 x^{\frac{1}{2}}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \frac{\ln x}{\sqrt{x}}\,dx = 2 \sqrt{x} \ln x - \int 2 \sqrt{x} \cdot x^{-\frac{1}{2}}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int \frac{\ln x}{\sqrt{x}}\,dx = 2 \sqrt{x} \ln x - 2 \int \sqrt{x} \cdot x^{-\frac{1}{2}}\,dx$$
+
+Step 9: Simplify the new integrand: $\sqrt{x} \cdot x^{-\frac{1}{2}} = x^{\frac{1}{2}}$.
+
+Step 10: Rewrite the integral with the simplified integrand: $$I = 2 \sqrt{x} \ln x - 2 \int x^{\frac{1}{2}}\,dx$$
+
+Step 11: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = \frac{1}{2}$: $\int x^{\frac{1}{2}}\,dx = \frac{2 x^{\frac{3}{2}}}{3}$.
+
+Step 12: Substitute this result back: $$I = 2 \sqrt{x} \ln x - 2 \left(\frac{2 x^{\frac{3}{2}}}{3}\right)$$
+
+Step 13: Simplify: $$I = 2 \sqrt{x} \ln x - \frac{4 x^{\frac{3}{2}}}{3}$$
+
+Step 14: Add the constant of integration: $$I = 2 \sqrt{x} \ln x - \frac{4 x^{\frac{3}{2}}}{3} + C$$
+
+Final Answer: $$\int \frac{\ln x}{\sqrt{x}}\,dx = 2 \sqrt{x} \ln x - \frac{4 x^{\frac{3}{2}}}{3} + C$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{0}^{1} \left(x + 1\right) e^{x}\,dx$ using integration by parts.",True,numeric,True,True,844,"Step 1: Let $I = \int \left(x + 1\right) e^{x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x + 1$ and $dv = e^{x}\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{x}\,dx = e^{x}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \left(x + 1\right) e^{x}\,dx = \left(x + 1\right) \left(e^{x}\right) - \int \left(e^{x}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x + 1\right) \left(e^{x}\right) = x e^{x} + e^{x}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(e^{x}\right) \left(1\right) = e^{x}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \left(x + 1\right) e^{x}\,dx = x e^{x} + e^{x} - \int e^{x}\,dx$$
+
+Step 8: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 1$): $\int e^{x}\,dx = e^{x}$.
+
+Step 9: Substitute this result back: $$I = x e^{x} + e^{x} - \left(e^{x}\right)$$
+
+Step 10: Remove the parentheses: $$I = x e^{x} + e^{x} - e^{x}$$
+
+Step 11: Combine like terms ($e^{x} - e^{x} = 0$): $$I = x e^{x}$$
+
+Step 12: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = \left[x e^{x}\right]_{0}^{1} = F(1) - F(0)$$ where $F(x) = x e^{x}$.
+
+Step 13: Substitute $x = 1$ into $F(x)$: $$F(1) = 1 \cdot e^{1}$$
+
+Step 14: Evaluate using $e^{1} = e$: $$F(1) = e$$
+
+Step 15: Substitute $x = 0$ into $F(x)$: $$F(0) = 0 \cdot e^{0}$$
+
+Step 16: Evaluate using $e^{0} = 1$: $$F(0) = 0$$
+
+Step 17: Subtract: $$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = e - 0$$
+
+Step 18: Simplify: $$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = e \approx 2.718281828$$
+
+Final Answer: $$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = e \approx 2.718281828$$"
+fine-tuned,held-out,substitution first,"Evaluate the integral $\int x^{5} \cos(x^{3})\,dx$ using integration by parts (a substitution may be needed first).",False,wrong,False,True,2332,"Step 1: Let $I = \int x^{5} \cos(x^{3})\,dx$. First simplify with a substitution: let $w = x^{3}$, so $dw = 3 x^{2}\,dx$.
+
+Step 2: Split off the factor $x^{2}\,dx$: $$x^{5} \cos(x^{3})\,dx = x^{3} \cos(x^{3}) \cdot x^{2}\,dx$$
+
+Step 3: Substitute $x^{3} = w$ and $x^{2}\,dx = \frac{dw}{3}$: $$x^{3} \cos(x^{3}) \cdot x^{2}\,dx = \frac{x^{3} \cos(x^{3})}{3}\,dw$$
+
+Step 4: Therefore: $$I = \int \frac{x^{3} \cos(x^{3})}{3}\,dw$$
+
+Step 5: Pull the constant out of the integral: $$I = \frac{1}{3} \int x^{3} \cos(x^{3})\,dw$$
+
+Step 6: Now let $J = \int x^{3} \cos(x^{3})\,dw$, so $I = \frac{1}{3} J$. The integrand is a polynomial times a trigonometric function, so by LIATE take $u$ to be the polynomial and $dv$ the other factor. Choose $u = x^{3}$ and $dv = \cos(x^{3})\,dw$.
+
+Step 7: Differentiate $u$: $du = 3 x^{2}\,dw$.
+
+Step 8: Integrate $dv$: $v = \int \cos(w)\,dw = \sin(w)$ (using $\int \cos(kw)\,dw = \frac{1}{k}\sin(kw)$ with $k = 1$).
+
+Step 9: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{3} \cos(x^{3})\,dw = \left(x^{3}\right) \left(\sin(x^{3})\right) - \int \left(\sin(x^{3})\right) \left(3 x^{2}\right)\,dw$$
+
+Step 10: Simplify the boundary term $uv$: $\left(x^{3}\right) \left(\sin(x^{3})\right) = x^{3} \sin(x^{3})$.
+
+Step 11: Simplify the new integrand $v\,du$: $\left(\sin(x^{3})\right) \left(3 x^{2}\right) = 3 x^{2} \sin(x^{3})$.
+
+Step 12: Rewrite the formula using the simplified products: $$\int x^{3} \cos(x^{3})\,dw = x^{3} \sin(x^{3}) - \int 3 x^{2} \sin(x^{3})\,dw$$
+
+Step 13: Pull the constant out of the integral: $$\int x^{3} \cos(x^{3})\,dw = x^{3} \sin(x^{3}) - 3 \int x^{2} \sin(x^{3})\,dw$$
+
+Step 14: Integrate $\int x^{2} \sin(x^{3})\,dw$ by parts again. Choose $u = x^{2}$ and $dv = \sin(x^{3})\,dw$.
+
+Step 15: Differentiate $u$: $du = 2 x\,dw$.
+
+Step 16: Integrate $dv$: $v = \int \sin(w)\,dw = -\cos(w)$ (using $\int \sin(kw)\,dw = -\frac{1}{k}\cos(kw)$ with $k = 1$).
+
+Step 17: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \sin(x^{3})\,dw = \left(x^{2}\right) \left(-\cos(x^{3})\right) - \int \left(-\cos(x^{3})\right) \left(2 x\right)\,dw$$
+
+Step 18: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(-\cos(x^{3})\right) = -x^{2} \cos(x^{3})$.
+
+Step 19: Simplify the new integrand $v\,du$: $\left(-\cos(x^{3})\right) \left(2 x\right) = -2 x \cos(x^{3})$.
+
+Step 20: Rewrite the formula using the simplified products: $$\int x^{2} \sin(x^{3})\,dw = -x^{2} \cos(x^{3}) - \int -2 x \cos(x^{3})\,dw$$
+
+Step 21: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x^{2} \sin(x^{3})\,dw = -x^{2} \cos(x^{3}) + 2 \int x \cos(x^{3})\,dw$$
+
+Step 22: Substitute this into the expression for $J$: $$J = x^{3} \sin(x^{3}) - 3 \left[-x^{2} \cos(x^{3}) + 2 \int x \cos(x^{3})\,dw\right]$$
+
+Step 23: Distribute: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 \int x \cos(x^{3})\,dw$$
+
+Step 24: Integrate $\int x \cos(x^{3})\,dw$ by parts again. Choose $u = x$ and $dv = \cos(x^{3})\,dw$.
+
+Step 25: Differentiate $u$: $du = dx$.
+
+Step 26: Integrate $dv$: $v = \int \cos(w)\,dw = \sin(w)$ (using $\int \cos(kw)\,dw = \frac{1}{k}\sin(kw)$ with $k = 1$).
+
+Step 27: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos(x^{3})\,dw = \left(x\right) \left(\sin(x^{3})\right) - \int \left(\sin(x^{3})\right) \left(1\right)\,dw$$
+
+Step 28: Simplify the boundary term $uv$: $\left(x\right) \left(\sin(x^{3})\right) = x \sin(x^{3})$.
+
+Step 29: Simplify the new integrand $v\,du$: $\left(\sin(x^{3})\right) \left(1\right) = \sin(x^{3})$.
+
+Step 30: Rewrite the formula using the simplified products: $$\int x \cos(x^{3})\,dw = x \sin(x^{3}) - \int \sin(x^{3})\,dw$$
+
+Step 31: Substitute this into the expression for $J$: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 \left[x \sin(x^{3}) - \int \sin(x^{3})\,dw\right]$$
+
+Step 32: Distribute: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 x \sin(x^{3}) + 6 \int \sin(x^{3})\,dw$$
+
+Step 33: Evaluate the remaining integral (using $\int \sin(kw)\,dw = -\frac{1}{k}\cos(kw)$ with $k = 1$): $\int \sin(x^{3})\,dw = -\frac{\cos(x^{3})}{1}$.
+
+Step 34: Substitute this result back: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 x \sin(x^{3}) + 6 \left(-\frac{\cos(x^{3})}{1}\right)$$
+
+Step 35: Simplify: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 x \sin(x^{3}) - 6 \cos(x^{3})$$
+
+Step 36: Substitute back $w = x^{3}$: $$J = x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 x \sin(x^{3}) - 6 \cos(x^{3})$$
+
+Step 37: Multiply by $\frac{1}{3}$ to get $I$: $$I = \frac{1}{3} \left(x^{3} \sin(x^{3}) + 3 x^{2} \cos(x^{3}) - 6 x \sin(x^{3}) - 6 \cos(x^{3})\right)$$
+
+Step 38: Distribute: $$I = \frac{x^{3} \sin(x^{3})}{3} + x^{2} \cos(x^{3}) - 2 x \sin(x^{3}) - 2 \cos(x^{3})$$
+
+Step 39: Factor: $$I = \frac{x^{3} \sin(x^{3}) - 2 x \sin(x^{3})}{3} + \left(x^{2} - 2\right) \cos(x^{3})$$
+
+Step 40: Factor $\sin(x^{3})$ out of the first term: $$I = \frac{\left(x^{3} - 2 x\right) \sin(x^{3})}{3} + \left(x^{2} - 2\right) \cos(x^{3})$$
+
+Step 41: Add the constant of integration: $$I = \frac{\left(x^{3} - 2 x\right) \sin(x^{3})}{3} + \left(x^{2} - 2\right) \cos(x^{3}) + C$$
+
+Final Answer: $$\int x^{5} \cos(x^{3})\,dx = \frac{\left(x^{3} - 2 x\right) \sin(x^{3})}{3} + \left(x^{2} - 2\right) \cos(x^{3}) + C$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{1}^{e^{\pi}} \sin(\ln x)\,dx$ using integration by parts.",False,wrong,False,True,1909,"Step 1: Let $I = \int \sin(\ln x)\,dx$. The integrand is a single trigonometric function, so take $\sin(\ln x)$ as $u$ (its derivative is algebraic) and $\cos(\ln x)\,dx$ as $dv$.
+
+Step 2: Differentiate $u$: $du = \frac{\cos(\ln x)}{x}\,dx$ (chain rule).
+
+Step 3: Integrate $dv$: $v = \int \cos(\ln x)\,dx = \sin(\ln x)$ (since $\frac{d}{dx}\sin(\ln x) = \cos(\ln x) \cdot \frac{1}{x}$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \sin(\ln x)\,dx = \left(\sin(\ln x)\right) \left(\cos(\ln x)\right) - \int \left(\sin(\ln x)\right) \left(\frac{\cos(\ln x)}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\sin(\ln x)\right) \left(\cos(\ln x)\right) = \sin(\ln x)\cos(\ln x)$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\sin(\ln x)\right) \left(\frac{\cos(\ln x)}{x}\right) = \frac{\sin(\ln x)\cos(\ln x)}{x}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \sin(\ln x)\,dx = \sin(\ln x)\cos(\ln x) - \int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int \sin(\ln x)\,dx = \sin(\ln x)\cos(\ln x) - \frac{1}{x} \int \sin(\ln x)\cos(\ln x)\,dx$$
+
+Step 9: Integrate $\int \sin(\ln x)\cos(\ln x)\,dx$ by parts again with $u = \sin(\ln x)$ and $dv = \cos(\ln x)\,dx$.
+
+Step 10: Differentiate $u$: $du = \frac{\cos(\ln x)}{x}\,dx$ (chain rule).
+
+Step 11: Integrate $dv$: $v = \int \cos(\ln x)\,dx = \sin(\ln x)$ (since $\frac{d}{dx}\sin(\ln x) = \cos(\ln x) \cdot \frac{1}{x}$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int \sin(\ln x)\cos(\ln x)\,dx = \left(\sin(\ln x)\right) \left(\sin(\ln x)\right) - \int \left(\sin(\ln x)\right) \left(\frac{\cos(\ln x)}{x}\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(\sin(\ln x)\right) \left(\sin(\ln x)\right) = \sin^{2}(\ln x)$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\sin(\ln x)\right) \left(\frac{\cos(\ln x)}{x}\right) = \frac{\sin(\ln x)\cos(\ln x)}{x}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int \sin(\ln x)\cos(\ln x)\,dx = \sin^{2}(\ln x) - \int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx$$
+
+Step 16: Substitute this into the expression for $I$: $$I = \sin(\ln x)\cos(\ln x) - \frac{1}{x} \left[\sin^{2}(\ln x) - \int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx\right]$$
+
+Step 17: Distribute: $$I = \sin(\ln x)\cos(\ln x) - \frac{\sin^{2}(\ln x)}{x} + \frac{1}{x} \int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx$$
+
+Step 18: Recognize $\int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx$ as the remaining integral after the second application of $\int u\,dv = uv - \int v\,du$, so evaluate it: $$\int \frac{\sin(\ln x)\cos(\ln x)}{x}\,dx = \frac{\cos(\ln x)\sin(\ln x)}{x}$$
+
+Step 19: Substitute this result back: $$I = \sin(\ln x)\cos(\ln x) - \frac{\sin^{2}(\ln x)}{x} + \frac{\cos(\ln x)\sin(\ln x)}{x}$$
+
+Step 20: Factor $\sin(\ln x)$ out of the two sine terms: $$I = \frac{\sin(\ln x)\left(\cos(\ln x) - \sin(\ln x)\right)}{x} + C$$
+
+Step 21: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{1}^{e^{\pi}} \sin(\ln x)\,dx = \left[\sin(\ln x)\cos(\ln x) - \frac{\sin^{2}(\ln x)}{x} + \frac{\cos(\ln x)\sin(\ln x)}{x}\right]_{1}^{e^{\pi}} = F(e^{\pi}) - F(1)$$ where $F(x) = \sin(\ln x)\cos(\ln x) - \frac{\sin^{2}(\ln x)}{x} + \frac{\cos(\ln x)\sin(\ln x)}{x}$.
+
+Step 22: Substitute $x = e^{\pi}$ into $F(x)$: $$F(e^{\pi}) = \sin(\ln(e^{\pi}))\cos(\ln(e^{\pi})) - \frac{\sin^{2}(\ln(e^{\pi}))}{e^{\pi}} + \frac{\cos(\ln(e^{\pi}))\sin(\ln(e^{\pi}))}{e^{\pi}}$$
+
+Step 23: Evaluate using $\ln(e^{\pi}) = \pi$: $$F(e^{\pi}) = \sin(\pi)\cos(\pi) - \frac{\sin^{2}(\pi)}{e^{\pi}} + \frac{\cos(\pi)\sin(\pi)}{e^{\pi}}$$
+
+Step 24: Evaluate using $\sin(\pi) = 0$, $\cos(\pi) = -1$: $$F(e^{\pi}) = 0 - \frac{0}{e^{\pi}} + \frac{(-1) \cdot 0}{e^{\pi}}$$
+
+Step 25: Simplify each term: $$F(e^{\pi}) = 0 + 0 + 0$$
+
+Step 26: Simplify: $$F(e^{\pi}) = 0$$
+
+Step 27: Substitute $x = 1$ into $F(x)$: $$F(1) = \sin(\ln 1)\cos(\ln 1) - \frac{\sin^{2}(\ln 1)}{1} + \frac{\cos(\ln 1)\sin(\ln 1)}{1}$$
+
+Step 28: Evaluate using $\ln 1 = 0$: $$F(1) = \sin 0 \cos 0 - \frac{\sin^{2} 0}{1} + \frac{\cos 0 \sin 0}{1}$$
+
+Step 29: Evaluate using $\sin 0 = 0$, $\cos 0 = 1$: $$F(1) = 0 - 0 + 0$$
+
+Step 30: Simplify: $$F(1) = 0$$
+
+Step 31: Subtract: $$\int_{1}^{e^{\pi}} \sin(\ln x)\,dx = 0 - 0$$
+
+Step 32: Simplify: $$\int_{1}^{e^{\pi}} \sin(\ln x)\,dx = 0$$
+
+Final Answer: $$\int_{1}^{e^{\pi}} \sin(\ln x)\,dx = 0$$"
+fine-tuned,held-out,poly x trig,"Evaluate the integral $\int \left(2 x - 1\right) \cos x\,dx$ using integration by parts.",True,symbolic,True,True,697,"Step 1: Let $I = \int \left(2 x - 1\right) \cos x\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = 2 x - 1$ and $dv = \cos x\,dx$.
+
+Step 2: Differentiate $u$: $du = 2\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \cos x\,dx = \sin x$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \left(2 x - 1\right) \cos x\,dx = \left(2 x - 1\right) \left(\sin x\right) - \int \left(\sin x\right) \left(2\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(2 x - 1\right) \left(\sin x\right) = 2 x \sin x - \sin x$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\sin x\right) \left(2\right) = 2 \sin x$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \left(2 x - 1\right) \cos x\,dx = 2 x \sin x - \sin x - \int 2 \sin x\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int \left(2 x - 1\right) \cos x\,dx = 2 x \sin x - \sin x - 2 \int \sin x\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 1$): $\int \sin x\,dx = -\cos x$.
+
+Step 10: Substitute this result back: $$I = 2 x \sin x - \sin x - 2 \left(-\cos x\right)$$
+
+Step 11: Simplify: $$I = 2 x \sin x - \sin x + 2 \cos x$$
+
+Step 12: Factor: $$I = \left(2 x - 1\right) \sin x + 2 \cos x$$
+
+Step 13: Add the constant of integration: $$I = \left(2 x - 1\right) \sin x + 2 \cos x + C$$
+
+Final Answer: $$\int \left(2 x - 1\right) \cos x\,dx = \left(2 x - 1\right) \sin x + 2 \cos x + C$$"
+fine-tuned,held-out,poly x exp,"Evaluate the integral $\int x e^{2 x}\,dx$ using integration by parts.",True,symbolic,True,True,817,"Step 1: Let $I = \int x e^{2 x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = e^{2 x}\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{2 x}\,dx = \frac{e^{2 x}}{2}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{2 x}\,dx = \left(x\right) \left(\frac{e^{2 x}}{2}\right) - \int \left(\frac{e^{2 x}}{2}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{e^{2 x}}{2}\right) = \frac{x e^{2 x}}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{2 x}}{2}\right) \left(1\right) = \frac{e^{2 x}}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x e^{2 x}\,dx = \frac{x e^{2 x}}{2} - \int \frac{e^{2 x}}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x e^{2 x}\,dx = \frac{x e^{2 x}}{2} - \frac{1}{2} \int e^{2 x}\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$): $\int e^{2 x}\,dx = \frac{e^{2 x}}{2}$.
+
+Step 10: Substitute this result back: $$I = \frac{x e^{2 x}}{2} - \frac{1}{2} \left(\frac{e^{2 x}}{2}\right)$$
+
+Step 11: Simplify: $$I = \frac{x e^{2 x}}{2} - \frac{e^{2 x}}{4}$$
+
+Step 12: Rewrite the first term with denominator $4$ (multiply top and bottom by $2$): $$I = \frac{2 x e^{2 x}}{4} - \frac{e^{2 x}}{4}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{2 x e^{2 x} - e^{2 x}}{4}$$
+
+Step 14: Factor $e^{2 x}$ out of the numerator: $$I = \frac{e^{2 x} \left(2 x - 1\right)}{4}$$
+
+Step 15: Add the constant of integration: $$I = \frac{e^{2 x} \left(2 x - 1\right)}{4} + C$$
+
+Final Answer: $$\int x e^{2 x}\,dx = \frac{e^{2 x} \left(2 x - 1\right)}{4} + C$$"
+fine-tuned,held-out,inverse trig,"Evaluate the integral $\int x \arctan(2 x)\,dx$ using integration by parts.",False,wrong,False,True,2012,"Step 1: Let $I = \int x \arctan(2 x)\,dx$. By the LIATE rule the inverse trigonometric function is chosen as $u$ (its derivative is algebraic) and $x$ goes into $dv$. Choose $u = \arctan(2 x)$ and $dv = x\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{2}{1 + 4 x^{2}}\,dx$ (since $\frac{d}{dx}\arctan(kx) = \frac{k}{1 + k^{2}x^{2}}$ with $k = 2$).
+
+Step 3: Integrate $dv$: $v = \int x\,dx = \frac{x^{2}}{2}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \arctan(2 x)\,dx = \left(\arctan(2 x)\right) \left(\frac{x^{2}}{2}\right) - \int \left(\frac{x^{2}}{2}\right) \left(\frac{2}{1 + 4 x^{2}}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\arctan(2 x)\right) \left(\frac{x^{2}}{2}\right) = \frac{x^{2} \arctan(2 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{2}}{2}\right) \left(\frac{2}{1 + 4 x^{2}}\right) = \frac{x^{2}}{1 + 4 x^{2}}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \arctan(2 x)\,dx = \frac{x^{2} \arctan(2 x)}{2} - \int \frac{x^{2}}{1 + 4 x^{2}}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x \arctan(2 x)\,dx = \frac{x^{2} \arctan(2 x)}{2} - \frac{1}{2} \int \frac{x^{2}}{1 + 4 x^{2}}\,dx$$
+
+Step 9: To evaluate $\int \frac{x^{2}}{1 + 4 x^{2}}\,dx$, substitute $t = 1 + 4 x^{2}$, so $dt = 8 x\,dx$ and $x^{2} = \frac{t - 1}{4}$.
+
+Step 10: Rewrite the integral in terms of $t$: $$\int \frac{x^{2}}{1 + 4 x^{2}}\,dx = \int \frac{\frac{t - 1}{4}}{t}\,dt$$
+
+Step 11: Simplify the integrand: $$\int \frac{\frac{t - 1}{4}}{t}\,dt = \frac{1}{4} \int \frac{t - 1}{t}\,dt$$
+
+Step 12: Split the integral: $$\frac{1}{4} \int \frac{t - 1}{t}\,dt = \frac{1}{4} \left(\int 1\,dt - \int \frac{1}{t}\,dt\right)$$
+
+Step 13: Pull the constant out of the second integral: $$\frac{1}{4} \left(\int 1\,dt - \int \frac{1}{t}\,dt\right) = \frac{1}{4} \int 1\,dt - \frac{1}{4} \int \frac{1}{t}\,dt$$
+
+Step 14: Integrate the first integral: $$\frac{1}{4} \int 1\,dt = \frac{t}{4}$$
+
+Step 15: Integrate the second integral: $$-\frac{1}{4} \int \frac{1}{t}\,dt = -\frac{\ln|t|}{4}$$
+
+Step 16: Drop the absolute value, because $t = 1 + 4 x^{2} > 0$ wherever $x$ is real: $$-\frac{\ln|t|}{4} = -\frac{\ln t}{4}$$
+
+Step 17: Combine the two results: $$\frac{1}{4} \int 1\,dt - \frac{1}{4} \int \frac{1}{t}\,dt = \frac{t}{4} - \frac{\ln t}{4}$$
+
+Step 18: Substitute back $t = 1 + 4 x^{2}$: $$\frac{t}{4} - \frac{\ln t}{4} = \frac{1 + 4 x^{2}}{4} - \frac{\ln(1 + 4 x^{2})}{4}$$
+
+Step 19: Simplify: $$\frac{1 + 4 x^{2}}{4} - \frac{\ln(1 + 4 x^{2})}{4} = \frac{1 + 4 x^{2} - 4 \ln(1 + 4 x^{2})}{4}$$
+
+Step 20: Multiply by $2$ (the original denominator): $$\frac{1 + 4 x^{2} - 4 \ln(1 + 4 x^{2})}{4} \cdot 2 = 1 + 4 x^{2} - 4 \ln(1 + 4 x^{2})$$
+
+Step 21: Add the boundary term: $$1 + 4 x^{2} - 4 \ln(1 + 4 x^{2}) + \frac{x^{2} \arctan(2 x)}{2} = 1 + 4 x^{2} + \frac{x^{2} \arctan(2 x)}{2} - 4 \ln(1 + 4 x^{2})$$
+
+Step 22: Rewrite $4 x^{2}$ as $2 \cdot 2 x^{2}$: $$1 + 4 x^{2} + \frac{x^{2} \arctan(2 x)}{2} - 4 \ln(1 + 4 x^{2}) = 1 + 2 \cdot 2 x^{2} + \frac{x^{2} \arctan(2 x)}{2} - 4 \ln(1 + 4 x^{2})$$
+
+Step 23: Split the constant out of the second term: $$1 + 2 \cdot 2 x^{2} + \frac{x^{2} \arctan(2 x)}{2} - 4 \ln(1 + 4 x^{2}) = 1 + 2 \left(2 x^{2} + \frac{x^{2} \arctan(2 x)}{2}\right) - 4 \ln(1 + 4 x^{2})$$
+
+Step 24: Evaluate the remaining integral: $$2 x^{2} + \frac{x^{2} \arctan(2 x)}{2} = x^{2} + 2 x^{2} + \frac{x^{2} \arctan(2 x)}{2}$$
+
+Step 25: Distribute: $$x^{2} + 2 x^{2} + \frac{x^{2} \arctan(2 x)}{2} = 3 x^{2} + \frac{x^{2} \arctan(2 x)}{2}$$
+
+Step 26: Substitute back: $$1 + 2 \left(3 x^{2} + \frac{x^{2} \arctan(2 x)}{2}\right) - 4 \ln(1 + 4 x^{2}) = 1 + 6 x^{2} + x^{2} \arctan(2 x) + 2 \left(-4 \ln(1 + 4 x^{2})\right)$$
+
+Step 27: Simplify: $$1 + 6 x^{2} + x^{2} \arctan(2 x) + 2 \left(-4 \ln(1 + 4 x^{2})\right) = 1 + 6 x^{2} + x^{2} \arctan(2 x) - 8 \ln(1 + 4 x^{2})$$
+
+Step 28: Add the constant of integration: $$1 + 6 x^{2} + x^{2} \arctan(2 x) - 8 \ln(1 + 4 x^{2}) + C$$
+
+Final Answer: $$\int x \arctan(2 x)\,dx = 1 + 6 x^{2} + x^{2} \arctan(2 x) - 8 \ln(1 + 4 x^{2}) + C$$"
+fine-tuned,held-out,logarithm,"Evaluate the integral $\int x \ln(2 x)\,dx$ using integration by parts.",True,symbolic,True,True,813,"Step 1: Let $I = \int x \ln(2 x)\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln(2 x)$ and $dv = x\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{2}{2 x}\,dx = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x\,dx = \frac{x^{2}}{2}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \ln(2 x)\,dx = \left(\ln(2 x)\right) \left(\frac{x^{2}}{2}\right) - \int \left(\frac{x^{2}}{2}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln(2 x)\right) \left(\frac{x^{2}}{2}\right) = \frac{x^{2} \ln(2 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{2}}{2}\right) \left(\frac{1}{x}\right) = \frac{x}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \ln(2 x)\,dx = \frac{x^{2} \ln(2 x)}{2} - \int \frac{x}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x \ln(2 x)\,dx = \frac{x^{2} \ln(2 x)}{2} - \frac{1}{2} \int x\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 1$: $\int x\,dx = \frac{x^{2}}{2}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{2} \ln(2 x)}{2} - \frac{1}{2} \left(\frac{x^{2}}{2}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{2} \ln(2 x)}{2} - \frac{x^{2}}{4}$$
+
+Step 12: Rewrite the first term with denominator $4$ (multiply top and bottom by $2$): $$I = \frac{2 x^{2} \ln(2 x)}{4} - \frac{x^{2}}{4}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{2 x^{2} \ln(2 x) - x^{2}}{4}$$
+
+Step 14: Factor $x^{2}$ out of the numerator: $$I = \frac{x^{2} \left(2 \ln(2 x) - 1\right)}{4}$$
+
+Step 15: Add the constant of integration: $$I = \frac{x^{2} \left(2 \ln(2 x) - 1\right)}{4} + C$$
+
+Final Answer: $$\int x \ln(2 x)\,dx = \frac{x^{2} \left(2 \ln(2 x) - 1\right)}{4} + C$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \sin x\,dx$ using integration by parts.",True,numeric,True,True,878,"Step 1: Let $I = \int x \sin x\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = \sin x\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int \sin x\,dx = -\cos x$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sin x\,dx = \left(x\right) \left(-\cos x\right) - \int \left(-\cos x\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(-\cos x\right) = -x \cos x$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\cos x\right) \left(1\right) = -\cos x$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \sin x\,dx = -x \cos x - \int -\cos x\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x \sin x\,dx = -x \cos x + \int \cos x\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 1$): $\int \cos x\,dx = \sin x$.
+
+Step 10: Substitute this result back: $$I = -x \cos x + \left(\sin x\right)$$
+
+Step 11: Simplify: $$I = -x \cos x + \sin x$$
+
+Step 12: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{\pi} x \sin x\,dx = \left[-x \cos x + \sin x\right]_{0}^{\pi} = F(\pi) - F(0)$$ where $F(x) = -x \cos x + \sin x$.
+
+Step 13: Substitute $x = \pi$ into $F(x)$: $$F(\pi) = -\pi \cos(\pi) + \sin(\pi)$$
+
+Step 14: Evaluate using $\cos(\pi) = -1$ and $\sin(\pi) = 0$: $$F(\pi) = -\pi \left(-1\right) + 0$$
+
+Step 15: Simplify each term: $$F(\pi) = \pi + 0$$
+
+Step 16: Simplify: $$F(\pi) = \pi$$
+
+Step 17: Substitute $x = 0$ into $F(x)$: $$F(0) = -0 \cos 0 + \sin 0$$
+
+Step 18: Evaluate each term: $$F(0) = 0 + 0$$
+
+Step 19: Simplify: $$F(0) = 0$$
+
+Step 20: Subtract: $$\int_{0}^{\pi} x \sin x\,dx = \pi - 0$$
+
+Step 21: Simplify: $$\int_{0}^{\pi} x \sin x\,dx = \pi \approx 3.141593$$
+
+Final Answer: $$\int_{0}^{\pi} x \sin x\,dx = \pi$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{0}^{1} x e^{-x}\,dx$ using integration by parts.",True,numeric,True,True,938,"Step 1: Let $I = \int x e^{-x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = e^{-x}\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{-x}\,dx = -e^{-x}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{-x}\,dx = \left(x\right) \left(-e^{-x}\right) - \int \left(-e^{-x}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(-e^{-x}\right) = -x e^{-x}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-e^{-x}\right) \left(1\right) = -e^{-x}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x e^{-x}\,dx = -x e^{-x} - \int -e^{-x}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x e^{-x}\,dx = -x e^{-x} + \int e^{-x}\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$): $\int e^{-x}\,dx = -e^{-x}$.
+
+Step 10: Substitute this result back: $$I = -x e^{-x} + \left(-e^{-x}\right)$$
+
+Step 11: Simplify: $$I = -x e^{-x} - e^{-x}$$
+
+Step 12: Factor out $-e^{-x}$ (both terms are negative, so each sign inside the parentheses becomes $+$): $$I = -e^{-x} \left(x + 1\right)$$
+
+Step 13: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{1} x e^{-x}\,dx = \left[-x e^{-x} - e^{-x}\right]_{0}^{1} = F(1) - F(0)$$ where $F(x) = -x e^{-x} - e^{-x}$.
+
+Step 14: Substitute $x = 1$ into $F(x)$: $$F(1) = -1 \cdot e^{-1} - e^{-1}$$
+
+Step 15: Simplify each term: $$F(1) = -e^{-1} - e^{-1}$$
+
+Step 16: Combine the two terms into one fraction: $$F(1) = -2 e^{-1}$$
+
+Step 17: Substitute $x = 0$ into $F(x)$: $$F(0) = -0 \cdot e^{-0} - e^{-0}$$
+
+Step 18: Evaluate using $e^{0} = 1$: $$F(0) = 0 - 1$$
+
+Step 19: Simplify: $$F(0) = -1$$
+
+Step 20: Subtract: $$\int_{0}^{1} x e^{-x}\,dx = \left(-2 e^{-1}\right) - \left(-1\right)$$
+
+Step 21: Simplify (subtracting a negative gives a positive): $$\int_{0}^{1} x e^{-x}\,dx = -2 e^{-1} + 1 \approx 0.313265$$
+
+Final Answer: $$\int_{0}^{1} x e^{-x}\,dx = -2 e^{-1} + 1$$"
+fine-tuned,held-out,definite,"Evaluate the definite integral $\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx$ using integration by parts.",True,numeric,True,True,2169,"Step 1: Let $I = \int x \cos^{2} x\,dx$. Use the identity $\cos^{2} x = \frac{1 + \cos(2x)}{2}$ to rewrite the integrand: $$x \cos^{2} x = x \cdot \frac{1 + \cos(2x)}{2}$$
+
+Step 2: Distribute $x$: $$x \cos^{2} x = \frac{x}{2} + \frac{x \cos(2x)}{2}$$
+
+Step 3: Split the integral into two integrals: $$I = \int \frac{x}{2}\,dx + \int \frac{x \cos(2x)}{2}\,dx$$
+
+Step 4: Pull the constant $\frac{1}{2}$ out of the second integral: $$I = \int \frac{x}{2}\,dx + \frac{1}{2} \int x \cos(2x)\,dx$$
+
+Step 5: Integrate $\int x \cos(2x)\,dx$ by parts with $u = x$ and $dv = \cos(2x)\,dx$ (LIATE).
+
+Step 6: Differentiate $u$: $du = dx$.
+
+Step 7: Integrate $dv$: $v = \int \cos(2x)\,dx = \frac{\sin(2x)}{2}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 2$).
+
+Step 8: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos(2x)\,dx = \left(x\right) \left(\frac{\sin(2x)}{2}\right) - \int \left(\frac{\sin(2x)}{2}\right) \left(1\right)\,dx$$
+
+Step 9: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{\sin(2x)}{2}\right) = \frac{x \sin(2x)}{2}$.
+
+Step 10: Simplify the new integrand $v\,du$: $\left(\frac{\sin(2x)}{2}\right) \left(1\right) = \frac{\sin(2x)}{2}$.
+
+Step 11: Rewrite the formula using the simplified products: $$\int x \cos(2x)\,dx = \frac{x \sin(2x)}{2} - \int \frac{\sin(2x)}{2}\,dx$$
+
+Step 12: Pull the constant out of the integral: $$\int x \cos(2x)\,dx = \frac{x \sin(2x)}{2} - \frac{1}{2} \int \sin(2x)\,dx$$
+
+Step 13: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 2$): $\int \sin(2x)\,dx = -\frac{\cos(2x)}{2}$.
+
+Step 14: Substitute this result back: $$\int x \cos(2x)\,dx = \frac{x \sin(2x)}{2} - \frac{1}{2} \left(-\frac{\cos(2x)}{2}\right)$$
+
+Step 15: Simplify: $$\int x \cos(2x)\,dx = \frac{x \sin(2x)}{2} + \frac{\cos(2x)}{4}$$
+
+Step 16: Substitute both results back: $$I = \int \frac{x}{2}\,dx + \frac{1}{2} \left(\frac{x \sin(2x)}{2} + \frac{\cos(2x)}{4}\right)$$
+
+Step 17: Distribute: $$I = \int \frac{x}{2}\,dx + \frac{x \sin(2x)}{4} + \frac{\cos(2x)}{8}$$
+
+Step 18: Evaluate the first integral (using $\int x\,dx = \frac{x^{2}}{2}$): $$\int \frac{x}{2}\,dx = \frac{x^{2}}{4}$$
+
+Step 19: Substitute this result back: $$I = \frac{x^{2}}{4} + \frac{x \sin(2x)}{4} + \frac{\cos(2x)}{8}$$
+
+Step 20: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \left[\frac{x^{2}}{4} + \frac{x \sin(2x)}{4} + \frac{\cos(2x)}{8}\right]_{0}^{\frac{\pi}{2}} = F(\frac{\pi}{2}) - F(0)$$ where $F(x) = \frac{x^{2}}{4} + \frac{x \sin(2x)}{4} + \frac{\cos(2x)}{8}$.
+
+Step 21: Substitute $x = \frac{\pi}{2}$ into $F(x)$: $$F(\frac{\pi}{2}) = \frac{\left(\frac{\pi}{2}\right)^{2}}{4} + \frac{\left(\frac{\pi}{2}\right) \sin(2 \cdot \frac{\pi}{2})}{4} + \frac{\cos(2 \cdot \frac{\pi}{2})}{8}$$
+
+Step 22: Evaluate using $\sin(2 \cdot \frac{\pi}{2}) = \sin\pi = 0$ and $\cos(2 \cdot \frac{\pi}{2}) = \cos\pi = -1$: $$F(\frac{\pi}{2}) = \frac{\left(\frac{\pi}{2}\right)^{2}}{4} + 0 + \frac{-1}{8}$$
+
+Step 23: Simplify each term: $$F(\frac{\pi}{2}) = \frac{\pi^{2}}{16} - \frac{1}{8}$$
+
+Step 24: Simplify: $$F(\frac{\pi}{2}) = \frac{\pi^{2}}{16} - \frac{2}{16}$$
+
+Step 25: Rewrite the first term with denominator $16$ (multiply top and bottom by $1$): $$F(\frac{\pi}{2}) = \frac{\pi^{2}}{16} \cdot 1 - \frac{2}{16}$$
+
+Step 26: Rewrite the second term with denominator $16$ (multiply top and bottom by $1$): $$F(\frac{\pi}{2}) = \frac{\pi^{2}}{16} - \frac{2}{16} \cdot 1$$
+
+Step 27: Combine the two fractions into one: $$F(\frac{\pi}{2}) = \frac{\pi^{2} - 2}{16}$$
+
+Step 28: Substitute $x = 0$ into $F(x)$: $$F(0) = \frac{0^{2}}{4} + \frac{0 \sin(2 \cdot 0)}{4} + \frac{\cos(2 \cdot 0)}{8}$$
+
+Step 29: Evaluate using $\sin(2 \cdot 0) = \sin 0 = 0$ and $\cos(2 \cdot 0) = \cos 0 = 1$: $$F(0) = 0 + 0 + \frac{1}{8}$$
+
+Step 30: Simplify: $$F(0) = \frac{1}{8}$$
+
+Step 31: Subtract: $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \left(\frac{\pi^{2}}{16} - \frac{2}{16}\right) - \frac{1}{8}$$
+
+Step 32: Rewrite the first fraction with denominator $16$ (multiply top and bottom by $1$): $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2}}{16} - \frac{2}{16} - \frac{2}{16}$$
+
+Step 33: Combine the two negative terms into one: $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2}}{16} - \frac{4}{16}$$
+
+Step 34: Rewrite the first term with denominator $16$ (multiply top and bottom by $1$): $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2}}{16} \cdot 1 - \frac{4}{16}$$
+
+Step 35: Rewrite the second term with denominator $16$ (multiply top and bottom by $1$): $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2}}{16} - \frac{4}{16} \cdot 1$$
+
+Step 36: Combine the two fractions into one: $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2} - 4}{16} \approx 0.090$$
+
+Final Answer: $$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx = \frac{\pi^{2} - 4}{16}$$"
+fine-tuned,held-out,cyclic,"Evaluate the integral $\int e^{-x} \cos(2 x)\,dx$ using integration by parts.",True,symbolic,True,True,1423,"Step 1: Let $I = \int e^{-x} \cos(2 x)\,dx$. Neither factor simplifies when differentiated, but both cycle, so we integrate by parts twice and then solve for $I$. Take $u = \cos(2 x)$ and $dv = e^{-x}\,dx$ (keep the same type of choice in both steps).
+
+Step 2: Differentiate $u$: $du = -2 \sin(2 x)\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{-x}\,dx = -e^{-x}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{-x} \cos(2 x)\,dx = \left(\cos(2 x)\right) \left(-e^{-x}\right) - \int \left(-e^{-x}\right) \left(-2 \sin(2 x)\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\cos(2 x)\right) \left(-e^{-x}\right) = -e^{-x} \cos(2 x)$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-e^{-x}\right) \left(-2 \sin(2 x)\right) = 2 e^{-x} \sin(2 x)$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2 x) - \int 2 e^{-x} \sin(2 x)\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2 x) - 2 \int e^{-x} \sin(2 x)\,dx$$
+
+Step 9: Integrate $\int e^{-x} \sin(2 x)\,dx$ by parts again with $u = \sin(2 x)$ and $dv = e^{-x}\,dx$.
+
+Step 10: Differentiate $u$: $du = 2 \cos(2 x)\,dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{-x}\,dx = -e^{-x}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{-x} \sin(2 x)\,dx = \left(\sin(2 x)\right) \left(-e^{-x}\right) - \int \left(-e^{-x}\right) \left(2 \cos(2 x)\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(\sin(2 x)\right) \left(-e^{-x}\right) = -e^{-x} \sin(2 x)$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-e^{-x}\right) \left(2 \cos(2 x)\right) = -2 e^{-x} \cos(2 x)$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int e^{-x} \sin(2 x)\,dx = -e^{-x} \sin(2 x) - \int -2 e^{-x} \cos(2 x)\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int e^{-x} \sin(2 x)\,dx = -e^{-x} \sin(2 x) + 2 \int e^{-x} \cos(2 x)\,dx$$
+
+Step 17: Substitute this into the result of Step 8 (where $\int e^{-x} \sin(2 x)\,dx$ appears): $$I = -e^{-x} \cos(2 x) - 2 \left[-e^{-x} \sin(2 x) + 2 \int e^{-x} \cos(2 x)\,dx\right]$$
+
+Step 18: Recognize $\int e^{-x} \cos(2 x)\,dx$ as the original integral $I$: $$I = -e^{-x} \cos(2 x) - 2 \left[-e^{-x} \sin(2 x) + 2 I\right]$$
+
+Step 19: Distribute: $$I = -e^{-x} \cos(2 x) + 2 e^{-x} \sin(2 x) - 4 I$$
+
+Step 20: The original integral $I$ has reappeared on the right-hand side. Move it to the left: $$I + 4 I = -e^{-x} \cos(2 x) + 2 e^{-x} \sin(2 x)$$
+
+Step 21: Combine the $I$ terms: $$5 I = -e^{-x} \cos(2 x) + 2 e^{-x} \sin(2 x)$$
+
+Step 22: Multiply both sides by $\frac{1}{5}$: $$I = \frac{1}{5}\left(-e^{-x} \cos(2 x) + 2 e^{-x} \sin(2 x)\right)$$
+
+Step 23: Distribute: $$I = -\frac{e^{-x} \cos(2 x)}{5} + \frac{2 e^{-x} \sin(2 x)}{5}$$
+
+Step 24: Factor: $$I = \frac{e^{-x} \left(-\cos(2 x) + 2 \sin(2 x)\right)}{5}$$
+
+Step 25: Add the constant of integration: $$I = \frac{e^{-x} \left(-\cos(2 x) + 2 \sin(2 x)\right)}{5} + C$$
+
+Final Answer: $$\int e^{-x} \cos(2 x)\,dx = \frac{e^{-x} \left(-\cos(2 x) + 2 \sin(2 x)\right)}{5} + C$$"
+fine-tuned,held-out,poly x exp,"Evaluate the integral $\int x e^{-x}\,dx$ using integration by parts.",True,symbolic,True,True,618,"Step 1: Let $I = \int x e^{-x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = e^{-x}\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{-x}\,dx = -e^{-x}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{-x}\,dx = \left(x\right) \left(-e^{-x}\right) - \int \left(-e^{-x}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(-e^{-x}\right) = -x e^{-x}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-e^{-x}\right) \left(1\right) = -e^{-x}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x e^{-x}\,dx = -x e^{-x} - \int -e^{-x}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x e^{-x}\,dx = -x e^{-x} + \int e^{-x}\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -1$): $\int e^{-x}\,dx = -e^{-x}$.
+
+Step 10: Substitute this result back: $$I = -x e^{-x} + \left(-e^{-x}\right)$$
+
+Step 11: Simplify: $$I = -x e^{-x} - e^{-x}$$
+
+Step 12: Factor out $-e^{-x}$ (both terms are negative, so each sign inside the parentheses becomes $+$): $$I = -e^{-x} \left(x + 1\right)$$
+
+Step 13: Add the constant of integration: $$I = -e^{-x} \left(x + 1\right) + C$$
+
+Final Answer: $$\int x e^{-x}\,dx = -e^{-x} \left(x + 1\right) + C$$"
+fine-tuned,held-out,poly x trig,"Evaluate the integral $\int x^{2} \cos(3 x)\,dx$ using integration by parts.",True,symbolic,True,True,1698,"Step 1: Let $I = \int x^{2} \cos(3 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = \cos(3 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \cos(3 x)\,dx = \frac{\sin(3 x)}{3}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 3$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \cos(3 x)\,dx = \left(x^{2}\right) \left(\frac{\sin(3 x)}{3}\right) - \int \left(\frac{\sin(3 x)}{3}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(\frac{\sin(3 x)}{3}\right) = \frac{x^{2} \sin(3 x)}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{\sin(3 x)}{3}\right) \left(2 x\right) = \frac{2 x \sin(3 x)}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \cos(3 x)\,dx = \frac{x^{2} \sin(3 x)}{3} - \int \frac{2 x \sin(3 x)}{3}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{2} \cos(3 x)\,dx = \frac{x^{2} \sin(3 x)}{3} - \frac{2}{3} \int x \sin(3 x)\,dx$$
+
+Step 9: Integrate $\int x \sin(3 x)\,dx$ by parts again. Choose $u = x$ and $dv = \sin(3 x)\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int \sin(3 x)\,dx = -\frac{\cos(3 x)}{3}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 3$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sin(3 x)\,dx = \left(x\right) \left(-\frac{\cos(3 x)}{3}\right) - \int \left(-\frac{\cos(3 x)}{3}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(-\frac{\cos(3 x)}{3}\right) = -\frac{x \cos(3 x)}{3}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(3 x)}{3}\right) \left(1\right) = -\frac{\cos(3 x)}{3}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x \sin(3 x)\,dx = -\frac{x \cos(3 x)}{3} - \int -\frac{\cos(3 x)}{3}\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x \sin(3 x)\,dx = -\frac{x \cos(3 x)}{3} + \frac{1}{3} \int \cos(3 x)\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = \frac{x^{2} \sin(3 x)}{3} - \frac{2}{3} \left[-\frac{x \cos(3 x)}{3} + \frac{1}{3} \int \cos(3 x)\,dx\right]$$
+
+Step 18: Distribute: $$I = \frac{x^{2} \sin(3 x)}{3} + \frac{2 x \cos(3 x)}{9} - \frac{2}{9} \int \cos(3 x)\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 3$): $\int \cos(3 x)\,dx = \frac{\sin(3 x)}{3}$.
+
+Step 20: Substitute this result back: $$I = \frac{x^{2} \sin(3 x)}{3} + \frac{2 x \cos(3 x)}{9} - \frac{2}{9} \left(\frac{\sin(3 x)}{3}\right)$$
+
+Step 21: Simplify: $$I = \frac{x^{2} \sin(3 x)}{3} + \frac{2 x \cos(3 x)}{9} - \frac{2 \sin(3 x)}{27}$$
+
+Step 22: Rewrite the first sine term with denominator $27$ (multiply top and bottom by $9$): $$I = \frac{9 x^{2} \sin(3 x)}{27} + \frac{2 x \cos(3 x)}{9} - \frac{2 \sin(3 x)}{27}$$
+
+Step 23: Combine the two sine terms into one fraction: $$I = \frac{9 x^{2} \sin(3 x) - 2 \sin(3 x)}{27} + \frac{2 x \cos(3 x)}{9}$$
+
+Step 24: Factor $\sin(3 x)$ out of the numerator: $$I = \frac{\left(9 x^{2} - 2\right) \sin(3 x)}{27} + \frac{2 x \cos(3 x)}{9}$$
+
+Step 25: Rewrite the cosine term with denominator $27$ (multiply top and bottom by $3$): $$I = \frac{\left(9 x^{2} - 2\right) \sin(3 x)}{27} + \frac{6 x \cos(3 x)}{27}$$
+
+Step 26: Combine the two terms into one fraction: $$I = \frac{\left(9 x^{2} - 2\right) \sin(3 x) + 6 x \cos(3 x)}{27}$$
+
+Step 27: Add the constant of integration: $$I = \frac{\left(9 x^{2} - 2\right) \sin(3 x) + 6 x \cos(3 x)}{27} + C$$
+
+Final Answer: $$\int x^{2} \cos(3 x)\,dx = \frac{\left(9 x^{2} - 2\right) \sin(3 x) + 6 x \cos(3 x)}{27} + C$$"
+fine-tuned,unseen,poly x exp,"Evaluate the integral $\int x^{2} e^{4 x}\,dx$ using integration by parts.",True,symbolic,True,True,1555,"Step 1: Let $I = \int x^{2} e^{4 x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = e^{4 x}\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{4 x}\,dx = \frac{e^{4 x}}{4}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 4$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} e^{4 x}\,dx = \left(x^{2}\right) \left(\frac{e^{4 x}}{4}\right) - \int \left(\frac{e^{4 x}}{4}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(\frac{e^{4 x}}{4}\right) = \frac{x^{2} e^{4 x}}{4}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{4 x}}{4}\right) \left(2 x\right) = \frac{e^{4 x} \cdot 2 x}{4} = \frac{x e^{4 x}}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} e^{4 x}\,dx = \frac{x^{2} e^{4 x}}{4} - \int \frac{x e^{4 x}}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{2} e^{4 x}\,dx = \frac{x^{2} e^{4 x}}{4} - \frac{1}{2} \int x e^{4 x}\,dx$$
+
+Step 9: Integrate $\int x e^{4 x}\,dx$ by parts again. Choose $u = x$ and $dv = e^{4 x}\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{4 x}\,dx = \frac{e^{4 x}}{4}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 4$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{4 x}\,dx = \left(x\right) \left(\frac{e^{4 x}}{4}\right) - \int \left(\frac{e^{4 x}}{4}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{e^{4 x}}{4}\right) = \frac{x e^{4 x}}{4}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\frac{e^{4 x}}{4}\right) \left(1\right) = \frac{e^{4 x}}{4}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x e^{4 x}\,dx = \frac{x e^{4 x}}{4} - \int \frac{e^{4 x}}{4}\,dx$$
+
+Step 16: Pull the constant out of the integral: $$\int x e^{4 x}\,dx = \frac{x e^{4 x}}{4} - \frac{1}{4} \int e^{4 x}\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = \frac{x^{2} e^{4 x}}{4} - \frac{1}{2} \left[\frac{x e^{4 x}}{4} - \frac{1}{4} \int e^{4 x}\,dx\right]$$
+
+Step 18: Distribute: $$I = \frac{x^{2} e^{4 x}}{4} - \frac{x e^{4 x}}{8} + \frac{1}{8} \int e^{4 x}\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 4$): $\int e^{4 x}\,dx = \frac{e^{4 x}}{4}$.
+
+Step 20: Substitute this result back: $$I = \frac{x^{2} e^{4 x}}{4} - \frac{x e^{4 x}}{8} + \frac{1}{8} \left(\frac{e^{4 x}}{4}\right)$$
+
+Step 21: Simplify: $$I = \frac{x^{2} e^{4 x}}{4} - \frac{x e^{4 x}}{8} + \frac{e^{4 x}}{32}$$
+
+Step 22: Rewrite the first term with denominator $32$ (multiply top and bottom by $8$): $$I = \frac{8 x^{2} e^{4 x}}{32} - \frac{x e^{4 x}}{8} + \frac{e^{4 x}}{32}$$
+
+Step 23: Rewrite the second term with denominator $32$ (multiply top and bottom by $4$): $$I = \frac{8 x^{2} e^{4 x}}{32} - \frac{4 x e^{4 x}}{32} + \frac{e^{4 x}}{32}$$
+
+Step 24: Combine the three terms into one fraction: $$I = \frac{8 x^{2} e^{4 x} - 4 x e^{4 x} + e^{4 x}}{32}$$
+
+Step 25: Factor $e^{4 x}$ out of the numerator: $$I = \frac{e^{4 x} \left(8 x^{2} - 4 x + 1\right)}{32}$$
+
+Step 26: Add the constant of integration: $$I = \frac{e^{4 x} \left(8 x^{2} - 4 x + 1\right)}{32} + C$$
+
+Final Answer: $$\int x^{2} e^{4 x}\,dx = \frac{e^{4 x} \left(8 x^{2} - 4 x + 1\right)}{32} + C$$"
+fine-tuned,unseen,poly x exp,"Evaluate the integral $\int x e^{5 x}\,dx$ using integration by parts.",True,symbolic,True,True,817,"Step 1: Let $I = \int x e^{5 x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = e^{5 x}\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{5 x}\,dx = \frac{e^{5 x}}{5}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 5$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{5 x}\,dx = \left(x\right) \left(\frac{e^{5 x}}{5}\right) - \int \left(\frac{e^{5 x}}{5}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{e^{5 x}}{5}\right) = \frac{x e^{5 x}}{5}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{5 x}}{5}\right) \left(1\right) = \frac{e^{5 x}}{5}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x e^{5 x}\,dx = \frac{x e^{5 x}}{5} - \int \frac{e^{5 x}}{5}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x e^{5 x}\,dx = \frac{x e^{5 x}}{5} - \frac{1}{5} \int e^{5 x}\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 5$): $\int e^{5 x}\,dx = \frac{e^{5 x}}{5}$.
+
+Step 10: Substitute this result back: $$I = \frac{x e^{5 x}}{5} - \frac{1}{5} \left(\frac{e^{5 x}}{5}\right)$$
+
+Step 11: Simplify: $$I = \frac{x e^{5 x}}{5} - \frac{e^{5 x}}{25}$$
+
+Step 12: Rewrite the first term with denominator $25$ (multiply top and bottom by $5$): $$I = \frac{5 x e^{5 x}}{25} - \frac{e^{5 x}}{25}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{5 x e^{5 x} - e^{5 x}}{25}$$
+
+Step 14: Factor $e^{5 x}$ out of the numerator: $$I = \frac{e^{5 x} \left(5 x - 1\right)}{25}$$
+
+Step 15: Add the constant of integration: $$I = \frac{e^{5 x} \left(5 x - 1\right)}{25} + C$$
+
+Final Answer: $$\int x e^{5 x}\,dx = \frac{e^{5 x} \left(5 x - 1\right)}{25} + C$$"
+fine-tuned,unseen,poly x exp,"Evaluate the integral $\int x^{2} e^{-3 x}\,dx$ using integration by parts.",False,wrong,False,True,1554,"Step 1: Let $I = \int x^{2} e^{-3 x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = e^{-3 x}\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{-3 x}\,dx = -\frac{e^{-3 x}}{3}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -3$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} e^{-3 x}\,dx = \left(x^{2}\right) \left(-\frac{e^{-3 x}}{3}\right) - \int \left(-\frac{e^{-3 x}}{3}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(-\frac{e^{-3 x}}{3}\right) = -\frac{x^{2} e^{-3 x}}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{e^{-3 x}}{3}\right) \left(2 x\right) = -\frac{2 x e^{-3 x}}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} e^{-3 x}\,dx = -\frac{x^{2} e^{-3 x}}{3} - \int -\frac{2 x e^{-3 x}}{3}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x^{2} e^{-3 x}\,dx = -\frac{x^{2} e^{-3 x}}{3} + \frac{2}{3} \int x e^{-3 x}\,dx$$
+
+Step 9: Integrate $\int x e^{-3 x}\,dx$ by parts again. Choose $u = x$ and $dv = e^{-3 x}\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{-3 x}\,dx = -\frac{e^{-3 x}}{3}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -3$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{-3 x}\,dx = \left(x\right) \left(-\frac{e^{-3 x}}{3}\right) - \int \left(-\frac{e^{-3 x}}{3}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(-\frac{e^{-3 x}}{3}\right) = -\frac{x e^{-3 x}}{3}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-\frac{e^{-3 x}}{3}\right) \left(1\right) = -\frac{e^{-3 x}}{3}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x e^{-3 x}\,dx = -\frac{x e^{-3 x}}{3} - \int -\frac{e^{-3 x}}{3}\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x e^{-3 x}\,dx = -\frac{x e^{-3 x}}{3} + \frac{1}{3} \int e^{-3 x}\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = -\frac{x^{2} e^{-3 x}}{3} + \frac{2}{3} \left[-\frac{x e^{-3 x}}{3} + \frac{1}{3} \int e^{-3 x}\,dx\right]$$
+
+Step 18: Distribute: $$I = -\frac{x^{2} e^{-3 x}}{3} - \frac{2 x e^{-3 x}}{3} + \frac{2}{9} \int e^{-3 x}\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -3$): $\int e^{-3 x}\,dx = -\frac{e^{-3 x}}{3}$.
+
+Step 20: Substitute this result back: $$I = -\frac{x^{2} e^{-3 x}}{3} - \frac{2 x e^{-3 x}}{3} + \frac{2}{9} \left(-\frac{e^{-3 x}}{3}\right)$$
+
+Step 21: Simplify: $$I = -\frac{x^{2} e^{-3 x}}{3} - \frac{2 x e^{-3 x}}{3} - \frac{2 e^{-3 x}}{27}$$
+
+Step 22: Rewrite the first two terms with denominator $27$ (multiply top and bottom by $9$): $$I = -\frac{9 x^{2} e^{-3 x}}{27} - \frac{54 x e^{-3 x}}{27} - \frac{2 e^{-3 x}}{27}$$
+
+Step 23: Combine the three terms into one fraction: $$I = \frac{-9 x^{2} e^{-3 x} - 54 x e^{-3 x} - 2 e^{-3 x}}{27}$$
+
+Step 24: Factor $-2$ out of the numerator (each sign inside the parentheses becomes $+$): $$I = -\frac{2 \left(4.5 x^{2} + 27 x + 1\right) e^{-3 x}}{27}$$
+
+Step 25: Add the constant of integration: $$I = -\frac{2 \left(4.5 x^{2} + 27 x + 1\right) e^{-3 x}}{27} + C$$
+
+Final Answer: $$\int x^{2} e^{-3 x}\,dx = -\frac{2 \left(4.5 x^{2} + 27 x + 1\right) e^{-3 x}}{27} + C$$"
+fine-tuned,unseen,poly x trig,"Evaluate the integral $\int x^{3} \cos(2 x)\,dx$ using integration by parts.",True,symbolic,True,False,2500,"Step 1: Let $I = \int x^{3} \cos(2 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 3, integration by parts will be applied three times. Choose $u = x^{3}$ and $dv = \cos(2 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = 3 x^{2}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \cos(2 x)\,dx = \frac{\sin(2 x)}{2}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 2$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{3} \cos(2 x)\,dx = \left(x^{3}\right) \left(\frac{\sin(2 x)}{2}\right) - \int \left(\frac{\sin(2 x)}{2}\right) \left(3 x^{2}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{3}\right) \left(\frac{\sin(2 x)}{2}\right) = \frac{x^{3} \sin(2 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{\sin(2 x)}{2}\right) \left(3 x^{2}\right) = \frac{3 x^{2} \sin(2 x)}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{3} \cos(2 x)\,dx = \frac{x^{3} \sin(2 x)}{2} - \int \frac{3 x^{2} \sin(2 x)}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{3} \cos(2 x)\,dx = \frac{x^{3} \sin(2 x)}{2} - \frac{3}{2} \int x^{2} \sin(2 x)\,dx$$
+
+Step 9: Integrate $\int x^{2} \sin(2 x)\,dx$ by parts again. Choose $u = x^{2}$ and $dv = \sin(2 x)\,dx$.
+
+Step 10: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 11: Integrate $dv$: $v = \int \sin(2 x)\,dx = -\frac{\cos(2 x)}{2}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 2$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \sin(2 x)\,dx = \left(x^{2}\right) \left(-\frac{\cos(2 x)}{2}\right) - \int \left(-\frac{\cos(2 x)}{2}\right) \left(2 x\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(-\frac{\cos(2 x)}{2}\right) = -\frac{x^{2} \cos(2 x)}{2}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(2 x)}{2}\right) \left(2 x\right) = -x \cos(2 x)$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x^{2} \sin(2 x)\,dx = -\frac{x^{2} \cos(2 x)}{2} - \int -x \cos(2 x)\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x^{2} \sin(2 x)\,dx = -\frac{x^{2} \cos(2 x)}{2} + \int x \cos(2 x)\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = \frac{x^{3} \sin(2 x)}{2} - \frac{3}{2} \left[-\frac{x^{2} \cos(2 x)}{2} + \int x \cos(2 x)\,dx\right]$$
+
+Step 18: Distribute: $$I = \frac{x^{3} \sin(2 x)}{2} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3}{2} \int x \cos(2 x)\,dx$$
+
+Step 19: Integrate $\int x \cos(2 x)\,dx$ by parts again. Choose $u = x$ and $dv = \cos(2 x)\,dx$.
+
+Step 20: Differentiate $u$: $du = dx$.
+
+Step 21: Integrate $dv$: $v = \int \cos(2 x)\,dx = \frac{\sin(2 x)}{2}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 2$).
+
+Step 22: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos(2 x)\,dx = \left(x\right) \left(\frac{\sin(2 x)}{2}\right) - \int \left(\frac{\sin(2 x)}{2}\right) \left(1\right)\,dx$$
+
+Step 23: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{\sin(2 x)}{2}\right) = \frac{x \sin(2 x)}{2}$.
+
+Step 24: Simplify the new integrand $v\,du$: $\left(\frac{\sin(2 x)}{2}\right) \left(1\right) = \frac{\sin(2 x)}{2}$.
+
+Step 25: Rewrite the formula using the simplified products: $$\int x \cos(2 x)\,dx = \frac{x \sin(2 x)}{2} - \int \frac{\sin(2 x)}{2}\,dx$$
+
+Step 26: Pull the constant out of the integral: $$\int x \cos(2 x)\,dx = \frac{x \sin(2 x)}{2} - \frac{1}{2} \int \sin(2 x)\,dx$$
+
+Step 27: Substitute this into the expression for $I$: $$I = \frac{x^{3} \sin(2 x)}{2} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3}{2} \left[\frac{x \sin(2 x)}{2} - \frac{1}{2} \int \sin(2 x)\,dx\right]$$
+
+Step 28: Distribute: $$I = \frac{x^{3} \sin(2 x)}{2} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3 x \sin(2 x)}{4} + \frac{3}{4} \int \sin(2 x)\,dx$$
+
+Step 29: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 2$): $\int \sin(2 x)\,dx = -\frac{\cos(2 x)}{2}$.
+
+Step 30: Substitute this result back: $$I = \frac{x^{3} \sin(2 x)}{2} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3 x \sin(2 x)}{4} + \frac{3}{4} \left(-\frac{\cos(2 x)}{2}\right)$$
+
+Step 31: Simplify: $$I = \frac{x^{3} \sin(2 x)}{2} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3 x \sin(2 x)}{4} - \frac{3 \cos(2 x)}{8}$$
+
+Step 32: Rewrite the first cosine term with denominator $8$ (multiply top and bottom by $2$): $$I = \frac{2 x^{3} \sin(2 x)}{4} + \frac{3 x^{2} \cos(2 x)}{4} - \frac{3 x \sin(2 x)}{4} - \frac{3 \cos(2 x)}{8}$$
+
+Step 33: Rewrite the second cosine term with denominator $4$ (multiply top and bottom by $2$): $$I = \frac{2 x^{3} \sin(2 x)}{4} + \frac{6 x^{2} \cos(2 x)}{8} - \frac{3 x \sin(2 x)}{4} - \frac{3 \cos(2 x)}{8}$$
+
+Step 34: Combine the two cosine terms into one fraction: $$I = \frac{2 x^{3} \sin(2 x)}{4} + \frac{\left(6 x^{2} - 3\right) \cos(2 x)}{8} - \frac{3 x \sin(2 x)}{4}$$
+
+Step 35: Rewrite the first sine term with denominator $8$ (multiply top and bottom by $2$): $$I = \frac{4 x^{3} \sin(2 x)}{8} + \frac{\left(6 x^{2} - 3\right) \cos(2 x)}{8} - \frac{6 x \sin(2 x)}{8}$$
+
+Step 36: Rewrite the third sine term with denominator $8$ (multiply top and bottom by $2$): $$I = \frac{4 x^{3} \sin(2 x)}{8} + \frac{\left(6 x^{2} - 3\right) \cos(2 x)}{8} - \frac{6 x \sin(2 x)}{8}$$
+
+Step 37: Combine the three sine terms into one fraction: $$I = \frac{\left(4 x^{3} - 6 x\right) \sin(2 x)}{8} + \frac{\left(6 x^{2} - 3\right) \cos(2 x)}{8}$$
+
+Step 38: Factor $2$ out of the numerator of the first fraction: $$I = \frac{2 \left(2 x^{3} - 3 x\right) \sin(2 x)}{8} + \frac{\left(6 x^{"
+fine-tuned,unseen,poly x trig,"Evaluate the integral $\int x \sin(5 x)\,dx$ using integration by parts.",True,symbolic,True,True,730,"Step 1: Let $I = \int x \sin(5 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = \sin(5 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int \sin(5 x)\,dx = -\frac{\cos(5 x)}{5}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 5$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sin(5 x)\,dx = \left(x\right) \left(-\frac{\cos(5 x)}{5}\right) - \int \left(-\frac{\cos(5 x)}{5}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(-\frac{\cos(5 x)}{5}\right) = -\frac{x \cos(5 x)}{5}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(5 x)}{5}\right) \left(1\right) = -\frac{\cos(5 x)}{5}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \sin(5 x)\,dx = -\frac{x \cos(5 x)}{5} - \int -\frac{\cos(5 x)}{5}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x \sin(5 x)\,dx = -\frac{x \cos(5 x)}{5} + \frac{1}{5} \int \cos(5 x)\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 5$): $\int \cos(5 x)\,dx = \frac{\sin(5 x)}{5}$.
+
+Step 10: Substitute this result back: $$I = -\frac{x \cos(5 x)}{5} + \frac{1}{5} \left(\frac{\sin(5 x)}{5}\right)$$
+
+Step 11: Simplify: $$I = -\frac{x \cos(5 x)}{5} + \frac{\sin(5 x)}{25}$$
+
+Step 12: Add the constant of integration: $$I = -\frac{x \cos(5 x)}{5} + \frac{\sin(5 x)}{25} + C$$
+
+Final Answer: $$\int x \sin(5 x)\,dx = -\frac{x \cos(5 x)}{5} + \frac{\sin(5 x)}{25} + C$$"
+fine-tuned,unseen,poly x trig,"Evaluate the integral $\int x^{2} \cos(4 x)\,dx$ using integration by parts.",True,symbolic,True,True,1562,"Step 1: Let $I = \int x^{2} \cos(4 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = \cos(4 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \cos(4 x)\,dx = \frac{\sin(4 x)}{4}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 4$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \cos(4 x)\,dx = \left(x^{2}\right) \left(\frac{\sin(4 x)}{4}\right) - \int \left(\frac{\sin(4 x)}{4}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(\frac{\sin(4 x)}{4}\right) = \frac{x^{2} \sin(4 x)}{4}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{\sin(4 x)}{4}\right) \left(2 x\right) = \frac{x \sin(4 x)}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \cos(4 x)\,dx = \frac{x^{2} \sin(4 x)}{4} - \int \frac{x \sin(4 x)}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{2} \cos(4 x)\,dx = \frac{x^{2} \sin(4 x)}{4} - \frac{1}{2} \int x \sin(4 x)\,dx$$
+
+Step 9: Integrate $\int x \sin(4 x)\,dx$ by parts again. Choose $u = x$ and $dv = \sin(4 x)\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int \sin(4 x)\,dx = -\frac{\cos(4 x)}{4}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 4$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sin(4 x)\,dx = \left(x\right) \left(-\frac{\cos(4 x)}{4}\right) - \int \left(-\frac{\cos(4 x)}{4}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(-\frac{\cos(4 x)}{4}\right) = -\frac{x \cos(4 x)}{4}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(4 x)}{4}\right) \left(1\right) = -\frac{\cos(4 x)}{4}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x \sin(4 x)\,dx = -\frac{x \cos(4 x)}{4} - \int -\frac{\cos(4 x)}{4}\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x \sin(4 x)\,dx = -\frac{x \cos(4 x)}{4} + \frac{1}{4} \int \cos(4 x)\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = \frac{x^{2} \sin(4 x)}{4} - \frac{1}{2} \left[-\frac{x \cos(4 x)}{4} + \frac{1}{4} \int \cos(4 x)\,dx\right]$$
+
+Step 18: Distribute: $$I = \frac{x^{2} \sin(4 x)}{4} + \frac{x \cos(4 x)}{8} - \frac{1}{8} \int \cos(4 x)\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 4$): $\int \cos(4 x)\,dx = \frac{\sin(4 x)}{4}$.
+
+Step 20: Substitute this result back: $$I = \frac{x^{2} \sin(4 x)}{4} + \frac{x \cos(4 x)}{8} - \frac{1}{8} \left(\frac{\sin(4 x)}{4}\right)$$
+
+Step 21: Simplify: $$I = \frac{x^{2} \sin(4 x)}{4} + \frac{x \cos(4 x)}{8} - \frac{\sin(4 x)}{32}$$
+
+Step 22: Rewrite the first sine term with denominator $32$ (multiply top and bottom by $8$): $$I = \frac{8 x^{2} \sin(4 x)}{32} + \frac{x \cos(4 x)}{8} - \frac{\sin(4 x)}{32}$$
+
+Step 23: Combine the two sine terms into one fraction: $$I = \frac{8 x^{2} \sin(4 x) - \sin(4 x)}{32} + \frac{x \cos(4 x)}{8}$$
+
+Step 24: Factor $\sin(4 x)$ out of the numerator: $$I = \frac{\left(8 x^{2} - 1\right) \sin(4 x)}{32} + \frac{x \cos(4 x)}{8}$$
+
+Step 25: Add the constant of integration: $$I = \frac{\left(8 x^{2} - 1\right) \sin(4 x)}{32} + \frac{x \cos(4 x)}{8} + C$$
+
+Final Answer: $$\int x^{2} \cos(4 x)\,dx = \frac{\left(8 x^{2} - 1\right) \sin(4 x)}{32} + \frac{x \cos(4 x)}{8} + C$$"
+fine-tuned,unseen,logarithm,"Evaluate the integral $\int x^{3} \ln(2 x)\,dx$ using integration by parts.",True,symbolic,True,True,831,"Step 1: Let $I = \int x^{3} \ln(2 x)\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln(2 x)$ and $dv = x^{3}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x^{3}\,dx = \frac{x^{4}}{4}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{3} \ln(2 x)\,dx = \left(\ln(2 x)\right) \left(\frac{x^{4}}{4}\right) - \int \left(\frac{x^{4}}{4}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln(2 x)\right) \left(\frac{x^{4}}{4}\right) = \frac{x^{4} \ln(2 x)}{4}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{4}}{4}\right) \left(\frac{1}{x}\right) = \frac{x^{3}}{4}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{3} \ln(2 x)\,dx = \frac{x^{4} \ln(2 x)}{4} - \int \frac{x^{3}}{4}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{3} \ln(2 x)\,dx = \frac{x^{4} \ln(2 x)}{4} - \frac{1}{4} \int x^{3}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 3$: $\int x^{3}\,dx = \frac{x^{4}}{4}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{4} \ln(2 x)}{4} - \frac{1}{4} \left(\frac{x^{4}}{4}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{4} \ln(2 x)}{4} - \frac{x^{4}}{16}$$
+
+Step 12: Rewrite the first term with denominator $16$ (multiply top and bottom by $4$): $$I = \frac{4 x^{4} \ln(2 x)}{16} - \frac{x^{4}}{16}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{4 x^{4} \ln(2 x) - x^{4}}{16}$$
+
+Step 14: Factor $x^{4}$ out of the numerator: $$I = \frac{x^{4} \left(4 \ln(2 x) - 1\right)}{16}$$
+
+Step 15: Add the constant of integration: $$I = \frac{x^{4} \left(4 \ln(2 x) - 1\right)}{16} + C$$
+
+Final Answer: $$\int x^{3} \ln(2 x)\,dx = \frac{x^{4} \left(4 \ln(2 x) - 1\right)}{16} + C$$"
+fine-tuned,unseen,logarithm,"Evaluate the integral $\int x \ln(4 x)\,dx$ using integration by parts.",False,wrong,False,True,1070,"Step 1: Let $I = \int x \ln(4 x)\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln(4 x)$ and $dv = x\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{4}{4 x}\,dx = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x\,dx = \frac{x^{2}}{2}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \ln(4 x)\,dx = \left(\ln(4 x)\right) \left(\frac{x^{2}}{2}\right) - \int \left(\frac{x^{2}}{2}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln(4 x)\right) \left(\frac{x^{2}}{2}\right) = \frac{x^{2} \ln(4 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{2}}{2}\right) \left(\frac{1}{x}\right) = \frac{x}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \ln(4 x)\,dx = \frac{x^{2} \ln(4 x)}{2} - \int \frac{x}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x \ln(4 x)\,dx = \frac{x^{2} \ln(4 x)}{2} - \frac{1}{2} \int x\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 1$: $\int x\,dx = \frac{x^{2}}{2}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{2} \ln(4 x)}{2} - \frac{1}{2} \left(\frac{x^{2}}{2}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{2} \ln(4 x)}{2} - \frac{x^{2}}{4}$$
+
+Step 12: Rewrite $x^{2} \ln(4 x)$ with denominator $4$ (multiply top and bottom by $4$): $$x^{2} \ln(4 x) = \frac{4 x^{2} \ln(4 x)}{4}$$
+
+Step 13: Split the first term into two pieces: $$\frac{x^{2} \ln(4 x)}{2} = \frac{4 x^{2} \ln(4 x)}{8} + \frac{2 x^{2} \ln(4 x)}{8}$$
+
+Step 14: Rewrite the second term with denominator $8$ (multiply top and bottom by $2$): $$\frac{x^{2}}{4} = \frac{2 x^{2}}{8}$$
+
+Step 15: Rewrite the expression for $I$ with the two new terms: $$I = \frac{4 x^{2} \ln(4 x)}{8} + \frac{2 x^{2} \ln(4 x)}{8} - \frac{2 x^{2}}{8}$$
+
+Step 16: Combine the two logarithmic terms into one: $$I = \frac{6 x^{2} \ln(4 x)}{8} - \frac{2 x^{2}}{8}$$
+
+Step 17: Factor $2$ out of the numerators: $$I = \frac{2 \cdot 3 x^{2} \ln(4 x)}{8} - \frac{2 x^{2}}{8}$$
+
+Step 18: Pull the common factor out of the two terms: $$I = \frac{2 \left(3 x^{2} \ln(4 x) - x^{2}\right)}{8}$$
+
+Step 19: Add the constant of integration: $$I = \frac{2 \left(3 x^{2} \ln(4 x) - x^{2}\right)}{8} + C$$
+
+Final Answer: $$\int x \ln(4 x)\,dx = \frac{2 \left(3 x^{2} \ln(4 x) - x^{2}\right)}{8} + C$$"
+fine-tuned,unseen,logarithm,"Evaluate the integral $\int x^{7} \ln x\,dx$ using integration by parts.",True,symbolic,True,True,785,"Step 1: Let $I = \int x^{7} \ln x\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln x$ and $dv = x^{7}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x^{7}\,dx = \frac{x^{8}}{8}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{7} \ln x\,dx = \left(\ln x\right) \left(\frac{x^{8}}{8}\right) - \int \left(\frac{x^{8}}{8}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln x\right) \left(\frac{x^{8}}{8}\right) = \frac{x^{8} \ln x}{8}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{8}}{8}\right) \left(\frac{1}{x}\right) = \frac{x^{7}}{8}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{7} \ln x\,dx = \frac{x^{8} \ln x}{8} - \int \frac{x^{7}}{8}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{7} \ln x\,dx = \frac{x^{8} \ln x}{8} - \frac{1}{8} \int x^{7}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 7$: $\int x^{7}\,dx = \frac{x^{8}}{8}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{8} \ln x}{8} - \frac{1}{8} \left(\frac{x^{8}}{8}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{8} \ln x}{8} - \frac{x^{8}}{64}$$
+
+Step 12: Rewrite the first term with denominator $64$ (multiply top and bottom by $8$): $$I = \frac{8 x^{8} \ln x}{64} - \frac{x^{8}}{64}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{8 x^{8} \ln x - x^{8}}{64}$$
+
+Step 14: Factor $x^{8}$ out of the numerator: $$I = \frac{x^{8} \left(8 \ln x - 1\right)}{64}$$
+
+Step 15: Add the constant of integration: $$I = \frac{x^{8} \left(8 \ln x - 1\right)}{64} + C$$
+
+Final Answer: $$\int x^{7} \ln x\,dx = \frac{x^{8} \left(8 \ln x - 1\right)}{64} + C$$"
+fine-tuned,unseen,logarithm,"Evaluate the integral $\int x^{2} \ln(5 x)\,dx$ using integration by parts.",True,symbolic,True,True,831,"Step 1: Let $I = \int x^{2} \ln(5 x)\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln(5 x)$ and $dv = x^{2}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x^{2}\,dx = \frac{x^{3}}{3}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \ln(5 x)\,dx = \left(\ln(5 x)\right) \left(\frac{x^{3}}{3}\right) - \int \left(\frac{x^{3}}{3}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln(5 x)\right) \left(\frac{x^{3}}{3}\right) = \frac{x^{3} \ln(5 x)}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{3}}{3}\right) \left(\frac{1}{x}\right) = \frac{x^{2}}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \ln(5 x)\,dx = \frac{x^{3} \ln(5 x)}{3} - \int \frac{x^{2}}{3}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{2} \ln(5 x)\,dx = \frac{x^{3} \ln(5 x)}{3} - \frac{1}{3} \int x^{2}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 2$: $\int x^{2}\,dx = \frac{x^{3}}{3}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{3} \ln(5 x)}{3} - \frac{1}{3} \left(\frac{x^{3}}{3}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{3} \ln(5 x)}{3} - \frac{x^{3}}{9}$$
+
+Step 12: Rewrite the first term with denominator $9$ (multiply top and bottom by $3$): $$I = \frac{3 x^{3} \ln(5 x)}{9} - \frac{x^{3}}{9}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{3 x^{3} \ln(5 x) - x^{3}}{9}$$
+
+Step 14: Factor $x^{3}$ out of the numerator: $$I = \frac{x^{3} \left(3 \ln(5 x) - 1\right)}{9}$$
+
+Step 15: Add the constant of integration: $$I = \frac{x^{3} \left(3 \ln(5 x) - 1\right)}{9} + C$$
+
+Final Answer: $$\int x^{2} \ln(5 x)\,dx = \frac{x^{3} \left(3 \ln(5 x) - 1\right)}{9} + C$$"
+fine-tuned,unseen,cyclic,"Evaluate the integral $\int e^{4 x} \sin(2 x)\,dx$ using integration by parts.",False,wrong,False,True,1679,"Step 1: Let $I = \int e^{4 x} \sin(2 x)\,dx$. Neither factor simplifies when differentiated, but both cycle, so we integrate by parts twice and then solve for $I$. Take $u = \sin(2 x)$ and $dv = e^{4 x}\,dx$ (keep the same type of choice in both steps).
+
+Step 2: Differentiate $u$: $du = 2 \cos(2 x)\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{4 x}\,dx = \frac{e^{4 x}}{4}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 4$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{4 x} \sin(2 x)\,dx = \left(\sin(2 x)\right) \left(\frac{e^{4 x}}{4}\right) - \int \left(\frac{e^{4 x}}{4}\right) \left(2 \cos(2 x)\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\sin(2 x)\right) \left(\frac{e^{4 x}}{4}\right) = \frac{e^{4 x} \sin(2 x)}{4}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{4 x}}{4}\right) \left(2 \cos(2 x)\right) = \frac{e^{4 x} \cos(2 x)}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int e^{4 x} \sin(2 x)\,dx = \frac{e^{4 x} \sin(2 x)}{4} - \int \frac{e^{4 x} \cos(2 x)}{2}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int e^{4 x} \sin(2 x)\,dx = \frac{e^{4 x} \sin(2 x)}{4} - \frac{1}{2} \int e^{4 x} \cos(2 x)\,dx$$
+
+Step 9: Integrate $\int e^{4 x} \cos(2 x)\,dx$ by parts again with $u = \cos(2 x)$ and $dv = e^{4 x}\,dx$.
+
+Step 10: Differentiate $u$: $du = -2 \sin(2 x)\,dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{4 x}\,dx = \frac{e^{4 x}}{4}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 4$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{4 x} \cos(2 x)\,dx = \left(\cos(2 x)\right) \left(\frac{e^{4 x}}{4}\right) - \int \left(\frac{e^{4 x}}{4}\right) \left(-2 \sin(2 x)\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(\cos(2 x)\right) \left(\frac{e^{4 x}}{4}\right) = \frac{e^{4 x} \cos(2 x)}{4}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\frac{e^{4 x}}{4}\right) \left(-2 \sin(2 x)\right) = -\frac{e^{4 x} \sin(2 x)}{2}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int e^{4 x} \cos(2 x)\,dx = \frac{e^{4 x} \cos(2 x)}{4} - \int -\frac{e^{4 x} \sin(2 x)}{2}\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int e^{4 x} \cos(2 x)\,dx = \frac{e^{4 x} \cos(2 x)}{4} + \frac{1}{2} \int e^{4 x} \sin(2 x)\,dx$$
+
+Step 17: Substitute this into the result of Step 8 (where $\int e^{4 x} \cos(2 x)\,dx$ appears): $$I = \frac{e^{4 x} \sin(2 x)}{4} - \frac{1}{2} \left[\frac{e^{4 x} \cos(2 x)}{4} + \frac{1}{2} \int e^{4 x} \sin(2 x)\,dx\right]$$
+
+Step 18: Recognize $\int e^{4 x} \sin(2 x)\,dx$ as the original integral $I$: $$I = \frac{e^{4 x} \sin(2 x)}{4} - \frac{1}{2} \left[\frac{e^{4 x} \cos(2 x)}{4} + \frac{1}{2} I\right]$$
+
+Step 19: Distribute: $$I = \frac{e^{4 x} \sin(2 x)}{4} - \frac{e^{4 x} \cos(2 x)}{8} - \frac{1}{4} I$$
+
+Step 20: The original integral $I$ has reappeared on the right-hand side. Move it to the left: $$I + \frac{1}{4} I = \frac{e^{4 x} \sin(2 x)}{4} - \frac{e^{4 x} \cos(2 x)}{8}$$
+
+Step 21: Combine the $I$ terms: $$\frac{5}{4} I = \frac{e^{4 x} \sin(2 x)}{4} - \frac{e^{4 x} \cos(2 x)}{8}$$
+
+Step 22: Multiply both sides by $\frac{4}{5}$: $$I = \frac{4}{5}\left(\frac{e^{4 x} \sin(2 x)}{4} - \frac{e^{4 x} \cos(2 x)}{8}\right)$$
+
+Step 23: Distribute: $$I = \frac{e^{4 x} \sin(2 x)}{5} - \frac{e^{4 x} \cos(2 x)}{10}$$
+
+Step 24: Factor: $$I = \frac{e^{4 x} \left(5 \sin(2 x) - 2 \cos(2 x)\right)}{10}$$
+
+Step 25: Add the constant of integration: $$I = \frac{e^{4 x} \left(5 \sin(2 x) - 2 \cos(2 x)\right)}{10} + C$$
+
+Final Answer: $$\int e^{4 x} \sin(2 x)\,dx = \frac{e^{4 x} \left(5 \sin(2 x) - 2 \cos(2 x)\right)}{10} + C$$"
+fine-tuned,unseen,cyclic,"Evaluate the integral $\int e^{-3 x} \cos(2 x)\,dx$ using integration by parts.",True,symbolic,True,True,1870,"Step 1: Let $I = \int e^{-3 x} \cos(2 x)\,dx$. Neither factor simplifies when differentiated, but both cycle, so we integrate by parts twice and then solve for $I$. Take $u = \cos(2 x)$ and $dv = e^{-3 x}\,dx$ (keep the same type of choice in both steps).
+
+Step 2: Differentiate $u$: $du = -2 \sin(2 x)\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{-3 x}\,dx = -\frac{e^{-3 x}}{3}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -3$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{-3 x} \cos(2 x)\,dx = \left(\cos(2 x)\right) \left(-\frac{e^{-3 x}}{3}\right) - \int \left(-\frac{e^{-3 x}}{3}\right) \left(-2 \sin(2 x)\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\cos(2 x)\right) \left(-\frac{e^{-3 x}}{3}\right) = -\frac{e^{-3 x} \cos(2 x)}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{e^{-3 x}}{3}\right) \left(-2 \sin(2 x)\right) = \frac{2 e^{-3 x} \sin(2 x)}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int e^{-3 x} \cos(2 x)\,dx = -\frac{e^{-3 x} \cos(2 x)}{3} - \int \frac{2 e^{-3 x} \sin(2 x)}{3}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int e^{-3 x} \cos(2 x)\,dx = -\frac{e^{-3 x} \cos(2 x)}{3} - \frac{2}{3} \int e^{-3 x} \sin(2 x)\,dx$$
+
+Step 9: Integrate $\int e^{-3 x} \sin(2 x)\,dx$ by parts again with $u = \sin(2 x)$ and $dv = e^{-3 x}\,dx$.
+
+Step 10: Differentiate $u$: $du = 2 \cos(2 x)\,dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{-3 x}\,dx = -\frac{e^{-3 x}}{3}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = -3$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{-3 x} \sin(2 x)\,dx = \left(\sin(2 x)\right) \left(-\frac{e^{-3 x}}{3}\right) - \int \left(-\frac{e^{-3 x}}{3}\right) \left(2 \cos(2 x)\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(\sin(2 x)\right) \left(-\frac{e^{-3 x}}{3}\right) = -\frac{e^{-3 x} \sin(2 x)}{3}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(-\frac{e^{-3 x}}{3}\right) \left(2 \cos(2 x)\right) = -\frac{2 e^{-3 x} \cos(2 x)}{3}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int e^{-3 x} \sin(2 x)\,dx = -\frac{e^{-3 x} \sin(2 x)}{3} - \int -\frac{2 e^{-3 x} \cos(2 x)}{3}\,dx$$
+
+Step 16: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int e^{-3 x} \sin(2 x)\,dx = -\frac{e^{-3 x} \sin(2 x)}{3} + \frac{2}{3} \int e^{-3 x} \cos(2 x)\,dx$$
+
+Step 17: Substitute this into the result of Step 8 (where $\int e^{-3 x} \sin(2 x)\,dx$ appears): $$I = -\frac{e^{-3 x} \cos(2 x)}{3} - \frac{2}{3} \left[-\frac{e^{-3 x} \sin(2 x)}{3} + \frac{2}{3} \int e^{-3 x} \cos(2 x)\,dx\right]$$
+
+Step 18: Recognize $\int e^{-3 x} \cos(2 x)\,dx$ as the original integral $I$: $$I = -\frac{e^{-3 x} \cos(2 x)}{3} - \frac{2}{3} \left[-\frac{e^{-3 x} \sin(2 x)}{3} + \frac{2}{3} I\right]$$
+
+Step 19: Distribute: $$I = -\frac{e^{-3 x} \cos(2 x)}{3} + \frac{2 e^{-3 x} \sin(2 x)}{9} - \frac{2 \cdot 2}{3 \cdot 3} I$$
+
+Step 20: Simplify the coefficient of $I$: $\frac{2 \cdot 2}{3 \cdot 3} = \frac{4}{9}$.
+
+Step 21: Rewrite the term with $I$ using this simplified coefficient: $$-\frac{2 \cdot 2}{3 \cdot 3} I = -\frac{4}{9} I$$
+
+Step 22: Rewrite the expression for $I$ with this new product: $$I = -\frac{e^{-3 x} \cos(2 x)}{3} + \frac{2 e^{-3 x} \sin(2 x)}{9} - \frac{4}{9} I$$
+
+Step 23: The original integral $I$ reappears on the right-hand side. Move it to the left: $$I + \frac{4}{9} I = -\frac{e^{-3 x} \cos(2 x)}{3} + \frac{2 e^{-3 x} \sin(2 x)}{9}$$
+
+Step 24: Combine the $I$ terms: $$\frac{13}{9} I = -\frac{e^{-3 x} \cos(2 x)}{3} + \frac{2 e^{-3 x} \sin(2 x)}{9}$$
+
+Step 25: Multiply both sides by $\frac{9}{13}$: $$I = \frac{9}{13}\left(-\frac{e^{-3 x} \cos(2 x)}{3} + \frac{2 e^{-3 x} \sin(2 x)}{9}\right)$$
+
+Step 26: Distribute: $$I = -\frac{3 e^{-3 x} \cos(2 x)}{13} + \frac{2 e^{-3 x} \sin(2 x)}{13}$$
+
+Step 27: Factor: $$I = \frac{e^{-3 x} \left(-3 \cos(2 x) + 2 \sin(2 x)\right)}{13}$$
+
+Step 28: Add the constant of integration: $$I = \frac{e^{-3 x} \left(-3 \cos(2 x) + 2 \sin(2 x)\right)}{13} + C$$
+
+Final Answer: $$\int e^{-3 x} \cos(2 x)\,dx = \frac{e^{-3 x} \left(-3 \cos(2 x) + 2 \sin(2 x)\right)}{13} + C$$"
+fine-tuned,unseen,cyclic,"Evaluate the integral $\int e^{2 x} \cos(5 x)\,dx$ using integration by parts.",True,symbolic,True,True,1689,"Step 1: Let $I = \int e^{2 x} \cos(5 x)\,dx$. Neither factor simplifies when differentiated, but both cycle, so we integrate by parts twice and then solve for $I$. Take $u = \cos(5 x)$ and $dv = e^{2 x}\,dx$ (keep the same type of choice in both steps).
+
+Step 2: Differentiate $u$: $du = -5 \sin(5 x)\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{2 x}\,dx = \frac{e^{2 x}}{2}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{2 x} \cos(5 x)\,dx = \left(\cos(5 x)\right) \left(\frac{e^{2 x}}{2}\right) - \int \left(\frac{e^{2 x}}{2}\right) \left(-5 \sin(5 x)\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\cos(5 x)\right) \left(\frac{e^{2 x}}{2}\right) = \frac{e^{2 x} \cos(5 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{2 x}}{2}\right) \left(-5 \sin(5 x)\right) = -\frac{5 e^{2 x} \sin(5 x)}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int e^{2 x} \cos(5 x)\,dx = \frac{e^{2 x} \cos(5 x)}{2} - \int -\frac{5 e^{2 x} \sin(5 x)}{2}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int e^{2 x} \cos(5 x)\,dx = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5}{2} \int e^{2 x} \sin(5 x)\,dx$$
+
+Step 9: Integrate $\int e^{2 x} \sin(5 x)\,dx$ by parts again with $u = \sin(5 x)$ and $dv = e^{2 x}\,dx$.
+
+Step 10: Differentiate $u$: $du = 5 \cos(5 x)\,dx$.
+
+Step 11: Integrate $dv$: $v = \int e^{2 x}\,dx = \frac{e^{2 x}}{2}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int e^{2 x} \sin(5 x)\,dx = \left(\sin(5 x)\right) \left(\frac{e^{2 x}}{2}\right) - \int \left(\frac{e^{2 x}}{2}\right) \left(5 \cos(5 x)\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(\sin(5 x)\right) \left(\frac{e^{2 x}}{2}\right) = \frac{e^{2 x} \sin(5 x)}{2}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\frac{e^{2 x}}{2}\right) \left(5 \cos(5 x)\right) = \frac{5 e^{2 x} \cos(5 x)}{2}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int e^{2 x} \sin(5 x)\,dx = \frac{e^{2 x} \sin(5 x)}{2} - \int \frac{5 e^{2 x} \cos(5 x)}{2}\,dx$$
+
+Step 16: Pull the constant out of the integral: $$\int e^{2 x} \sin(5 x)\,dx = \frac{e^{2 x} \sin(5 x)}{2} - \frac{5}{2} \int e^{2 x} \cos(5 x)\,dx$$
+
+Step 17: Substitute this into the result of Step 8 (where $\int e^{2 x} \sin(5 x)\,dx$ appears): $$I = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5}{2} \left[\frac{e^{2 x} \sin(5 x)}{2} - \frac{5}{2} \int e^{2 x} \cos(5 x)\,dx\right]$$
+
+Step 18: Recognize $\int e^{2 x} \cos(5 x)\,dx$ as the original integral $I$: $$I = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5}{2} \left[\frac{e^{2 x} \sin(5 x)}{2} - \frac{5}{2} I\right]$$
+
+Step 19: Distribute: $$I = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5 e^{2 x} \sin(5 x)}{4} - \frac{25}{4} I$$
+
+Step 20: The original integral $I$ has reappeared on the right-hand side. Move it to the left: $$I + \frac{25}{4} I = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5 e^{2 x} \sin(5 x)}{4}$$
+
+Step 21: Combine the $I$ terms: $$\frac{29}{4} I = \frac{e^{2 x} \cos(5 x)}{2} + \frac{5 e^{2 x} \sin(5 x)}{4}$$
+
+Step 22: Multiply both sides by $\frac{4}{29}$: $$I = \frac{4}{29}\left(\frac{e^{2 x} \cos(5 x)}{2} + \frac{5 e^{2 x} \sin(5 x)}{4}\right)$$
+
+Step 23: Distribute: $$I = \frac{2 e^{2 x} \cos(5 x)}{29} + \frac{5 e^{2 x} \sin(5 x)}{29}$$
+
+Step 24: Factor: $$I = \frac{e^{2 x} \left(2 \cos(5 x) + 5 \sin(5 x)\right)}{29}$$
+
+Step 25: Add the constant of integration: $$I = \frac{e^{2 x} \left(2 \cos(5 x) + 5 \sin(5 x)\right)}{29} + C$$
+
+Final Answer: $$\int e^{2 x} \cos(5 x)\,dx = \frac{e^{2 x} \left(2 \cos(5 x) + 5 \sin(5 x)\right)}{29} + C$$"
+fine-tuned,unseen,inverse trig,"Evaluate the integral $\int x \arctan(3 x)\,dx$ using integration by parts.",False,wrong,False,True,1592,"Step 1: Let $I = \int x \arctan(3 x)\,dx$. By the LIATE rule the inverse trigonometric function is chosen as $u$ (its derivative is algebraic) and $x$ goes into $dv$. Choose $u = \arctan(3 x)$ and $dv = x\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{3}{1 + 9 x^{2}}\,dx$ (since $\frac{d}{dx}\arctan(kx) = \frac{k}{1 + k^{2}x^{2}}$ with $k = 3$).
+
+Step 3: Integrate $dv$: $v = \int x\,dx = \frac{x^{2}}{2}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \arctan(3 x)\,dx = \left(\arctan(3 x)\right) \left(\frac{x^{2}}{2}\right) - \int \left(\frac{x^{2}}{2}\right) \left(\frac{3}{1 + 9 x^{2}}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\arctan(3 x)\right) \left(\frac{x^{2}}{2}\right) = \frac{x^{2} \arctan(3 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{2}}{2}\right) \left(\frac{3}{1 + 9 x^{2}}\right) = \frac{3 x^{2}}{2 \left(1 + 9 x^{2}\right)}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \arctan(3 x)\,dx = \frac{x^{2} \arctan(3 x)}{2} - \int \frac{3 x^{2}}{2 \left(1 + 9 x^{2}\right)}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x \arctan(3 x)\,dx = \frac{x^{2} \arctan(3 x)}{2} - \frac{3}{2} \int \frac{x^{2}}{1 + 9 x^{2}}\,dx$$
+
+Step 9: To evaluate $\int \frac{x^{2}}{1 + 9 x^{2}}\,dx$, substitute $t = 1 + 9 x^{2}$, so $dt = 18 x\,dx$ and $x^{2} = \frac{t - 1}{9}$.
+
+Step 10: Rewrite the integral in terms of $t$: $$\int \frac{x^{2}}{1 + 9 x^{2}}\,dx = \int \frac{\frac{t - 1}{9}}{t}\,dt$$
+
+Step 11: Simplify the integrand: $$\int \frac{\frac{t - 1}{9}}{t}\,dt = \frac{1}{9} \int \frac{t - 1}{t}\,dt$$
+
+Step 12: Split the integral: $$\frac{1}{9} \int \frac{t - 1}{t}\,dt = \frac{1}{9} \left(\int 1\,dt - \int \frac{1}{t}\,dt\right)$$
+
+Step 13: Pull the constant out of the second integral: $$\frac{1}{9} \left(\int 1\,dt - \int \frac{1}{t}\,dt\right) = \frac{1}{9} \int 1\,dt - \frac{1}{9} \int \frac{1}{t}\,dt$$
+
+Step 14: Integrate the first integral: $$\frac{1}{9} \int 1\,dt = \frac{t}{9}$$
+
+Step 15: Integrate the second integral: $$-\frac{1}{9} \int \frac{1}{t}\,dt = -\frac{\ln|t|}{9}$$
+
+Step 16: Combine the two results: $$\frac{1}{9} \int 1\,dt - \frac{1}{9} \int \frac{1}{t}\,dt = \frac{t}{9} - \frac{\ln|t|}{9}$$
+
+Step 17: Substitute back $t = 1 + 9 x^{2}$: $$\frac{t}{9} - \frac{\ln|t|}{9} = \frac{1 + 9 x^{2}}{9} - \frac{\ln(1 + 9 x^{2})}{9}$$
+
+Step 18: Simplify: $$\frac{1 + 9 x^{2}}{9} - \frac{\ln(1 + 9 x^{2})}{9} = \frac{1 + 9 x^{2} - 9 \ln(1 + 9 x^{2})}{9}$$
+
+Step 19: Substitute back into the expression for $I$: $$I = \frac{x^{2} \arctan(3 x)}{2} - \frac{3}{2} \left(\frac{1 + 9 x^{2} - 9 \ln(1 + 9 x^{2})}{9}\right)$$
+
+Step 20: Simplify: $$I = \frac{x^{2} \arctan(3 x)}{2} - \frac{1 + 9 x^{2} - 9 \ln(1 + 9 x^{2})}{6}$$
+
+Step 21: Rewrite the first term with denominator $6$ (multiply top and bottom by $3$): $$I = \frac{3 x^{2} \arctan(3 x)}{6} - \frac{1 + 9 x^{2} - 9 \ln(1 + 9 x^{2})}{6}$$
+
+Step 22: Combine the two terms into one fraction: $$I = \frac{3 x^{2} \arctan(3 x) - 1 - 9 x^{2} + 9 \ln(1 + 9 x^{2})}{6}$$
+
+Step 23: Factor $-1$ out of the numerator: $$I = \frac{-1 \left(1 - 3 x^{2}\right) + 9 \ln(1 + 9 x^{2})}{6}$$
+
+Step 24: Add the constant of integration: $$I = \frac{-1 \left(1 - 3 x^{2}\right) + 9 \ln(1 + 9 x^{2})}{6} + C$$
+
+Final Answer: $$\int x \arctan(3 x)\,dx = \frac{-1 \left(1 - 3 x^{2}\right) + 9 \ln(1 + 9 x^{2})}{6} + C$$"
+fine-tuned,unseen,inverse trig,"Evaluate the integral $\int \arctan(4 x)\,dx$ using integration by parts.",True,symbolic,True,True,874,"Step 1: Let $I = \int \arctan(4 x)\,dx$. By the LIATE rule the inverse trigonometric function is chosen as $u$ (its derivative is algebraic) and the remaining $1$ goes into $dv$. Choose $u = \arctan(4 x)$ and $dv = dx$.
+
+Step 2: Differentiate $u$: $du = \frac{4}{1 + 16 x^{2}}\,dx$ (since $\frac{d}{dx}\arctan(kx) = \frac{k}{1 + k^{2}x^{2}}$ with $k = 4$).
+
+Step 3: Integrate $dv$: $v = \int 1\,dx = x$.
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int \arctan(4 x)\,dx = \left(\arctan(4 x)\right) \left(x\right) - \int \left(x\right) \left(\frac{4}{1 + 16 x^{2}}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\arctan(4 x)\right) \left(x\right) = x \arctan(4 x)$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(x\right) \left(\frac{4}{1 + 16 x^{2}}\right) = \frac{4 x}{1 + 16 x^{2}}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int \arctan(4 x)\,dx = x \arctan(4 x) - \int \frac{4 x}{1 + 16 x^{2}}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int \arctan(4 x)\,dx = x \arctan(4 x) - 4 \int \frac{x}{1 + 16 x^{2}}\,dx$$
+
+Step 9: To evaluate $\int \frac{x}{1 + 16 x^{2}}\,dx$, substitute $t = 1 + 16 x^{2}$, so $dt = 32 x\,dx$ and $x\,dx = \frac{dt}{32}$.
+
+Step 10: Rewrite the integral in terms of $t$: $$\int \frac{x}{1 + 16 x^{2}}\,dx = \frac{1}{32}\int \frac{dt}{t}$$
+
+Step 11: Integrate with respect to $t$: $$\int \frac{x}{1 + 16 x^{2}}\,dx = \frac{1}{32}\ln|t|$$
+
+Step 12: Substitute back $t = 1 + 16 x^{2}$: $$\int \frac{x}{1 + 16 x^{2}}\,dx = \frac{\ln(1 + 16 x^{2})}{32}$$ (the absolute value is not needed because $1 + 16 x^{2} > 0$).
+
+Step 13: Substitute back into the expression for $I$: $$I = x \arctan(4 x) - 4 \left(\frac{\ln(1 + 16 x^{2})}{32}\right)$$
+
+Step 14: Simplify: $$I = x \arctan(4 x) - \frac{\ln(1 + 16 x^{2})}{8}$$
+
+Step 15: Add the constant of integration: $$I = x \arctan(4 x) - \frac{\ln(1 + 16 x^{2})}{8} + C$$
+
+Final Answer: $$\int \arctan(4 x)\,dx = x \arctan(4 x) - \frac{\ln(1 + 16 x^{2})}{8} + C$$"
+fine-tuned,unseen,poly x trig,"Evaluate the integral $\int x \sinh(3 x)\,dx$ using integration by parts.",True,symbolic,True,True,736,"Step 1: Let $I = \int x \sinh(3 x)\,dx$. The integrand is a polynomial times a hyperbolic function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = \sinh(3 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int \sinh(3 x)\,dx = \frac{\cosh(3 x)}{3}$ (using $\int \sinh(kx)\,dx = \frac{1}{k}\cosh(kx)$ with $k = 3$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sinh(3 x)\,dx = \left(x\right) \left(\frac{\cosh(3 x)}{3}\right) - \int \left(\frac{\cosh(3 x)}{3}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{\cosh(3 x)}{3}\right) = \frac{x \cosh(3 x)}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{\cosh(3 x)}{3}\right) \left(1\right) = \frac{\cosh(3 x)}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \sinh(3 x)\,dx = \frac{x \cosh(3 x)}{3} - \int \frac{\cosh(3 x)}{3}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x \sinh(3 x)\,dx = \frac{x \cosh(3 x)}{3} - \frac{1}{3} \int \cosh(3 x)\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int \cosh(kx)\,dx = \frac{1}{k}\sinh(kx)$ with $k = 3$): $\int \cosh(3 x)\,dx = \frac{\sinh(3 x)}{3}$.
+
+Step 10: Substitute this result back: $$I = \frac{x \cosh(3 x)}{3} - \frac{1}{3} \left(\frac{\sinh(3 x)}{3}\right)$$
+
+Step 11: Simplify: $$I = \frac{x \cosh(3 x)}{3} - \frac{\sinh(3 x)}{9}$$
+
+Step 12: Add the constant of integration: $$I = \frac{x \cosh(3 x)}{3} - \frac{\sinh(3 x)}{9} + C$$
+
+Final Answer: $$\int x \sinh(3 x)\,dx = \frac{x \cosh(3 x)}{3} - \frac{\sinh(3 x)}{9} + C$$"
+fine-tuned,unseen,poly x trig,"Evaluate the integral $\int x^{2} \sin(5 x)\,dx$ using integration by parts.",True,symbolic,True,True,1671,"Step 1: Let $I = \int x^{2} \sin(5 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = \sin(5 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int \sin(5 x)\,dx = -\frac{\cos(5 x)}{5}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 5$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \sin(5 x)\,dx = \left(x^{2}\right) \left(-\frac{\cos(5 x)}{5}\right) - \int \left(-\frac{\cos(5 x)}{5}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(-\frac{\cos(5 x)}{5}\right) = -\frac{x^{2} \cos(5 x)}{5}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(5 x)}{5}\right) \left(2 x\right) = -\frac{2 x \cos(5 x)}{5}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \sin(5 x)\,dx = -\frac{x^{2} \cos(5 x)}{5} - \int -\frac{2 x \cos(5 x)}{5}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x^{2} \sin(5 x)\,dx = -\frac{x^{2} \cos(5 x)}{5} + \frac{2}{5} \int x \cos(5 x)\,dx$$
+
+Step 9: Integrate $\int x \cos(5 x)\,dx$ by parts again. Choose $u = x$ and $dv = \cos(5 x)\,dx$.
+
+Step 10: Differentiate $u$: $du = dx$.
+
+Step 11: Integrate $dv$: $v = \int \cos(5 x)\,dx = \frac{\sin(5 x)}{5}$ (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 5$).
+
+Step 12: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \cos(5 x)\,dx = \left(x\right) \left(\frac{\sin(5 x)}{5}\right) - \int \left(\frac{\sin(5 x)}{5}\right) \left(1\right)\,dx$$
+
+Step 13: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{\sin(5 x)}{5}\right) = \frac{x \sin(5 x)}{5}$.
+
+Step 14: Simplify the new integrand $v\,du$: $\left(\frac{\sin(5 x)}{5}\right) \left(1\right) = \frac{\sin(5 x)}{5}$.
+
+Step 15: Rewrite the formula using the simplified products: $$\int x \cos(5 x)\,dx = \frac{x \sin(5 x)}{5} - \int \frac{\sin(5 x)}{5}\,dx$$
+
+Step 16: Pull the constant out of the integral: $$\int x \cos(5 x)\,dx = \frac{x \sin(5 x)}{5} - \frac{1}{5} \int \sin(5 x)\,dx$$
+
+Step 17: Substitute this into the expression for $I$: $$I = -\frac{x^{2} \cos(5 x)}{5} + \frac{2}{5} \left[\frac{x \sin(5 x)}{5} - \frac{1}{5} \int \sin(5 x)\,dx\right]$$
+
+Step 18: Distribute: $$I = -\frac{x^{2} \cos(5 x)}{5} + \frac{2 x \sin(5 x)}{25} - \frac{2}{25} \int \sin(5 x)\,dx$$
+
+Step 19: Evaluate the remaining integral (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 5$): $\int \sin(5 x)\,dx = -\frac{\cos(5 x)}{5}$.
+
+Step 20: Substitute this result back: $$I = -\frac{x^{2} \cos(5 x)}{5} + \frac{2 x \sin(5 x)}{25} - \frac{2}{25} \left(-\frac{\cos(5 x)}{5}\right)$$
+
+Step 21: Simplify: $$I = -\frac{x^{2} \cos(5 x)}{5} + \frac{2 x \sin(5 x)}{25} + \frac{2 \cos(5 x)}{125}$$
+
+Step 22: Rewrite the second term with denominator $125$ (multiply top and bottom by $5$): $$I = -\frac{x^{2} \cos(5 x)}{5} + \frac{10 x \sin(5 x)}{125} + \frac{2 \cos(5 x)}{125}$$
+
+Step 23: Rewrite the first term with denominator $125$ (multiply top and bottom by $25$): $$I = -\frac{25 x^{2} \cos(5 x)}{125} + \frac{10 x \sin(5 x)}{125} + \frac{2 \cos(5 x)}{125}$$
+
+Step 24: Combine the two cosine terms into one fraction: $$I = \frac{-25 x^{2} \cos(5 x) + 2 \cos(5 x)}{125} + \frac{10 x \sin(5 x)}{125}$$
+
+Step 25: Factor $-\cos(5 x)$ out of the numerator: $$I = -\frac{\left(25 x^{2} - 2\right) \cos(5 x)}{125} + \frac{10 x \sin(5 x)}{125}$$
+
+Step 26: Add the constant of integration: $$I = -\frac{\left(25 x^{2} - 2\right) \cos(5 x)}{125} + \frac{10 x \sin(5 x)}{125} + C$$
+
+Final Answer: $$\int x^{2} \sin(5 x)\,dx = -\frac{\left(25 x^{2} - 2\right) \cos(5 x)}{125} + \frac{10 x \sin(5 x)}{125} + C$$"
+fine-tuned,unseen,definite,"Evaluate the definite integral $\int_{0}^{1} x^{2} e^{2 x}\,dx$ using integration by parts.",False,wrong,False,True,1973,"Step 1: Let $I = \int x^{2} e^{2 x}\,dx$. The integrand is a polynomial times an exponential, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 2, integration by parts will be applied twice. Choose $u = x^{2}$ and $dv = e^{2 x}\,dx$.
+
+Step 2: Differentiate $u$: $du = 2 x\,dx$.
+
+Step 3: Integrate $dv$: $v = \int e^{2 x}\,dx = \frac{e^{2 x}}{2}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} e^{2 x}\,dx = \left(x^{2}\right) \left(\frac{e^{2 x}}{2}\right) - \int \left(\frac{e^{2 x}}{2}\right) \left(2 x\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x^{2}\right) \left(\frac{e^{2 x}}{2}\right) = \frac{x^{2} e^{2 x}}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{e^{2 x}}{2}\right) \left(2 x\right) = x e^{2 x}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} e^{2 x}\,dx = \frac{x^{2} e^{2 x}}{2} - \int x e^{2 x}\,dx$$
+
+Step 8: Integrate $\int x e^{2 x}\,dx$ by parts again. Choose $u = x$ and $dv = e^{2 x}\,dx$.
+
+Step 9: Differentiate $u$: $du = dx$.
+
+Step 10: Integrate $dv$: $v = \int e^{2 x}\,dx = \frac{e^{2 x}}{2}$ (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$).
+
+Step 11: Apply $\int u\,dv = uv - \int v\,du$: $$\int x e^{2 x}\,dx = \left(x\right) \left(\frac{e^{2 x}}{2}\right) - \int \left(\frac{e^{2 x}}{2}\right) \left(1\right)\,dx$$
+
+Step 12: Simplify the boundary term $uv$: $\left(x\right) \left(\frac{e^{2 x}}{2}\right) = \frac{x e^{2 x}}{2}$.
+
+Step 13: Simplify the new integrand $v\,du$: $\left(\frac{e^{2 x}}{2}\right) \left(1\right) = \frac{e^{2 x}}{2}$.
+
+Step 14: Rewrite the formula using the simplified products: $$\int x e^{2 x}\,dx = \frac{x e^{2 x}}{2} - \int \frac{e^{2 x}}{2}\,dx$$
+
+Step 15: Pull the constant out of the integral: $$\int x e^{2 x}\,dx = \frac{x e^{2 x}}{2} - \frac{1}{2} \int e^{2 x}\,dx$$
+
+Step 16: Substitute this into the expression for $I$: $$I = \frac{x^{2} e^{2 x}}{2} - \left[\frac{x e^{2 x}}{2} - \frac{1}{2} \int e^{2 x}\,dx\right]$$
+
+Step 17: Distribute: $$I = \frac{x^{2} e^{2 x}}{2} - \frac{x e^{2 x}}{2} + \frac{1}{2} \int e^{2 x}\,dx$$
+
+Step 18: Evaluate the remaining integral (using $\int e^{kx}\,dx = \frac{1}{k}e^{kx}$ with $k = 2$): $\int e^{2 x}\,dx = \frac{e^{2 x}}{2}$.
+
+Step 19: Substitute this result back: $$I = \frac{x^{2} e^{2 x}}{2} - \frac{x e^{2 x}}{2} + \frac{1}{2} \left(\frac{e^{2 x}}{2}\right)$$
+
+Step 20: Simplify: $$I = \frac{x^{2} e^{2 x}}{2} - \frac{x e^{2 x}}{2} + \frac{e^{2 x}}{4}$$
+
+Step 21: Rewrite the first two terms with denominator $4$ (multiply top and bottom by $2$): $$I = \frac{2 x^{2} e^{2 x}}{4} - \frac{2 x e^{2 x}}{4} + \frac{e^{2 x}}{4}$$
+
+Step 22: Combine the three terms into one fraction: $$I = \frac{2 x^{2} e^{2 x} - 2 x e^{2 x} + e^{2 x}}{4}$$
+
+Step 23: Factor $e^{2 x}$ out of the numerator: $$I = \frac{e^{2 x} \left(2 x^{2} - 2 x + 1\right)}{4}$$
+
+Step 24: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{1} x^{2} e^{2 x}\,dx = \left[\frac{x^{2} e^{2 x}}{2} - \frac{x e^{2 x}}{2} + \frac{e^{2 x}}{4}\right]_{0}^{1} = F(1) - F(0)$$ where $F(x) = \frac{x^{2} e^{2 x}}{2} - \frac{x e^{2 x}}{2} + \frac{e^{2 x}}{4}$.
+
+Step 25: Substitute $x = 1$ into $F(x)$: $$F(1) = \frac{1^{2} e^{2 \cdot 1}}{2} - \frac{1 \cdot e^{2 \cdot 1}}{2} + \frac{e^{2 \cdot 1}}{4}$$
+
+Step 26: Evaluate using $1^{2} = 1$ and $e^{2 \cdot 1} = e^{2}$: $$F(1) = \frac{e^{2}}{2} - \frac{e^{2}}{2} + \frac{e^{2}}{4}$$
+
+Step 27: Combine the two $e^{2}/2$ terms: $$F(1) = \frac{e^{2}}{4} + \frac{e^{2}}{4}$$
+
+Step 28: Simplify: $$F(1) = \frac{e^{2}}{2}$$
+
+Step 29: Substitute $x = 0$ into $F(x)$: $$F(0) = \frac{0^{2} e^{2 \cdot 0}}{2} - \frac{0 \cdot e^{2 \cdot 0}}{2} + \frac{e^{2 \cdot 0}}{4}$$
+
+Step 30: Evaluate using $0^{2} = 0$, $0 \cdot e^{2 \cdot 0} = 0$, and $e^{2 \cdot 0} = 1$: $$F(0) = 0 - 0 + \frac{1}{4}$$
+
+Step 31: Simplify: $$F(0) = \frac{1}{4}$$
+
+Step 32: Subtract: $$\int_{0}^{1} x^{2} e^{2 x}\,dx = \left(\frac{e^{2}}{2}\right) - \left(\frac{1}{4}\right)$$
+
+Step 33: Simplify: $$\int_{0}^{1} x^{2} e^{2 x}\,dx = \frac{e^{2}}{2} - \frac{1}{4} \approx 2.437$$
+
+Final Answer: $$\int_{0}^{1} x^{2} e^{2 x}\,dx = \frac{e^{2}}{2} - \frac{1}{4}$$"
+fine-tuned,unseen,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \sin(2 x)\,dx$ using integration by parts.",True,numeric,True,True,1106,"Step 1: Let $I = \int x \sin(2 x)\,dx$. The integrand is a polynomial times a trigonometric function, so by the LIATE rule we let $u$ be the polynomial (differentiating lowers its degree) and $dv$ the remaining factor. Since the polynomial has degree 1, integration by parts will be applied once. Choose $u = x$ and $dv = \sin(2 x)\,dx$.
+
+Step 2: Differentiate $u$: $du = dx$.
+
+Step 3: Integrate $dv$: $v = \int \sin(2 x)\,dx = -\frac{\cos(2 x)}{2}$ (using $\int \sin(kx)\,dx = -\frac{1}{k}\cos(kx)$ with $k = 2$).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x \sin(2 x)\,dx = \left(x\right) \left(-\frac{\cos(2 x)}{2}\right) - \int \left(-\frac{\cos(2 x)}{2}\right) \left(1\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(x\right) \left(-\frac{\cos(2 x)}{2}\right) = -\frac{x \cos(2 x)}{2}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(-\frac{\cos(2 x)}{2}\right) \left(1\right) = -\frac{\cos(2 x)}{2}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x \sin(2 x)\,dx = -\frac{x \cos(2 x)}{2} - \int -\frac{\cos(2 x)}{2}\,dx$$
+
+Step 8: Pull the negative constant out of the integral; the two minus signs multiply to give a plus: $$\int x \sin(2 x)\,dx = -\frac{x \cos(2 x)}{2} + \frac{1}{2} \int \cos(2 x)\,dx$$
+
+Step 9: Evaluate the remaining integral (using $\int \cos(kx)\,dx = \frac{1}{k}\sin(kx)$ with $k = 2$): $\int \cos(2 x)\,dx = \frac{\sin(2 x)}{2}$.
+
+Step 10: Substitute this result back: $$I = -\frac{x \cos(2 x)}{2} + \frac{1}{2} \left(\frac{\sin(2 x)}{2}\right)$$
+
+Step 11: Simplify: $$I = -\frac{x \cos(2 x)}{2} + \frac{\sin(2 x)}{4}$$
+
+Step 12: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{0}^{\pi} x \sin(2 x)\,dx = \left[-\frac{x \cos(2 x)}{2} + \frac{\sin(2 x)}{4}\right]_{0}^{\pi} = F(\pi) - F(0)$$ where $F(x) = -\frac{x \cos(2 x)}{2} + \frac{\sin(2 x)}{4}$.
+
+Step 13: Substitute $x = \pi$ into $F(x)$: $$F(\pi) = -\frac{\pi \cos(2 \pi)}{2} + \frac{\sin(2 \pi)}{4}$$
+
+Step 14: Evaluate using $\cos(2 \pi) = 1, \sin(2 \pi) = 0$: $$F(\pi) = -\frac{\pi}{2} + 0$$
+
+Step 15: Simplify: $$F(\pi) = -\frac{\pi}{2}$$
+
+Step 16: Substitute $x = 0$ into $F(x)$: $$F(0) = -\frac{0 \cos(0)}{2} + \frac{\sin(0)}{4}$$
+
+Step 17: Evaluate using $\cos(0) = 1, \sin(0) = 0$: $$F(0) = 0 + 0$$
+
+Step 18: Simplify: $$F(0) = 0$$
+
+Step 19: Subtract: $$\int_{0}^{\pi} x \sin(2 x)\,dx = \left(-\frac{\pi}{2}\right) - 0$$
+
+Step 20: Simplify: $$\int_{0}^{\pi} x \sin(2 x)\,dx = -\frac{\pi}{2} \approx -1.570796$$
+
+Final Answer: $$\int_{0}^{\pi} x \sin(2 x)\,dx = -\frac{\pi}{2}$$"
+fine-tuned,unseen,definite,"Evaluate the definite integral $\int_{1}^{2} x^{2} \ln x\,dx$ using integration by parts.",True,numeric,True,True,1776,"Step 1: Let $I = \int x^{2} \ln x\,dx$. By the LIATE rule the logarithmic factor is chosen as $u$ (differentiating it removes a power of the logarithm) and the power of $x$ goes into $dv$. Choose $u = \ln x$ and $dv = x^{2}\,dx$.
+
+Step 2: Differentiate $u$: $du = \frac{1}{x}\,dx$.
+
+Step 3: Integrate $dv$: $v = \int x^{2}\,dx = \frac{x^{3}}{3}$ (power rule).
+
+Step 4: Apply $\int u\,dv = uv - \int v\,du$: $$\int x^{2} \ln x\,dx = \left(\ln x\right) \left(\frac{x^{3}}{3}\right) - \int \left(\frac{x^{3}}{3}\right) \left(\frac{1}{x}\right)\,dx$$
+
+Step 5: Simplify the boundary term $uv$: $\left(\ln x\right) \left(\frac{x^{3}}{3}\right) = \frac{x^{3} \ln x}{3}$.
+
+Step 6: Simplify the new integrand $v\,du$: $\left(\frac{x^{3}}{3}\right) \left(\frac{1}{x}\right) = \frac{x^{2}}{3}$.
+
+Step 7: Rewrite the formula using the simplified products: $$\int x^{2} \ln x\,dx = \frac{x^{3} \ln x}{3} - \int \frac{x^{2}}{3}\,dx$$
+
+Step 8: Pull the constant out of the integral: $$\int x^{2} \ln x\,dx = \frac{x^{3} \ln x}{3} - \frac{1}{3} \int x^{2}\,dx$$
+
+Step 9: Evaluate the remaining integral using the power rule $\int x^{r}\,dx = \frac{x^{r+1}}{r+1}$ with $r = 2$: $\int x^{2}\,dx = \frac{x^{3}}{3}$.
+
+Step 10: Substitute this result back: $$I = \frac{x^{3} \ln x}{3} - \frac{1}{3} \left(\frac{x^{3}}{3}\right)$$
+
+Step 11: Simplify: $$I = \frac{x^{3} \ln x}{3} - \frac{x^{3}}{9}$$
+
+Step 12: Rewrite the first term with denominator $9$ (multiply top and bottom by $3$): $$I = \frac{3 x^{3} \ln x}{9} - \frac{x^{3}}{9}$$
+
+Step 13: Combine the two terms into one fraction: $$I = \frac{3 x^{3} \ln x - x^{3}}{9}$$
+
+Step 14: Factor $x^{3}$ out of the numerator: $$I = \frac{x^{3} \left(3 \ln x - 1\right)}{9}$$
+
+Step 15: Apply the limits of integration using the Fundamental Theorem of Calculus: $$\int_{1}^{2} x^{2} \ln x\,dx = \left[\frac{x^{3} \ln x}{3} - \frac{x^{3}}{9}\right]_{1}^{2} = F(2) - F(1)$$ where $F(x) = \frac{x^{3} \ln x}{3} - \frac{x^{3}}{9}$.
+
+Step 16: Substitute $x = 2$ into $F(x)$: $$F(2) = \frac{2^{3} \ln 2}{3} - \frac{2^{3}}{9}$$
+
+Step 17: Evaluate using $2^{3} = 8$: $$F(2) = \frac{8 \ln 2}{3} - \frac{8}{9}$$
+
+Step 18: Rewrite the first term with denominator $9$ (multiply top and bottom by $3$): $$F(2) = \frac{24 \ln 2}{9} - \frac{8}{9}$$
+
+Step 19: Combine the two terms into one fraction: $$F(2) = \frac{24 \ln 2 - 8}{9}$$
+
+Step 20: Simplify: $$F(2) = \frac{8 \left(3 \ln 2 - 1\right)}{9}$$
+
+Step 21: Substitute $x = 1$ into $F(x)$: $$F(1) = \frac{1^{3} \ln 1}{3} - \frac{1^{3}}{9}$$
+
+Step 22: Evaluate using $\ln 1 = 0$ and $1^{3} = 1$: $$F(1) = 0 - \frac{1}{9}$$
+
+Step 23: Simplify: $$F(1) = -\frac{1}{9}$$
+
+Step 24: Subtract: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8 \left(3 \ln 2 - 1\right)}{9} - \left(-\frac{1}{9}\right)$$
+
+Step 25: Simplify: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8 \left(3 \ln 2 - 1\right)}{9} + \frac{1}{9}$$
+
+Step 26: Rewrite the first term with denominator $9$ (multiply top and bottom by $1$): $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8 \left(3 \ln 2 - 1\right)}{9} + \frac{1}{9} \cdot 1$$
+
+Step 27: Simplify the second term: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8 \left(3 \ln 2 - 1\right)}{9} + \frac{1}{9}$$
+
+Step 28: Rewrite the first term with denominator $9$ (multiply top and bottom by $1$): $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8 \left(3 \ln 2 - 1\right)}{9} + \frac{1}{9}$$
+
+Step 29: Multiply top and bottom of the first fraction by $1$ to get rid of the parentheses: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{24 \ln 2 - 8}{9} + \frac{1}{9}$$
+
+Step 30: Rewrite the first term with denominator $9$ (multiply top and bottom by $1$): $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{24 \ln 2 - 8}{9} + \frac{1}{9}$$
+
+Step 31: Combine the two terms into one fraction: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{24 \ln 2 - 8 + 1}{9}$$
+
+Step 32: Simplify the numerator: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{24 \ln 2 - 7}{9}$$
+
+Step 33: Simplify: $$\int_{1}^{2} x^{2} \ln x\,dx \approx 0.623$$
+
+Final Answer: $$\int_{1}^{2} x^{2} \ln x\,dx = \frac{24 \ln 2 - 7}{9}$$"
+original,held-out,substitution first,"Evaluate the integral $\int e^{3 x} e^{e^{x}}\,dx$ using integration by parts (a substitution may be needed first).",False,wrong,False,False,864,"To evaluate the integral $\int e^{3 x} e^{e^{x}}\,dx$, we can use a substitution to simplify the expression.
+
+Let's set $u = e^{x}$. Then, $du = e^{x} dx$.
+
+We can rewrite the integral as follows:
+
+$\int e^{3 x} e^{e^{x}}\,dx = \int e^{3 x} u \, du$
+
+Now, we can use the substitution $v = e^{3 x}$, so $dv = 3e^{3 x} dx$.
+
+We can rewrite the integral as follows:
+
+$\int e^{3 x} u \, du = \frac{1}{3} \int v u \, dv$
+
+Now, we can use integration by parts. Let's set $w = u$ and $dw = du$. Then, $dw = e^{x} dx$.
+
+We can rewrite the integral as follows:
+
+$\frac{1}{3} \int v w \, dw$
+
+Now, we can use the formula for integration by parts:
+
+$\int w v \, dw = w \int v \, dw - \int \left( \frac{dw}{dw} \right) \left( \int v \, dw \right) \, dw$
+
+In this case, $w = u = e^{x}$ and $v = \frac{1}{3} e^{3 x}$.
+
+We can evaluate the integral as follows:
+
+$\frac{1}{3} \int v w \, dw = \frac{1}{3} \left( e^{x} \int \frac{1}{3} e^{3 x} \, dx - \int \left( \frac{1}{3} e^{3 x} \right) \left( \int \frac{1}{3} e^{3 x} \, dx \right) \, dx \right)$
+
+Now, we can evaluate the inner integral:
+
+$\int \frac{1}{3} e^{3 x} \, dx = \frac{1}{9} e^{3 x} + C$
+
+Now, we can substitute this result back into the original integral:
+
+$\frac{1}{3} \left( e^{x} \left( \frac{1}{9} e^{3 x} + C \right) - \int \left( \frac{1}{3} e^{3 x} \right) \left( \frac{1}{9} e^{3 x} + C \right) \, dx \right)$
+
+Now, we can evaluate the inner integral:
+
+$\int \left( \frac{1}{3} e^{3 x} \right) \left( \frac{1}{9} e^{3 x} + C \right) \, dx = \frac{1}{27} \int e^{6 x} \, dx = \frac{1}{81} e^{6 x} + C$
+
+Now, we can substitute this result back into the original integral:
+
+$\frac{1}{3} \left( e^{x} \left( \frac{1}{9} e^{3 x} + C \right) - \frac{1}{81} e^{6 x} + C \right)$
+
+Now, we can simplify the expression:
+
+$\frac{1}{3} \left( \frac{1}{9} e^{4 x} + C e^{x} - \frac{1}{81} e^{6 x} + C \right)$
+
+Now, we can combine like terms:
+
+$\frac{1}{27} e^{4 x} + \frac{1}{3} C e^{x} - \frac{1}{81} e^{6 x} + \frac{1}{3} C$
+
+The final answer is $\boxed{\frac{1}{27} e^{4 x} + \frac{1}{3} C e^{x} - \frac{1}{81} e^{6 x} + \frac{1}{3} C}$."
+original,held-out,inverse trig,"Evaluate the integral $\int \arcsin x\,dx$ using integration by parts.",True,symbolic,True,False,347,"To evaluate the integral $\int \arcsin x\,dx$ using integration by parts, we can use the formula:
+
+$$\int u\,dv = uv - \int v\,du$$
+
+Let's choose $u = \arcsin x$ and $dv = dx$. Then, we have:
+
+$$du = \frac{1}{\sqrt{1-x^2}}\,dx$$
+
+and
+
+$$v = \int dx = x$$
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int \arcsin x\,dx = x\arcsin x - \int x\frac{1}{\sqrt{1-x^2}}\,dx$$
+
+To evaluate the remaining integral, we can use the substitution $w = 1-x^2$, which implies $dw = -2x\,dx$. This gives us:
+
+$$\int x\frac{1}{\sqrt{1-x^2}}\,dx = -\frac{1}{2}\int \frac{1}{\sqrt{w}}\,dw$$
+
+$$= -\frac{1}{2} \cdot 2\sqrt{w} + C$$
+
+$$= -\sqrt{1-x^2} + C$$
+
+where $C$ is the constant of integration.
+
+Now, we can plug this result back into the original equation:
+
+$$\int \arcsin x\,dx = x\arcsin x + \sqrt{1-x^2} + C$$
+
+This is the final result for the integral $\int \arcsin x\,dx$."
+original,held-out,poly x trig,"Evaluate the integral $\int x^{2} \sin(3 x)\,dx$ using integration by parts.",False,wrong,False,False,671,"To evaluate the integral $\int x^{2} \sin(3 x)\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^{2}$ and $dv = \sin(3x) \, dx$. Then, $du = 2x \, dx$ and $v = \frac{1}{3} \cos(3x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{2} \sin(3 x)\,dx = \frac{x^{2}}{3} \cos(3x) - \int \frac{1}{3} \cos(3x) \cdot 2x \, dx$$
+
+$$= \frac{x^{2}}{3} \cos(3x) - \frac{2}{3} \int x \cos(3x) \, dx$$
+
+Now, we need to integrate $x \cos(3x)$ using integration by parts again. Let's choose $u = x$ and $dv = \cos(3x) \, dx$. Then, $du = dx$ and $v = \frac{1}{3} \sin(3x)$.
+
+Applying the integration by parts formula again:
+
+$$\int x \cos(3x) \, dx = \frac{x}{3} \sin(3x) - \int \frac{1}{3} \sin(3x) \, dx$$
+
+$$= \frac{x}{3} \sin(3x) + \frac{1}{9} \cos(3x) + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x^{2} \sin(3 x)\,dx = \frac{x^{2}}{3} \cos(3x) - \frac{2}{3} \left( \frac{x}{3} \sin(3x) + \frac{1}{9} \cos(3x) \right) + C$$
+
+$$= \frac{x^{2}}{3} \cos(3x) - \frac{2x}{9} \sin(3x) - \frac{2}{27} \cos(3x) + C$$
+
+$$= \left( \frac{x^{2}}{3} - \frac{2x}{9} \right) \cos(3x) - \frac{2x}{9} \sin(3x) + C$$
+
+$$= \left( \frac{3x^{2} - 2x}{9} \right) \cos(3x) - \frac{2x}{9} \sin(3x) + C$$
+
+$$= \left( \frac{x(3x - 2)}{9} \right) \cos(3x) - \frac{2x}{9} \sin(3x) + C$$
+
+This is the final result for the integral $\int x^{2} \sin(3 x)\,dx$."
+original,held-out,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \cos x\,dx$ using integration by parts.",True,numeric,True,False,329,"To evaluate the definite integral $\int_{0}^{\pi} x \cos x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \cos x \,dx$. Then, $du = dx$ and $v = \sin x$.
+
+Now, we can write the integral as:
+
+$$\int_{0}^{\pi} x \cos x\,dx = \left[ x \sin x \right]_{0}^{\pi} - \int_{0}^{\pi} \sin x \,dx$$
+
+Evaluating the first term, we get:
+
+$$\left[ x \sin x \right]_{0}^{\pi} = \pi \sin \pi - 0 \sin 0 = 0$$
+
+Now, we need to evaluate the second term:
+
+$$\int_{0}^{\pi} \sin x \,dx = \left[ -\cos x \right]_{0}^{\pi} = -\cos \pi - (-\cos 0) = 1 + 1 = 2$$
+
+So, the original integral becomes:
+
+$$\int_{0}^{\pi} x \cos x\,dx = 0 - 2 = -2$$
+
+Therefore, the value of the definite integral $\int_{0}^{\pi} x \cos x\,dx$ is $-2$."
+original,held-out,definite,"Evaluate the definite integral $\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx$ using integration by parts.",False,wrong,False,False,483,"To evaluate the definite integral $\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln x$ and $dv = \frac{1}{x^{2}} dx$. Then, $du = \frac{1}{x} dx$ and $v = -\frac{1}{x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = \left(\ln x \cdot \left(-\frac{1}{x}\right)\right)\Big|_{1}^{e} - \int_{1}^{e} \left(-\frac{1}{x}\right) \cdot \frac{1}{x} \,dx$$
+
+Simplifying the first term, we get:
+
+$$\left(\ln x \cdot \left(-\frac{1}{x}\right)\right)\Big|_{1}^{e} = -\ln x \Big|_{1}^{e} = -\ln e + \ln 1 = -1 + 0 = -1$$
+
+Now, let's evaluate the second term:
+
+$$\int_{1}^{e} \left(-\frac{1}{x}\right) \cdot \frac{1}{x} \,dx = \int_{1}^{e} -\frac{1}{x^{2}} \,dx = \left(\frac{1}{x}\right)\Big|_{1}^{e} = \frac{1}{e} - \frac{1}{1} = \frac{1}{e} - 1$$
+
+Now, we can combine the two terms:
+
+$$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = -1 + \frac{1}{e} - 1$$
+
+Simplifying, we get:
+
+$$\int_{1}^{e} \frac{\ln x}{x^{2}}\,dx = \frac{1}{e} - 2$$"
+original,held-out,logarithm,"Evaluate the integral $\int x^{3} \ln x\,dx$ using integration by parts.",True,symbolic,True,False,290,"To evaluate the integral $\int x^{3} \ln x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u\,dv = uv - \int v\,du$$
+
+Let's choose $u = \ln x$ and $dv = x^{3}\,dx$. Then, $du = \frac{1}{x}\,dx$ and $v = \frac{x^{4}}{4}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{3} \ln x\,dx = \frac{x^{4}}{4} \ln x - \int \frac{x^{4}}{4} \cdot \frac{1}{x}\,dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int \frac{x^{4}}{4} \cdot \frac{1}{x}\,dx = \int \frac{x^{3}}{4}\,dx = \frac{x^{4}}{16} + C$$
+
+where $C$ is the constant of integration.
+
+Now, we can rewrite the original integral as:
+
+$$\int x^{3} \ln x\,dx = \frac{x^{4}}{4} \ln x - \frac{x^{4}}{16} + C$$
+
+This is the final answer."
+original,held-out,logarithm,"Evaluate the integral $\int \frac{\ln x}{\sqrt{x}}\,dx$ using integration by parts.",True,symbolic,True,False,275,"To evaluate the integral $\int \frac{\ln x}{\sqrt{x}}\,dx$, we can use integration by parts. 
+
+Let $u = \ln x$ and $dv = \frac{1}{\sqrt{x}}\,dx$. 
+
+Then, $du = \frac{1}{x}\,dx$ and $v = \int \frac{1}{\sqrt{x}}\,dx = 2\sqrt{x}$.
+
+Now, we can apply the formula for integration by parts:
+
+$\int u\,dv = uv - \int v\,du$
+
+Substituting the values of $u$, $v$, $du$, and $dv$, we get:
+
+$\int \frac{\ln x}{\sqrt{x}}\,dx = (\ln x)(2\sqrt{x}) - \int 2\sqrt{x}\cdot \frac{1}{x}\,dx$
+
+$= 2\sqrt{x}\ln x - \int 2\frac{1}{\sqrt{x}}\,dx$
+
+$= 2\sqrt{x}\ln x - 4\sqrt{x} + C$
+
+where $C$ is the constant of integration.
+
+Therefore, the value of the integral is $2\sqrt{x}\ln x - 4\sqrt{x} + C$."
+original,held-out,definite,"Evaluate the definite integral $\int_{0}^{1} \left(x + 1\right) e^{x}\,dx$ using integration by parts.",False,wrong,False,False,367,"To evaluate the definite integral $\int_{0}^{1} \left(x + 1\right) e^{x}\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x + 1$ and $dv = e^{x} dx$. Then, $du = dx$ and $v = e^{x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = \left(x + 1\right) e^{x} \Big|_{0}^{1} - \int_{0}^{1} e^{x} \, dx$$
+
+Evaluating the first term, we get:
+
+$$\left(x + 1\right) e^{x} \Big|_{0}^{1} = \left(1 + 1\right) e^{1} - \left(0 + 1\right) e^{0} = 2e - e = e$$
+
+Now, we need to evaluate the second term:
+
+$$\int_{0}^{1} e^{x} \, dx = e^{x} \Big|_{0}^{1} = e^{1} - e^{0} = e - 1$$
+
+Now, we can combine the two terms:
+
+$$\int_{0}^{1} \left(x + 1\right) e^{x}\,dx = e - \left(e - 1\right) = 1$$
+
+Therefore, the value of the definite integral is $\boxed{1}$."
+original,held-out,substitution first,"Evaluate the integral $\int x^{5} \cos(x^{3})\,dx$ using integration by parts (a substitution may be needed first).",False,wrong,False,False,368,"To evaluate the integral $\int x^{5} \cos(x^{3})\,dx$, we can use a substitution followed by integration by parts.
+
+Let's start by making the substitution $u = x^{3}$. Then, $du = 3x^{2}dx$. We can rewrite the integral in terms of $u$:
+
+$$\int x^{5} \cos(x^{3})\,dx = \frac{1}{3}\int x^{3} \cos(x^{3}) \cdot 3x^{2}dx = \frac{1}{3}\int u \cos(u) du$$
+
+Now, we can use integration by parts. Let's choose $v = u$ and $dw = \cos(u) du$. Then, $dv = du$ and $w = \sin(u)$.
+
+The integration by parts formula is:
+
+$$\int v dw = vw - \int w dv$$
+
+Applying this formula, we get:
+
+$$\frac{1}{3}\int u \cos(u) du = \frac{1}{3}(u \sin(u) - \int \sin(u) du)$$
+
+Evaluating the integral of $\sin(u)$, we get:
+
+$$\frac{1}{3}(u \sin(u) + \cos(u)) + C$$
+
+where $C$ is the constant of integration.
+
+Now, we can substitute back $u = x^{3}$:
+
+$$\frac{1}{3}(x^{3} \sin(x^{3}) + \cos(x^{3})) + C$$
+
+So, the final answer is:
+
+$$\frac{1}{3}(x^{3} \sin(x^{3}) + \cos(x^{3})) + C$$"
+original,held-out,definite,"Evaluate the definite integral $\int_{1}^{e^{\pi}} \sin(\ln x)\,dx$ using integration by parts.",False,wrong,False,False,1022,"To evaluate the definite integral $\int_{1}^{e^{\pi}} \sin(\ln x)\,dx$ using integration by parts, we need to choose $u$ and $dv$.
+
+Let $u = \sin(\ln x)$ and $dv = dx$. Then, $du = \frac{1}{x} \cos(\ln x) dx$ and $v = x$.
+
+Now, we can apply the formula for integration by parts:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Substituting the values, we get:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = x \sin(\ln x) \Big|_{1}^{e^{\pi}} - \int_{1}^{e^{\pi}} x \frac{1}{x} \cos(\ln x) \, dx$$
+
+Simplifying the integral, we get:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = e^{\pi} \sin(\ln e^{\pi}) - \int_{1}^{e^{\pi}} \cos(\ln x) \, dx$$
+
+Since $\sin(\ln e^{\pi}) = \sin(\pi) = 0$, we have:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = - \int_{1}^{e^{\pi}} \cos(\ln x) \, dx$$
+
+Now, we need to evaluate the integral $\int_{1}^{e^{\pi}} \cos(\ln x) \, dx$. We can use integration by parts again.
+
+Let $u = \cos(\ln x)$ and $dv = dx$. Then, $du = -\frac{1}{x} \sin(\ln x) dx$ and $v = x$.
+
+Applying the formula for integration by parts, we get:
+
+$$\int_{1}^{e^{\pi}} \cos(\ln x) \, dx = x \cos(\ln x) \Big|_{1}^{e^{\pi}} - \int_{1}^{e^{\pi}} x \left(-\frac{1}{x} \sin(\ln x)\right) \, dx$$
+
+Simplifying the integral, we get:
+
+$$\int_{1}^{e^{\pi}} \cos(\ln x) \, dx = e^{\pi} \cos(\ln e^{\pi}) + \int_{1}^{e^{\pi}} \sin(\ln x) \, dx$$
+
+Since $\cos(\ln e^{\pi}) = \cos(\pi) = -1$, we have:
+
+$$\int_{1}^{e^{\pi}} \cos(\ln x) \, dx = -e^{\pi} + \int_{1}^{e^{\pi}} \sin(\ln x) \, dx$$
+
+Now, we have a system of equations:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = - \int_{1}^{e^{\pi}} \cos(\ln x) \, dx$$
+
+$$\int_{1}^{e^{\pi}} \cos(\ln x) \, dx = -e^{\pi} + \int_{1}^{e^{\pi}} \sin(\ln x) \, dx$$
+
+Substituting the second equation into the first equation, we get:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = - (-e^{\pi} + \int_{1}^{e^{\pi}} \sin(\ln x) \, dx)$$
+
+Simplifying the equation, we get:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = e^{\pi} - \int_{1}^{e^{\pi}} \sin(\ln x) \, dx$$
+
+Adding $\int_{1}^{e^{\pi}} \sin(\ln x) \, dx$ to both sides, we get:
+
+$$2 \int_{1}^{e^{\pi}} \sin(\ln x) \, dx = e^{\pi}$$
+
+Dividing both sides by 2, we get:
+
+$$\int_{1}^{e^{\pi}} \sin(\ln x) \, dx = \frac{e^{\pi}}{2}$$
+
+Therefore, the value of the definite integral $\int_{1}^{e^{\pi}} \sin(\ln x)\,dx$ is $\frac{e^{\pi}}{2}$."
+original,held-out,poly x trig,"Evaluate the integral $\int \left(2 x - 1\right) \cos x\,dx$ using integration by parts.",True,symbolic,True,False,374,"To evaluate the integral $\int \left(2 x - 1\right) \cos x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = 2x - 1$ and $dv = \cos x \, dx$. Then, $du = 2 \, dx$ and $v = \sin x$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int \left(2 x - 1\right) \cos x\,dx = \left(2x - 1\right) \sin x - \int \sin x \, 2 \, dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int \left(2 x - 1\right) \cos x\,dx = \left(2x - 1\right) \sin x - 2 \int \sin x \, dx$$
+
+Evaluating the integral of $\sin x$, we get:
+
+$$\int \sin x \, dx = -\cos x + C$$
+
+where $C$ is the constant of integration.
+
+Now, we can plug this result back into our original equation:
+
+$$\int \left(2 x - 1\right) \cos x\,dx = \left(2x - 1\right) \sin x + 2 \cos x + C$$
+
+So, the final answer is:
+
+$$\int \left(2 x - 1\right) \cos x\,dx = \left(2x - 1\right) \sin x + 2 \cos x + C$$"
+original,held-out,poly x exp,"Evaluate the integral $\int x e^{2 x}\,dx$ using integration by parts.",True,symbolic,True,False,297,"To evaluate the integral $\int x e^{2 x}\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = e^{2x} dx$. Then, $du = dx$ and $v = \frac{1}{2}e^{2x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int x e^{2 x}\,dx = x \cdot \frac{1}{2}e^{2x} - \int \frac{1}{2}e^{2x} \,dx$$
+
+The integral on the right-hand side is a standard integral:
+
+$$\int \frac{1}{2}e^{2x} \,dx = \frac{1}{4}e^{2x}$$
+
+So, we have:
+
+$$\int x e^{2 x}\,dx = \frac{1}{2}xe^{2x} - \frac{1}{4}e^{2x} + C$$
+
+where $C$ is the constant of integration.
+
+Therefore, the final answer is:
+
+$$\int x e^{2 x}\,dx = \frac{1}{2}xe^{2x} - \frac{1}{4}e^{2x} + C$$"
+original,held-out,inverse trig,"Evaluate the integral $\int x \arctan(2 x)\,dx$ using integration by parts.",False,wrong,False,False,721,"To evaluate the integral $\int x \arctan(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \arctan(2x) dx$. Then, $du = dx$ and $v = \frac{1}{2} \arctan(2x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \arctan(2 x)\,dx = \frac{x}{2} \arctan(2x) - \int \frac{1}{2} \arctan(2x) \,dx$$
+
+To evaluate the remaining integral, we can use integration by parts again. Let's choose $u = \arctan(2x)$ and $dv = dx$. Then, $du = \frac{2}{1+4x^2} dx$ and $v = \frac{1}{2} x$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{1}{2} \arctan(2x) \,dx = \frac{1}{2} \cdot \frac{1}{2} x \arctan(2x) - \int \frac{1}{2} \cdot \frac{1}{2} x \cdot \frac{2}{1+4x^2} \,dx$$
+
+Simplifying the remaining integral, we get:
+
+$$\int \frac{1}{2} \cdot \frac{1}{2} x \cdot \frac{2}{1+4x^2} \,dx = \frac{1}{4} \int \frac{x}{1+4x^2} \,dx$$
+
+To evaluate this integral, we can use the substitution $w = 1+4x^2$. Then, $dw = 8x dx$ and $x dx = \frac{1}{8} dw$.
+
+Now, we can rewrite the integral as:
+
+$$\frac{1}{4} \int \frac{x}{1+4x^2} \,dx = \frac{1}{32} \int \frac{dw}{w}$$
+
+Evaluating this integral, we get:
+
+$$\frac{1}{32} \int \frac{dw}{w} = \frac{1}{32} \ln|w| + C = \frac{1}{32} \ln|1+4x^2| + C$$
+
+Now, we can substitute back $w = 1+4x^2$ to get:
+
+$$\frac{1}{32} \ln|1+4x^2| + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x \arctan(2 x)\,dx = \frac{x}{2} \arctan(2x) - \frac{1}{32} \ln|1+4x^2| + C$$
+
+So, the final answer is:
+
+$$\int x \arctan(2 x)\,dx = \frac{x}{2} \arctan(2x) - \frac{1}{32} \ln|1+4x^2| + C$$"
+original,held-out,logarithm,"Evaluate the integral $\int x \ln(2 x)\,dx$ using integration by parts.",True,symbolic,True,False,399,"To evaluate the integral $\int x \ln(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln(2x)$ and $dv = x \,dx$. Then, $du = \frac{1}{2x} \cdot 2 \,dx = \frac{1}{x} \,dx$ and $v = \frac{x^2}{2}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \ln(2x) \,dx = \frac{x^2}{2} \ln(2x) - \int \frac{x^2}{2} \cdot \frac{1}{x} \,dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x \ln(2x) \,dx = \frac{x^2}{2} \ln(2x) - \frac{1}{2} \int x \,dx$$
+
+Evaluating the remaining integral, we get:
+
+$$\int x \ln(2x) \,dx = \frac{x^2}{2} \ln(2x) - \frac{1}{2} \cdot \frac{x^2}{2} + C$$
+
+Simplifying, we get:
+
+$$\int x \ln(2x) \,dx = \frac{x^2}{2} \ln(2x) - \frac{x^2}{4} + C$$
+
+where $C$ is the constant of integration.
+
+So, the final answer is:
+
+$$\int x \ln(2x) \,dx = \frac{x^2}{2} \ln(2x) - \frac{x^2}{4} + C$$"
+original,held-out,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \sin x\,dx$ using integration by parts.",True,numeric,True,False,397,"To evaluate the definite integral $\int_{0}^{\pi} x \sin x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \sin x \,dx$. Then, $du = dx$ and $v = -\cos x$.
+
+Now, we can write the integral as:
+
+$$\int_{0}^{\pi} x \sin x\,dx = \left[ x (-\cos x) \right]_{0}^{\pi} - \int_{0}^{\pi} (-\cos x) \,dx$$
+
+Evaluating the first term, we get:
+
+$$\left[ x (-\cos x) \right]_{0}^{\pi} = \pi (-\cos \pi) - 0 (-\cos 0)$$
+
+Since $\cos \pi = -1$ and $\cos 0 = 1$, we have:
+
+$$\pi (-\cos \pi) - 0 (-\cos 0) = \pi (1) = \pi$$
+
+Now, let's evaluate the second term:
+
+$$\int_{0}^{\pi} (-\cos x) \,dx = \left[ \sin x \right]_{0}^{\pi}$$
+
+Since $\sin \pi = 0$ and $\sin 0 = 0$, we have:
+
+$$\left[ \sin x \right]_{0}^{\pi} = 0 - 0 = 0$$
+
+Now, we can combine the results:
+
+$$\int_{0}^{\pi} x \sin x\,dx = \pi - 0 = \pi$$
+
+Therefore, the value of the definite integral is $\pi$."
+original,held-out,definite,"Evaluate the definite integral $\int_{0}^{1} x e^{-x}\,dx$ using integration by parts.",False,wrong,False,False,378,"To evaluate the definite integral $\int_{0}^{1} x e^{-x}\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = e^{-x} dx$. Then, $du = dx$ and $v = -e^{-x}$.
+
+Now, we can write the integral as:
+
+$$\int_{0}^{1} x e^{-x}\,dx = \left[ x (-e^{-x}) \right]_{0}^{1} - \int_{0}^{1} (-e^{-x}) \,dx$$
+
+Evaluating the first term, we get:
+
+$$\left[ x (-e^{-x}) \right]_{0}^{1} = -1(e^{-1}) - 0(e^{0}) = -e^{-1}$$
+
+Now, let's evaluate the second term:
+
+$$\int_{0}^{1} (-e^{-x}) \,dx = \left[ -e^{-x} \right]_{0}^{1} = -e^{-1} + 1$$
+
+Now, we can combine the two terms:
+
+$$\int_{0}^{1} x e^{-x}\,dx = -e^{-1} - \left( -e^{-1} + 1 \right)$$
+
+Simplifying, we get:
+
+$$\int_{0}^{1} x e^{-x}\,dx = -e^{-1} + e^{-1} - 1$$
+
+$$\int_{0}^{1} x e^{-x}\,dx = -1$$
+
+So, the value of the definite integral is $\boxed{-1}$."
+original,held-out,definite,"Evaluate the definite integral $\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx$ using integration by parts.",False,wrong,False,False,779,"To evaluate the definite integral $\int_{0}^{\frac{\pi}{2}} x \cos^{2} x\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \cos^{2} x \,dx$. Then, $du = dx$ and $v = \int \cos^{2} x \,dx$.
+
+We can use the trigonometric identity $\cos^{2} x = \frac{1 + \cos 2x}{2}$ to simplify the integral:
+
+$$v = \int \cos^{2} x \,dx = \frac{1}{2} \int (1 + \cos 2x) \,dx = \frac{1}{2} \left(x + \frac{1}{2} \sin 2x \right)$$
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x \,dx = \left[x \left(\frac{1}{2} \left(x + \frac{1}{2} \sin 2x \right) \right) \right]_{0}^{\frac{\pi}{2}} - \int_{0}^{\frac{\pi}{2}} \left(\frac{1}{2} \left(x + \frac{1}{2} \sin 2x \right) \right) \,dx$$
+
+Evaluating the first term, we get:
+
+$$\left[x \left(\frac{1}{2} \left(x + \frac{1}{2} \sin 2x \right) \right) \right]_{0}^{\frac{\pi}{2}} = \frac{\pi}{2} \left(\frac{\pi}{2} + \frac{1}{2} \sin \pi \right) - 0 = \frac{\pi^{2}}{4}$$
+
+Now, we need to evaluate the second term:
+
+$$\int_{0}^{\frac{\pi}{2}} \left(\frac{1}{2} \left(x + \frac{1}{2} \sin 2x \right) \right) \,dx = \frac{1}{2} \left[\frac{x^{2}}{2} + \frac{1}{4} \left(-\frac{1}{2} \cos 2x \right) \right]_{0}^{\frac{\pi}{2}}$$
+
+Evaluating the limits, we get:
+
+$$\frac{1}{2} \left[\frac{x^{2}}{2} + \frac{1}{4} \left(-\frac{1}{2} \cos 2x \right) \right]_{0}^{\frac{\pi}{2}} = \frac{1}{2} \left[\frac{\pi^{2}}{8} + \frac{1}{8} \left(-\cos \pi \right) \right] - 0 = \frac{\pi^{2}}{16}$$
+
+Now, we can combine the results:
+
+$$\int_{0}^{\frac{\pi}{2}} x \cos^{2} x \,dx = \frac{\pi^{2}}{4} - \frac{\pi^{2}}{16} = \frac{3\pi^{2}}{16}$$
+
+Therefore, the value of the definite integral is $\frac{3\pi^{2}}{16}$."
+original,held-out,cyclic,"Evaluate the integral $\int e^{-x} \cos(2 x)\,dx$ using integration by parts.",False,wrong,False,False,689,"To evaluate the integral $\int e^{-x} \cos(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = \cos(2x)$ and $dv = e^{-x} dx$. Then, $du = -2 \sin(2x) dx$ and $v = -e^{-x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int e^{-x} \cos(2 x)\,dx = \cos(2x) (-e^{-x}) - \int (-e^{-x}) (-2 \sin(2x)) dx$$
+
+$$= -e^{-x} \cos(2x) + 2 \int e^{-x} \sin(2x) dx$$
+
+To evaluate the remaining integral, we can use integration by parts again. Let's choose $u = \sin(2x)$ and $dv = e^{-x} dx$. Then, $du = 2 \cos(2x) dx$ and $v = -e^{-x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int e^{-x} \sin(2 x)\,dx = \sin(2x) (-e^{-x}) - \int (-e^{-x}) (2 \cos(2x)) dx$$
+
+$$= -e^{-x} \sin(2x) - 2 \int e^{-x} \cos(2x) dx$$
+
+Now, we have a system of two equations:
+
+$$\int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2x) + 2 \int e^{-x} \sin(2x) dx$$
+
+$$\int e^{-x} \sin(2 x)\,dx = -e^{-x} \sin(2x) - 2 \int e^{-x} \cos(2x) dx$$
+
+Substituting the second equation into the first equation, we get:
+
+$$\int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2x) + 2 (-e^{-x} \sin(2x) - 2 \int e^{-x} \cos(2x) dx)$$
+
+Simplifying the equation, we get:
+
+$$\int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2x) - 2e^{-x} \sin(2x) - 4 \int e^{-x} \cos(2x) dx$$
+
+Now, we can isolate the integral:
+
+$$5 \int e^{-x} \cos(2 x)\,dx = -e^{-x} \cos(2x) - 2e^{-x} \sin(2x)$$
+
+Dividing both sides by 5, we get:
+
+$$\int e^{-x} \cos(2 x)\,dx = \frac{-e^{-x} \cos(2x) - 2e^{-x} \sin(2x)}{5}$$
+
+This is the final answer."
+original,held-out,poly x exp,"Evaluate the integral $\int x e^{-x}\,dx$ using integration by parts.",False,wrong,False,False,259,"To evaluate the integral $\int x e^{-x}\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = e^{-x} \,dx$. Then, $du = dx$ and $v = -e^{-x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int x e^{-x} \,dx = x(-e^{-x}) - \int (-e^{-x}) \,dx$$
+
+Simplifying the first term, we get:
+
+$$-x e^{-x}$$
+
+Now, let's evaluate the integral on the right-hand side:
+
+$$\int (-e^{-x}) \,dx = \int e^{-x} \,dx = -e^{-x}$$
+
+So, the original integral becomes:
+
+$$\int x e^{-x} \,dx = -x e^{-x} - (-e^{-x})$$
+
+Simplifying further, we get:
+
+$$\int x e^{-x} \,dx = -x e^{-x} + e^{-x}$$
+
+This is the final answer."
+original,held-out,poly x trig,"Evaluate the integral $\int x^{2} \cos(3 x)\,dx$ using integration by parts.",False,wrong,False,False,632,"To evaluate the integral $\int x^{2} \cos(3 x)\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^2$ and $dv = \cos(3x) dx$. Then, $du = 2x dx$ and $v = \frac{1}{3} \sin(3x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{2} \cos(3 x)\,dx = x^2 \cdot \frac{1}{3} \sin(3x) - \int \frac{1}{3} \sin(3x) \cdot 2x \, dx$$
+
+$$= \frac{1}{3} x^2 \sin(3x) - \frac{2}{3} \int x \sin(3x) \, dx$$
+
+Now, we need to evaluate the integral $\int x \sin(3x) \, dx$. We can use integration by parts again:
+
+Let's choose $u = x$ and $dv = \sin(3x) dx$. Then, $du = dx$ and $v = -\frac{1}{3} \cos(3x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \sin(3x) \, dx = x \cdot -\frac{1}{3} \cos(3x) - \int -\frac{1}{3} \cos(3x) \, dx$$
+
+$$= -\frac{1}{3} x \cos(3x) + \frac{1}{9} \int \cos(3x) \, dx$$
+
+$$= -\frac{1}{3} x \cos(3x) + \frac{1}{27} \sin(3x) + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x^{2} \cos(3 x)\,dx = \frac{1}{3} x^2 \sin(3x) - \frac{2}{3} \left(-\frac{1}{3} x \cos(3x) + \frac{1}{27} \sin(3x)\right)$$
+
+$$= \frac{1}{3} x^2 \sin(3x) + \frac{2}{9} x \cos(3x) - \frac{2}{81} \sin(3x) + C$$
+
+So, the final answer is:
+
+$$\int x^{2} \cos(3 x)\,dx = \frac{1}{3} x^2 \sin(3x) + \frac{2}{9} x \cos(3x) - \frac{2}{81} \sin(3x) + C$$"
+original,unseen,poly x exp,"Evaluate the integral $\int x^{2} e^{4 x}\,dx$ using integration by parts.",True,symbolic,True,False,601,"To evaluate the integral $\int x^{2} e^{4 x}\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^{2}$ and $dv = e^{4x} dx$. Then, $du = 2x dx$ and $v = \frac{1}{4} e^{4x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int x^{2} e^{4 x}\,dx = x^{2} \cdot \frac{1}{4} e^{4x} - \int \frac{1}{4} e^{4x} \cdot 2x \, dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x^{2} e^{4 x}\,dx = \frac{1}{4} x^{2} e^{4x} - \frac{1}{2} \int x e^{4x} \, dx$$
+
+Now, we need to evaluate the integral $\int x e^{4x} \, dx$. We can use integration by parts again, choosing $u = x$ and $dv = e^{4x} dx$. Then, $du = dx$ and $v = \frac{1}{4} e^{4x}$.
+
+Plugging these values into the integration by parts formula, we get:
+
+$$\int x e^{4x} \, dx = x \cdot \frac{1}{4} e^{4x} - \int \frac{1}{4} e^{4x} \, dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x e^{4x} \, dx = \frac{1}{4} x e^{4x} - \frac{1}{16} e^{4x} + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x^{2} e^{4 x}\,dx = \frac{1}{4} x^{2} e^{4x} - \frac{1}{2} \left( \frac{1}{4} x e^{4x} - \frac{1}{16} e^{4x} \right)$$
+
+Simplifying the expression, we get:
+
+$$\int x^{2} e^{4 x}\,dx = \frac{1}{4} x^{2} e^{4x} - \frac{1}{8} x e^{4x} + \frac{1}{32} e^{4x} + C$$
+
+This is the final result for the integral $\int x^{2} e^{4 x}\,dx$."
+original,unseen,poly x exp,"Evaluate the integral $\int x e^{5 x}\,dx$ using integration by parts.",True,symbolic,True,False,359,"To evaluate the integral $\int x e^{5 x}\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = e^{5x} dx$. Then, $du = dx$ and $v = \frac{1}{5}e^{5x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int x e^{5 x}\,dx = x \cdot \frac{1}{5}e^{5x} - \int \frac{1}{5}e^{5x} \,dx$$
+
+The integral on the right-hand side is a standard integral:
+
+$$\int \frac{1}{5}e^{5x} \,dx = \frac{1}{5} \int e^{5x} \,dx = \frac{1}{5} \cdot \frac{1}{5}e^{5x} + C = \frac{1}{25}e^{5x} + C$$
+
+where $C$ is the constant of integration.
+
+Now, we can plug this result back into the original equation:
+
+$$\int x e^{5 x}\,dx = x \cdot \frac{1}{5}e^{5x} - \frac{1}{25}e^{5x} + C$$
+
+Simplifying, we get:
+
+$$\int x e^{5 x}\,dx = \frac{1}{5}xe^{5x} - \frac{1}{25}e^{5x} + C$$
+
+This is the final result."
+original,unseen,poly x exp,"Evaluate the integral $\int x^{2} e^{-3 x}\,dx$ using integration by parts.",False,wrong,False,False,701,"To evaluate the integral $\int x^{2} e^{-3 x}\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x^2$ and $dv = e^{-3x} dx$. Then, $du = 2x dx$ and $v = \frac{1}{-3}e^{-3x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int x^{2} e^{-3 x}\,dx = x^2 \cdot \frac{1}{-3}e^{-3x} - \int \frac{1}{-3}e^{-3x} \cdot 2x \,dx$$
+
+Simplifying the first term, we get:
+
+$$\frac{1}{-3}x^2 e^{-3x}$$
+
+Now, let's focus on the integral in the second term:
+
+$$\int \frac{1}{-3}e^{-3x} \cdot 2x \,dx$$
+
+We can simplify this by combining the constants:
+
+$$\int \frac{2}{-3}x e^{-3x} \,dx$$
+
+Now, we can use integration by parts again. Let's choose $u = x$ and $dv = e^{-3x} dx$. Then, $du = dx$ and $v = \frac{1}{-3}e^{-3x}$.
+
+Plugging these values into the integration by parts formula, we get:
+
+$$\int \frac{2}{-3}x e^{-3x} \,dx = \frac{2}{-3}x \cdot \frac{1}{-3}e^{-3x} - \int \frac{1}{-3}e^{-3x} \,dx$$
+
+Simplifying the first term, we get:
+
+$$\frac{2}{9}x e^{-3x}$$
+
+Now, let's focus on the integral in the second term:
+
+$$\int \frac{1}{-3}e^{-3x} \,dx$$
+
+This is a standard integral, which can be evaluated as:
+
+$$\int \frac{1}{-3}e^{-3x} \,dx = \frac{1}{-3} \cdot \frac{1}{-3} e^{-3x} + C$$
+
+Simplifying, we get:
+
+$$\frac{1}{9} e^{-3x} + C$$
+
+Now, let's combine the results from the two integration by parts steps:
+
+$$\int x^{2} e^{-3 x}\,dx = \frac{1}{-3}x^2 e^{-3x} - \frac{2}{9}x e^{-3x} + \frac{1}{9} e^{-3x} + C$$
+
+Simplifying, we get:
+
+$$\int x^{2} e^{-3 x}\,dx = \frac{1}{-3}x^2 e^{-3x} - \frac{2}{9}x e^{-3x} + \frac{1}{9} e^{-3x} + C$$
+
+This is the final result for the integral."
+original,unseen,poly x trig,"Evaluate the integral $\int x^{3} \cos(2 x)\,dx$ using integration by parts.",True,symbolic,True,False,804,"To evaluate the integral $\int x^{3} \cos(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^{3}$ and $dv = \cos(2x) dx$. Then, $du = 3x^{2} dx$ and $v = \frac{1}{2} \sin(2x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{3} \cos(2 x)\,dx = \frac{1}{2} x^{3} \sin(2x) - \int \frac{1}{2} \sin(2x) \cdot 3x^{2} dx$$
+
+$$= \frac{1}{2} x^{3} \sin(2x) - \frac{3}{2} \int x^{2} \sin(2x) dx$$
+
+Now, we need to integrate $\int x^{2} \sin(2x) dx$. We can use integration by parts again with $u = x^{2}$ and $dv = \sin(2x) dx$. Then, $du = 2x dx$ and $v = -\frac{1}{2} \cos(2x)$.
+
+Applying the integration by parts formula again:
+
+$$\int x^{2} \sin(2x) dx = -\frac{1}{2} x^{2} \cos(2x) + \int \frac{1}{2} \cos(2x) \cdot 2x dx$$
+
+$$= -\frac{1}{2} x^{2} \cos(2x) + \int x \cos(2x) dx$$
+
+Now, we need to integrate $\int x \cos(2x) dx$. We can use integration by parts again with $u = x$ and $dv = \cos(2x) dx$. Then, $du = dx$ and $v = \frac{1}{2} \sin(2x)$.
+
+Applying the integration by parts formula again:
+
+$$\int x \cos(2x) dx = \frac{1}{2} x \sin(2x) - \int \frac{1}{2} \sin(2x) dx$$
+
+$$= \frac{1}{2} x \sin(2x) + \frac{1}{4} \cos(2x)$$
+
+Now, we can substitute this result back into the previous equation:
+
+$$\int x^{2} \sin(2x) dx = -\frac{1}{2} x^{2} \cos(2x) + \frac{1}{2} x \sin(2x) + \frac{1}{4} \cos(2x)$$
+
+Now, we can substitute this result back into the previous equation:
+
+$$\int x^{3} \cos(2 x)\,dx = \frac{1}{2} x^{3} \sin(2x) - \frac{3}{2} \left(-\frac{1}{2} x^{2} \cos(2x) + \frac{1}{2} x \sin(2x) + \frac{1}{4} \cos(2x)\right)$$
+
+$$= \frac{1}{2} x^{3} \sin(2x) + \frac{3}{4} x^{2} \cos(2x) - \frac{3}{4} x \sin(2x) - \frac{3}{8} \cos(2x)$$
+
+This is the final result of the integral."
+original,unseen,poly x trig,"Evaluate the integral $\int x \sin(5 x)\,dx$ using integration by parts.",False,wrong,False,False,343,"To evaluate the integral $\int x \sin(5 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \sin(5x) dx$. Then, $du = dx$ and $v = \frac{1}{5} \cos(5x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \sin(5 x)\,dx = x \cdot \frac{1}{5} \cos(5x) - \int \frac{1}{5} \cos(5x) \,dx$$
+
+The integral on the right-hand side is a standard integral:
+
+$$\int \frac{1}{5} \cos(5x) \,dx = \frac{1}{5} \cdot \frac{1}{5} \sin(5x) + C_1$$
+
+where $C_1$ is a constant.
+
+Now, we can simplify the expression:
+
+$$\int x \sin(5 x)\,dx = \frac{x}{5} \cos(5x) + \frac{1}{25} \sin(5x) + C_2$$
+
+where $C_2$ is a constant.
+
+So, the final answer is:
+
+$$\int x \sin(5 x)\,dx = \frac{x}{5} \cos(5x) + \frac{1}{25} \sin(5x) + C$$
+
+where $C$ is a constant."
+original,unseen,poly x trig,"Evaluate the integral $\int x^{2} \cos(4 x)\,dx$ using integration by parts.",False,wrong,False,False,617,"To evaluate the integral $\int x^{2} \cos(4 x)\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^2$ and $dv = \cos(4x) dx$. Then, $du = 2x dx$ and $v = \frac{1}{4} \sin(4x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{2} \cos(4 x)\,dx = x^2 \cdot \frac{1}{4} \sin(4x) - \int \frac{1}{4} \sin(4x) \cdot 2x \, dx$$
+
+$$= \frac{1}{4} x^2 \sin(4x) - \frac{1}{2} \int x \sin(4x) \, dx$$
+
+Now, we need to integrate $\int x \sin(4x) \, dx$. We can use integration by parts again with $u = x$ and $dv = \sin(4x) dx$. Then, $du = dx$ and $v = -\frac{1}{4} \cos(4x)$.
+
+Applying the integration by parts formula:
+
+$$\int x \sin(4x) \, dx = x \cdot -\frac{1}{4} \cos(4x) - \int -\frac{1}{4} \cos(4x) \, dx$$
+
+$$= -\frac{1}{4} x \cos(4x) + \frac{1}{4} \int \cos(4x) \, dx$$
+
+$$= -\frac{1}{4} x \cos(4x) + \frac{1}{32} \sin(4x) + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x^{2} \cos(4 x)\,dx = \frac{1}{4} x^2 \sin(4x) - \frac{1}{2} \left( -\frac{1}{4} x \cos(4x) + \frac{1}{32} \sin(4x) \right) + C$$
+
+$$= \frac{1}{4} x^2 \sin(4x) + \frac{1}{8} x \cos(4x) - \frac{1}{64} \sin(4x) + C$$
+
+$$= \frac{1}{4} x^2 \sin(4x) + \frac{1}{8} x \cos(4x) - \frac{1}{64} \sin(4x) + C$$
+
+This is the final result for the integral."
+original,unseen,logarithm,"Evaluate the integral $\int x^{3} \ln(2 x)\,dx$ using integration by parts.",True,symbolic,True,False,396,"To evaluate the integral $\int x^{3} \ln(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln(2x)$ and $dv = x^3 dx$. Then, $du = \frac{1}{x} dx$ and $v = \frac{x^4}{4}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{3} \ln(2 x)\,dx = \frac{x^4}{4} \ln(2x) - \int \frac{x^4}{4} \cdot \frac{1}{x} dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x^{3} \ln(2 x)\,dx = \frac{x^4}{4} \ln(2x) - \frac{1}{4} \int x^3 dx$$
+
+Evaluating the integral on the right-hand side, we get:
+
+$$\int x^{3} \ln(2 x)\,dx = \frac{x^4}{4} \ln(2x) - \frac{1}{4} \cdot \frac{x^4}{4} + C$$
+
+Simplifying, we get:
+
+$$\int x^{3} \ln(2 x)\,dx = \frac{x^4}{4} \ln(2x) - \frac{x^4}{16} + C$$
+
+where $C$ is the constant of integration.
+
+So, the final answer is:
+
+$$\int x^{3} \ln(2 x)\,dx = \frac{x^4}{4} \ln(2x) - \frac{x^4}{16} + C$$"
+original,unseen,logarithm,"Evaluate the integral $\int x \ln(4 x)\,dx$ using integration by parts.",True,symbolic,True,False,400,"To evaluate the integral $\int x \ln(4 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln(4x)$ and $dv = x \,dx$. Then, $du = \frac{1}{4x} \cdot 4 \,dx = \frac{1}{x} \,dx$ and $v = \frac{x^2}{2}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \ln(4x) \,dx = \frac{x^2}{2} \ln(4x) - \int \frac{x^2}{2} \cdot \frac{1}{x} \,dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x \ln(4x) \,dx = \frac{x^2}{2} \ln(4x) - \frac{1}{2} \int x \,dx$$
+
+Evaluating the remaining integral, we get:
+
+$$\int x \ln(4x) \,dx = \frac{x^2}{2} \ln(4x) - \frac{1}{2} \cdot \frac{x^2}{2} + C$$
+
+Simplifying further, we get:
+
+$$\int x \ln(4x) \,dx = \frac{x^2}{2} \ln(4x) - \frac{x^2}{4} + C$$
+
+where $C$ is the constant of integration.
+
+So, the final answer is:
+
+$$\int x \ln(4x) \,dx = \frac{x^2}{2} \ln(4x) - \frac{x^2}{4} + C$$"
+original,unseen,logarithm,"Evaluate the integral $\int x^{7} \ln x\,dx$ using integration by parts.",True,symbolic,True,False,366,"To evaluate the integral $\int x^{7} \ln x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln x$ and $dv = x^{7} dx$. Then, $du = \frac{1}{x} dx$ and $v = \frac{x^{8}}{8}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{7} \ln x\,dx = \frac{x^{8}}{8} \ln x - \int \frac{x^{8}}{8} \cdot \frac{1}{x} dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x^{7} \ln x\,dx = \frac{x^{8}}{8} \ln x - \frac{1}{8} \int x^{7} dx$$
+
+Evaluating the remaining integral, we have:
+
+$$\int x^{7} \ln x\,dx = \frac{x^{8}}{8} \ln x - \frac{1}{8} \cdot \frac{x^{8}}{8} + C$$
+
+Simplifying further, we get:
+
+$$\int x^{7} \ln x\,dx = \frac{x^{8}}{8} \ln x - \frac{x^{8}}{64} + C$$
+
+So, the final answer is:
+
+$$\int x^{7} \ln x\,dx = \frac{x^{8}}{8} \ln x - \frac{x^{8}}{64} + C$$"
+original,unseen,logarithm,"Evaluate the integral $\int x^{2} \ln(5 x)\,dx$ using integration by parts.",False,wrong,False,False,363,"To evaluate the integral $\int x^{2} \ln(5 x)\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = \ln(5x)$ and $dv = x^2 dx$. Then, $du = \frac{1}{x} \cdot \frac{1}{5} dx = \frac{1}{5x} dx$ and $v = \frac{x^3}{3}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{2} \ln(5 x)\,dx = \frac{x^3}{3} \ln(5x) - \int \frac{x^3}{3} \cdot \frac{1}{5x} dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int x^{2} \ln(5 x)\,dx = \frac{x^3}{3} \ln(5x) - \frac{1}{15} \int x^2 dx$$
+
+Evaluating the remaining integral, we get:
+
+$$\int x^{2} \ln(5 x)\,dx = \frac{x^3}{3} \ln(5x) - \frac{1}{15} \cdot \frac{x^3}{3} + C$$
+
+Simplifying, we get:
+
+$$\int x^{2} \ln(5 x)\,dx = \frac{x^3}{3} \ln(5x) - \frac{x^3}{45} + C$$
+
+where $C$ is the constant of integration."
+original,unseen,cyclic,"Evaluate the integral $\int e^{4 x} \sin(2 x)\,dx$ using integration by parts.",False,wrong,False,False,685,"To evaluate the integral $\int e^{4 x} \sin(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = \sin(2x)$ and $dv = e^{4x} dx$. Then, $du = 2 \cos(2x) dx$ and $v = \frac{1}{4} e^{4x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int e^{4 x} \sin(2 x)\,dx = \frac{1}{4} e^{4x} \sin(2x) - \int \frac{1}{4} e^{4x} (2 \cos(2x)) dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int e^{4 x} \sin(2 x)\,dx = \frac{1}{4} e^{4x} \sin(2x) - \frac{1}{2} \int e^{4x} \cos(2x) dx$$
+
+Now, we can use integration by parts again to evaluate the integral on the right-hand side. Let's choose $u = \cos(2x)$ and $dv = e^{4x} dx$. Then, $du = -2 \sin(2x) dx$ and $v = \frac{1}{4} e^{4x}$.
+
+Applying the integration by parts formula again, we get:
+
+$$\int e^{4 x} \sin(2 x)\,dx = \frac{1}{4} e^{4x} \sin(2x) - \frac{1}{2} \left( \frac{1}{4} e^{4x} \cos(2x) - \int \frac{1}{4} e^{4x} (-2 \sin(2x)) dx \right)$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int e^{4 x} \sin(2 x)\,dx = \frac{1}{4} e^{4x} \sin(2x) - \frac{1}{8} e^{4x} \cos(2x) + \frac{1}{2} \int e^{4x} \sin(2x) dx$$
+
+Now, we can isolate the original integral on the right-hand side:
+
+$$\frac{1}{2} \int e^{4x} \sin(2x) dx = \frac{1}{4} e^{4x} \sin(2x) - \frac{1}{8} e^{4x} \cos(2x)$$
+
+Multiplying both sides by 2, we get:
+
+$$\int e^{4 x} \sin(2 x)\,dx = \frac{1}{2} e^{4x} \sin(2x) - \frac{1}{4} e^{4x} \cos(2x) + C$$
+
+where $C$ is the constant of integration.
+
+This is the final answer to the integral."
+original,unseen,cyclic,"Evaluate the integral $\int e^{-3 x} \cos(2 x)\,dx$ using integration by parts.",False,wrong,False,False,1275,"To evaluate the integral $\int e^{-3 x} \cos(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = \cos(2x)$ and $dv = e^{-3x} dx$. Then, $du = -2 \sin(2x) dx$ and $v = -\frac{1}{3} e^{-3x}$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = \left(-\frac{1}{3} e^{-3x}\right) \cos(2x) - \int \left(-\frac{1}{3} e^{-3x}\right) (-2 \sin(2x)) dx$$
+
+Simplifying the expression, we get:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{3} e^{-3x} \cos(2x) + \frac{2}{3} \int e^{-3x} \sin(2x) dx$$
+
+Now, we need to evaluate the integral $\int e^{-3x} \sin(2x) dx$. We can use integration by parts again, choosing $u = \sin(2x)$ and $dv = e^{-3x} dx$. Then, $du = 2 \cos(2x) dx$ and $v = -\frac{1}{3} e^{-3x}$.
+
+Plugging these values into the integration by parts formula, we get:
+
+$$\int e^{-3x} \sin(2x) dx = \left(-\frac{1}{3} e^{-3x}\right) \sin(2x) - \int \left(-\frac{1}{3} e^{-3x}\right) (2 \cos(2x)) dx$$
+
+Simplifying the expression, we get:
+
+$$\int e^{-3x} \sin(2x) dx = -\frac{1}{3} e^{-3x} \sin(2x) + \frac{2}{3} \int e^{-3x} \cos(2x) dx$$
+
+Now, we have a system of two equations:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{3} e^{-3x} \cos(2x) + \frac{2}{3} \int e^{-3x} \sin(2x) dx$$
+
+$$\int e^{-3x} \sin(2x) dx = -\frac{1}{3} e^{-3x} \sin(2x) + \frac{2}{3} \int e^{-3x} \cos(2x) dx$$
+
+Substituting the second equation into the first equation, we get:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{3} e^{-3x} \cos(2x) + \frac{2}{3} \left(-\frac{1}{3} e^{-3x} \sin(2x) + \frac{2}{3} \int e^{-3x} \cos(2x) dx\right)$$
+
+Simplifying the expression, we get:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{3} e^{-3x} \cos(2x) - \frac{2}{9} e^{-3x} \sin(2x) + \frac{4}{9} \int e^{-3x} \cos(2x) dx$$
+
+Now, we can isolate the integral $\int e^{-3x} \cos(2x) dx$:
+
+$$\int e^{-3 x} \cos(2 x)\,dx - \frac{4}{9} \int e^{-3x} \cos(2x) dx = -\frac{1}{3} e^{-3x} \cos(2x) - \frac{2}{9} e^{-3x} \sin(2x)$$
+
+$$\left(1 - \frac{4}{9}\right) \int e^{-3x} \cos(2x) dx = -\frac{1}{3} e^{-3x} \cos(2x) - \frac{2}{9} e^{-3x} \sin(2x)$$
+
+$$\frac{5}{9} \int e^{-3x} \cos(2x) dx = -\frac{1}{3} e^{-3x} \cos(2x) - \frac{2}{9} e^{-3x} \sin(2x)$$
+
+Now, we can solve for the integral:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = \frac{3}{5} \left(-\frac{1}{3} e^{-3x} \cos(2x) - \frac{2}{9} e^{-3x} \sin(2x)\right)$$
+
+Simplifying the expression, we get:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{5} e^{-3x} \cos(2x) - \frac{2}{15} e^{-3x} \sin(2x) + C$$
+
+where $C$ is the constant of integration.
+
+Therefore, the final answer is:
+
+$$\int e^{-3 x} \cos(2 x)\,dx = -\frac{1}{5} e^{-3x} \cos(2x) - \frac{2}{15} e^{-3x} \sin(2x) + C$$"
+original,unseen,cyclic,"Evaluate the integral $\int e^{2 x} \cos(5 x)\,dx$ using integration by parts.",False,wrong,False,False,1207,"To evaluate the integral $\int e^{2 x} \cos(5 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = e^{2x}$ and $dv = \cos(5x) dx$. Then, $du = 2e^{2x} dx$ and $v = \frac{1}{5} \sin(5x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int e^{2 x} \cos(5 x)\,dx = e^{2x} \cdot \frac{1}{5} \sin(5x) - \int \frac{1}{5} \sin(5x) \cdot 2e^{2x} dx$$
+
+Simplifying the integral on the right-hand side, we get:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{5} \int e^{2x} \sin(5x) dx$$
+
+Now, we need to evaluate the integral $\int e^{2x} \sin(5x) dx$. We can use integration by parts again, choosing $u = e^{2x}$ and $dv = \sin(5x) dx$. Then, $du = 2e^{2x} dx$ and $v = -\frac{1}{5} \cos(5x)$.
+
+Applying the integration by parts formula, we get:
+
+$$\int e^{2x} \sin(5x) dx = -\frac{1}{5} e^{2x} \cos(5x) + \frac{2}{5} \int e^{2x} \cos(5x) dx$$
+
+Now, we have a system of two equations:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{5} \int e^{2x} \sin(5x) dx$$
+
+$$\int e^{2x} \sin(5x) dx = -\frac{1}{5} e^{2x} \cos(5x) + \frac{2}{5} \int e^{2x} \cos(5x) dx$$
+
+Substituting the expression for $\int e^{2x} \sin(5x) dx$ into the first equation, we get:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{5} e^{2x} \sin(5x) + \frac{2}{5} \left(-\frac{1}{5} e^{2x} \cos(5x) + \frac{2}{5} \int e^{2x} \cos(5x) dx\right)$$
+
+Simplifying the expression, we get:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{25} e^{2x} \cos(5x) + \frac{4}{25} \int e^{2x} \cos(5x) dx$$
+
+Now, we can isolate the integral $\int e^{2x} \cos(5x) dx$:
+
+$$\int e^{2 x} \cos(5 x)\,dx - \frac{4}{25} \int e^{2x} \cos(5x) dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{25} e^{2x} \cos(5x)$$
+
+Factoring out the integral, we get:
+
+$$(1 - \frac{4}{25}) \int e^{2x} \cos(5x) dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{25} e^{2x} \cos(5x)$$
+
+Simplifying the coefficient, we get:
+
+$$\frac{21}{25} \int e^{2x} \cos(5x) dx = \frac{1}{5} e^{2x} \sin(5x) - \frac{2}{25} e^{2x} \cos(5x)$$
+
+Now, we can solve for the integral:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{5}{21} \left(\frac{1}{5} e^{2x} \sin(5x) - \frac{2}{25} e^{2x} \cos(5x)\right)$$
+
+Simplifying the expression, we get:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{21} e^{2x} \sin(5x) - \frac{2}{105} e^{2x} \cos(5x) + C$$
+
+where $C$ is the constant of integration.
+
+Therefore, the final answer is:
+
+$$\int e^{2 x} \cos(5 x)\,dx = \frac{1}{21} e^{2x} \sin(5x) - \frac{2}{105} e^{2x} \cos(5x) + C$$"
+original,unseen,inverse trig,"Evaluate the integral $\int x \arctan(3 x)\,dx$ using integration by parts.",False,fallback,False,False,2500,"To evaluate the integral $\int x \arctan(3 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \arctan(3x) \,dx$. Then, $du = dx$ and $v = \frac{1}{3} \arctan(3x) + \frac{1}{9} \ln(1 + 9x^2)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \arctan(3 x)\,dx = \left( x \left( \frac{1}{3} \arctan(3x) + \frac{1}{9} \ln(1 + 9x^2) \right) \right) - \int \left( \frac{1}{3} \arctan(3x) + \frac{1}{9} \ln(1 + 9x^2) \right) \,dx$$
+
+To evaluate the integral on the right-hand side, we can use integration by parts again. Let's choose $u = \arctan(3x)$ and $dv = dx$. Then, $du = \frac{3}{1 + 9x^2} \,dx$ and $v = x$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \left( \frac{1}{3} \arctan(3x) + \frac{1}{9} \ln(1 + 9x^2) \right) \,dx = \left( \frac{1}{3} x \arctan(3x) + \frac{1}{9} x \ln(1 + 9x^2) \right) - \int \left( \frac{1}{3} \frac{x}{1 + 9x^2} + \frac{1}{9} \frac{x}{1 + 9x^2} \right) \,dx$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{1 + 9x^2}$. Then, $du = -\frac{18x}{(1 + 9x^2)^2} \,dx$ and $dx = -\frac{1 + 9x^2}{18x} \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \left( \frac{1}{3} \frac{x}{1 + 9x^2} + \frac{1}{9} \frac{x}{1 + 9x^2} \right) \,dx = \left( \frac{1}{3} \frac{x^2}{1 + 9x^2} + \frac{1}{9} \frac{x^2}{1 + 9x^2} \right) + \frac{1}{18} \int \frac{1 + 9x^2}{x} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{1 + 9x^2}{x} \,du = \left( \frac{1 + 9x^2}{x} \right) \left( -\frac{1}{x^2} \right) + \int \frac{2x}{x^2} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{2x}{x^2} \,du = \left( \frac{2x}{x^2} \right) \left( -\frac{1}{x^2} \right) + \int \frac{2}{x} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{2}{x} \,du = \left( \frac{2}{x} \right) \left( -\frac{1}{x^2} \right) + \int \frac{2}{x^3} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{2}{x^3} \,du = \left( \frac{2}{x^3} \right) \left( -\frac{1}{x^2} \right) + \int \frac{6}{x^5} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{6}{x^5} \,du = \left( \frac{6}{x^5} \right) \left( -\frac{1}{x^2} \right) + \int \frac{30}{x^7} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{30}{x^7} \,du = \left( \frac{30}{x^7} \right) \left( -\frac{1}{x^2} \right) + \int \frac{210}{x^9} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{210}{x^9} \,du = \left( \frac{210}{x^9} \right) \left( -\frac{1}{x^2} \right) + \int \frac{1890}{x^{11}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{1890}{x^{11}} \,du = \left( \frac{1890}{x^{11}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{13230}{x^{13}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{13230}{x^{13}} \,du = \left( \frac{13230}{x^{13}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{99090}{x^{15}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{99090}{x^{15}} \,du = \left( \frac{99090}{x^{15}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{742190}{x^{17}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{742190}{x^{17}} \,du = \left( \frac{742190}{x^{17}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{5498390}{x^{19}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{5498390}{x^{19}} \,du = \left( \frac{5498390}{x^{19}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{41266170}{x^{21}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int \frac{41266170}{x^{21}} \,du = \left( \frac{41266170}{x^{21}} \right) \left( -\frac{1}{x^2} \right) + \int \frac{310094190}{x^{23}} \,du$$
+
+To evaluate the integral on the right-hand side, we can use the substitution $u = \frac{1}{x}$. Then, $du = -\frac{1}{x^2} \,dx$ and $dx = -x^2 \,du$.
+
+Now"
+original,unseen,inverse trig,"Evaluate the integral $\int \arctan(4 x)\,dx$ using integration by parts.",False,wrong,False,False,397,"To evaluate the integral $\int \arctan(4 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \arctan(4x)$ and $dv = dx$. Then, $du = \frac{4}{1 + (4x)^2} dx$ and $v = x$.
+
+Now, we can plug these values into the integration by parts formula:
+
+$$\int \arctan(4x) \,dx = x \arctan(4x) - \int x \frac{4}{1 + (4x)^2} \,dx$$
+
+To evaluate the integral on the right-hand side, we can use substitution. Let's substitute $u = 1 + (4x)^2$:
+
+$$\int x \frac{4}{1 + (4x)^2} \,dx = \int \frac{4x}{u} \,dx$$
+
+Now, we can use the substitution $v = u^{1/2} = \sqrt{1 + (4x)^2}$:
+
+$$\int \frac{4x}{u} \,dx = \int \frac{4}{2v} \,dv = 2 \int \frac{1}{v} \,dv = 2 \ln|v| + C = 2 \ln\left(\sqrt{1 + (4x)^2}\right) + C$$
+
+Now, we can plug this result back into the original equation:
+
+$$\int \arctan(4x) \,dx = x \arctan(4x) - 2 \ln\left(\sqrt{1 + (4x)^2}\right) + C$$
+
+This is the final result for the integral."
+original,unseen,poly x trig,"Evaluate the integral $\int x \sinh(3 x)\,dx$ using integration by parts.",True,symbolic,True,False,317,"To evaluate the integral $\int x \sinh(3 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \sinh(3x) dx$. Then, $du = dx$ and $v = \frac{1}{3}\cosh(3x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x \sinh(3 x)\,dx = x \cdot \frac{1}{3}\cosh(3x) - \int \frac{1}{3}\cosh(3x) \,dx$$
+
+The integral on the right-hand side is a standard integral:
+
+$$\int \frac{1}{3}\cosh(3x) \,dx = \frac{1}{9}\sinh(3x)$$
+
+So, we have:
+
+$$\int x \sinh(3 x)\,dx = \frac{1}{3}x\cosh(3x) - \frac{1}{9}\sinh(3x) + C$$
+
+where $C$ is the constant of integration.
+
+Therefore, the final answer is:
+
+$$\int x \sinh(3 x)\,dx = \frac{1}{3}x\cosh(3x) - \frac{1}{9}\sinh(3x) + C$$"
+original,unseen,poly x trig,"Evaluate the integral $\int x^{2} \sin(5 x)\,dx$ using integration by parts.",False,wrong,False,False,590,"To evaluate the integral $\int x^{2} \sin(5 x)\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \, dv = uv - \int v \, du$$
+
+Let's choose $u = x^{2}$ and $dv = \sin(5x) dx$. Then, $du = 2x dx$ and $v = \frac{1}{5} \cos(5x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int x^{2} \sin(5 x)\,dx = x^{2} \cdot \frac{1}{5} \cos(5x) - \int \frac{1}{5} \cos(5x) \cdot 2x \, dx$$
+
+$$= \frac{1}{5} x^{2} \cos(5x) - \frac{2}{5} \int x \cos(5x) \, dx$$
+
+Now, we need to integrate $x \cos(5x)$ using integration by parts again. Let's choose $u = x$ and $dv = \cos(5x) dx$. Then, $du = dx$ and $v = \frac{1}{5} \sin(5x)$.
+
+Applying the integration by parts formula again:
+
+$$\int x \cos(5x) \, dx = x \cdot \frac{1}{5} \sin(5x) - \int \frac{1}{5} \sin(5x) \, dx$$
+
+$$= \frac{1}{5} x \sin(5x) + \frac{1}{25} \cos(5x) + C$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int x^{2} \sin(5 x)\,dx = \frac{1}{5} x^{2} \cos(5x) - \frac{2}{5} \left( \frac{1}{5} x \sin(5x) + \frac{1}{25} \cos(5x) \right) + C$$
+
+$$= \frac{1}{5} x^{2} \cos(5x) - \frac{2}{25} x \sin(5x) - \frac{2}{125} \cos(5x) + C$$
+
+$$= \frac{1}{5} x^{2} \cos(5x) - \frac{2}{25} x \sin(5x) - \frac{2}{125} \cos(5x) + C$$
+
+This is the final result for the integral $\int x^{2} \sin(5 x)\,dx$."
+original,unseen,definite,"Evaluate the definite integral $\int_{0}^{1} x^{2} e^{2 x}\,dx$ using integration by parts.",False,wrong,False,False,735,"To evaluate the definite integral $\int_{0}^{1} x^{2} e^{2 x}\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x^2$ and $dv = e^{2x} dx$. Then, $du = 2x dx$ and $v = \frac{1}{2}e^{2x}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{0}^{1} x^{2} e^{2 x}\,dx = \left[x^2 \cdot \frac{1}{2}e^{2x}\right]_{0}^{1} - \int_{0}^{1} \frac{1}{2}e^{2x} \cdot 2x \,dx$$
+
+Simplifying the first term, we get:
+
+$$\left[x^2 \cdot \frac{1}{2}e^{2x}\right]_{0}^{1} = \frac{1}{2}e^{2} - 0$$
+
+Now, let's evaluate the second term:
+
+$$\int_{0}^{1} \frac{1}{2}e^{2x} \cdot 2x \,dx = \int_{0}^{1} x e^{2x} \,dx$$
+
+We can apply integration by parts again, choosing $u = x$ and $dv = e^{2x} dx$. Then, $du = dx$ and $v = \frac{1}{2}e^{2x}$.
+
+Applying the integration by parts formula, we get:
+
+$$\int_{0}^{1} x e^{2x} \,dx = \left[x \cdot \frac{1}{2}e^{2x}\right]_{0}^{1} - \int_{0}^{1} \frac{1}{2}e^{2x} \,dx$$
+
+Simplifying the first term, we get:
+
+$$\left[x \cdot \frac{1}{2}e^{2x}\right]_{0}^{1} = \frac{1}{2}e^{2} - 0$$
+
+Now, let's evaluate the second term:
+
+$$\int_{0}^{1} \frac{1}{2}e^{2x} \,dx = \frac{1}{4}e^{2x} \Big|_{0}^{1} = \frac{1}{4}e^{2} - \frac{1}{4}$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int_{0}^{1} x^{2} e^{2 x}\,dx = \frac{1}{2}e^{2} - \left(\frac{1}{2}e^{2} - \frac{1}{4}e^{2} + \frac{1}{4}\right)$$
+
+Simplifying, we get:
+
+$$\int_{0}^{1} x^{2} e^{2 x}\,dx = \frac{1}{4}e^{2} + \frac{1}{4}$$
+
+$$\int_{0}^{1} x^{2} e^{2 x}\,dx = \frac{1}{4}(e^{2} + 1)$$"
+original,unseen,definite,"Evaluate the definite integral $\int_{0}^{\pi} x \sin(2 x)\,dx$ using integration by parts.",False,wrong,False,False,595,"To evaluate the definite integral $\int_{0}^{\pi} x \sin(2 x)\,dx$ using integration by parts, we can use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = x$ and $dv = \sin(2x) dx$. Then, $du = dx$ and $v = \frac{1}{2} \cos(2x)$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{0}^{\pi} x \sin(2 x)\,dx = \left[ x \cdot \frac{1}{2} \cos(2x) \right]_{0}^{\pi} - \int_{0}^{\pi} \frac{1}{2} \cos(2x) \,dx$$
+
+Evaluating the first term, we get:
+
+$$\left[ x \cdot \frac{1}{2} \cos(2x) \right]_{0}^{\pi} = \frac{1}{2} \pi \cos(2\pi) - \frac{1}{2} \cdot 0 \cos(0) = \frac{1}{2} \pi \cos(0) = \frac{1}{2} \pi$$
+
+Now, we need to evaluate the integral:
+
+$$\int_{0}^{\pi} \frac{1}{2} \cos(2x) \,dx$$
+
+To do this, we can use the substitution $w = 2x$, which implies $dw = 2dx$. Then, we have:
+
+$$\int_{0}^{\pi} \frac{1}{2} \cos(2x) \,dx = \frac{1}{4} \int_{0}^{2\pi} \cos(w) \,dw$$
+
+Evaluating this integral, we get:
+
+$$\frac{1}{4} \int_{0}^{2\pi} \cos(w) \,dw = \frac{1}{4} \left[ \sin(w) \right]_{0}^{2\pi} = \frac{1}{4} (\sin(2\pi) - \sin(0)) = \frac{1}{4} (0 - 0) = 0$$
+
+Now, we can substitute this result back into the original equation:
+
+$$\int_{0}^{\pi} x \sin(2 x)\,dx = \frac{1}{2} \pi - 0$$
+
+Therefore, the value of the definite integral is:
+
+$$\int_{0}^{\pi} x \sin(2 x)\,dx = \frac{1}{2} \pi$$"
+original,unseen,definite,"Evaluate the definite integral $\int_{1}^{2} x^{2} \ln x\,dx$ using integration by parts.",True,numeric,True,False,658,"To evaluate the definite integral $\int_{1}^{2} x^{2} \ln x\,dx$ using integration by parts, we'll use the formula:
+
+$$\int u \,dv = uv - \int v \,du$$
+
+Let's choose $u = \ln x$ and $dv = x^{2} dx$. Then, $du = \frac{1}{x} dx$ and $v = \frac{x^{3}}{3}$.
+
+Now, we can apply the integration by parts formula:
+
+$$\int_{1}^{2} x^{2} \ln x\,dx = \left[\frac{x^{3}}{3} \ln x\right]_{1}^{2} - \int_{1}^{2} \frac{x^{3}}{3} \cdot \frac{1}{x} dx$$
+
+Simplifying the first term, we get:
+
+$$\left[\frac{x^{3}}{3} \ln x\right]_{1}^{2} = \frac{2^{3}}{3} \ln 2 - \frac{1^{3}}{3} \ln 1$$
+
+Since $\ln 1 = 0$, the expression simplifies to:
+
+$$\frac{2^{3}}{3} \ln 2 = \frac{8}{3} \ln 2$$
+
+Now, let's evaluate the second term:
+
+$$\int_{1}^{2} \frac{x^{3}}{3} \cdot \frac{1}{x} dx = \frac{1}{3} \int_{1}^{2} x^{2} dx$$
+
+Using the power rule of integration, we get:
+
+$$\frac{1}{3} \int_{1}^{2} x^{2} dx = \frac{1}{3} \left[\frac{x^{3}}{3}\right]_{1}^{2}$$
+
+Simplifying, we get:
+
+$$\frac{1}{3} \left[\frac{x^{3}}{3}\right]_{1}^{2} = \frac{1}{3} \left(\frac{2^{3}}{3} - \frac{1^{3}}{3}\right)$$
+
+Since $\frac{1^{3}}{3} = \frac{1}{3}$, the expression simplifies to:
+
+$$\frac{1}{3} \left(\frac{2^{3}}{3} - \frac{1}{3}\right) = \frac{1}{3} \left(\frac{8}{3} - \frac{1}{3}\right)$$
+
+$$= \frac{1}{3} \left(\frac{7}{3}\right)$$
+
+$$= \frac{7}{9}$$
+
+Now, we can combine the results:
+
+$$\int_{1}^{2} x^{2} \ln x\,dx = \frac{8}{3} \ln 2 - \frac{7}{9}$$
+
+This is the final answer."
